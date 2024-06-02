@@ -1,0 +1,63 @@
+.register {
+    .bgImg{ 
+        width: 100%;
+        height: 500px; 
+        overflow: hidden; 
+        background-image: url("../../../assets/image/fest-connect-bg-image.jpg");
+        background-position-x:center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: -60px;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+    .titre {
+       display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        width: 100%;
+        text-align: center;
+        color:var(--mj-primary);
+        font-size: 32px;
+        font-weight: 600;
+        
+    }
+    .RegisterForm { 
+        h3 {
+            margin: 50px 0px;
+        }
+        label { 
+            width: 100%;
+            text-align: left;
+            margin-bottom: 10px;
+            color:var(--mj-secondary)
+          };
+          input { 
+            width: 250px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid var(--mj-tertiary);
+            margin-bottom: 15px;
+            color: var(--mj-secondary);
+          }
+          input::placeholder{
+            color:var(--mj-tertiary)
+          }
+          input:focus-visible{ 
+            outline: var(--mj-tertiary) auto 1px;
+      
+          }
+
+    }
+    .rgpdInput{ 
+        input {
+            width: 10px;
+        }
+        width: 100%;
+      }
+}
+
+

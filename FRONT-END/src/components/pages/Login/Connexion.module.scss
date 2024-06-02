@@ -1,0 +1,85 @@
+.modalBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .modalContent {
+    background: var(--mj-primary);
+    color: var(--mj-secondary);
+    width: 350px;
+    height: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    .textError { 
+      margin-top: 0px;
+      color:#EF233C;
+      font-size: 0.8rem;
+    }
+    form{ 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    i{ 
+      cursor: pointer;
+      display: flex;
+      justify-content: end;
+      font-size: 20px;
+      color: var(--mj-secondary);
+    }
+    h3 { 
+      text-align: center;
+      margin-bottom: 30px;
+      margin-top: 20px;
+      font-weight: 600
+
+    };
+    label { 
+      width: 100%;
+      text-align: left;
+      margin-bottom: 10px
+    };
+    input { 
+      width: 250px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid var(--mj-tertiary);
+      margin-bottom: 10px;
+      color: var(--mj-secondary);
+    }
+    input::placeholder{
+      color:var(--mj-tertiary)
+    }
+    input:focus-visible{ 
+      outline: var(--mj-tertiary) auto 1px;
+
+    }
+    button {
+      margin-top: 10px
+    }
+    p{ 
+      margin-top: 30px;
+      a{
+        text-decoration: none;
+      }
+      span{ 
+        color: #EF233C
+      }
+    }
+    .ForgottenPassword {
+      margin-top: 10px;
+    }
+
+  }
+
+
+  

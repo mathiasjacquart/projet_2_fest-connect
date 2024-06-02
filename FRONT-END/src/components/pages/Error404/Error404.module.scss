@@ -1,0 +1,42 @@
+.error { 
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}  
+
+.errorContent { 
+    display: flex;
+    flex-direction: column;
+    color: var(--mj-secondary);
+    text-align: center;
+    align-items: center;
+
+}
+.errorContentp1 { 
+    font-family: "Bruno Ace", sans-serif;
+    color: #EF233C;
+    font-size: 64px;
+}
+
+.errorContentp2 { 
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--mj-secondary);
+}
+
+.errorContentp3{ 
+    font-size: 32px;
+    font-weight: 500; 
+}
+
+.errorContentp4{ 
+    font-size: 24px;
+    font-weight: 200;
+    color: var(--mj-tertiary);
+}
+.btnBackHome { 
+    width: 320px;
+    margin-top: 100px;
+}

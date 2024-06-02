@@ -1,0 +1,23 @@
+footer { 
+    background-color: var(--mj-secondary);
+    min-height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+    img { 
+        width: 60px;
+        height: auto;
+    }
+    .middle { 
+        text-decoration: none;
+        text-align: center;
+        color: var(--mj-primary);
+        margin-top: 20px;
+        font-weight: 500;
+
+    } 
+
+
+}
+
