@@ -30,7 +30,7 @@ export default function Header ({openModal, closeModal, isModalOpen}) {
             </div>
             <nav>
                 <ul className={`d-flex flex-row `}>
-                    <li> <NavLink to="/">Accueil</NavLink></li>
+                    <li> <NavLink to="/" end>Accueil</NavLink></li>
                     <li> <NavLink to="/about">À propos</NavLink></li>
                     <li> <NavLink to="/services">Services</NavLink></li>
                     <li><NavLink to="/blog">Blog</NavLink> </li>
@@ -61,7 +61,7 @@ export default function Header ({openModal, closeModal, isModalOpen}) {
                         >
                         Mon compte
                         </button>
-                        <Menu
+                        {/* <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
                         open={open}
@@ -73,7 +73,7 @@ export default function Header ({openModal, closeModal, isModalOpen}) {
                         <MenuItem className={`${styles.MenuItemAccount}`}onClick={handleClose}>Mon profil</MenuItem>
                         <MenuItem onClick={handleClose}>Mon compte</MenuItem>
                         <MenuItem onClick={handleClose}>Se déconnecter</MenuItem>
-                        </Menu>
+                        </Menu> */}
                     </div>
                     )
                 }   

@@ -25,6 +25,10 @@ nav ul li a{
     font-size: 1.1rem;
 }
 
+.active{
+    text-decoration: underline;
+}
+
 .logoAccount { 
     font-size: 50px;
     color: var(--mj-fourtiary)
@@ -33,5 +37,5 @@ nav ul li a{
 .MenuItemAccount{
     width: 159px;
     z-index: 999;
-    color: var(--mj-fourtiar y);
+    color: var(--mj-fourtiary);
 }
