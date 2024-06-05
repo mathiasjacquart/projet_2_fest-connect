@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signup } from "../../../apis/users";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import RegisterRedirection from "./RegisterRedirection";
 
 
@@ -164,7 +164,7 @@ export default function RegisterForm() {
                       id="rgpd"
                       {...register("rgpd")}
                       />
-                      En soumettant ce formulaire, vous acceptez que vos données personnelles soient traitées conformément à notre politique de confidentialité et aux dispositions du RGPD.
+                      En soumettant ce formulaire, vous acceptez que vos données personnelles soient traitées conformément à <Link to="/politiques-de-confidentialité">notre politique de confidentialité</Link> et aux dispositions du RGPD.
                       {errors.rgpd && <p className="text-error">{errors.rgpd.message}</p>}
                       </label>
                 

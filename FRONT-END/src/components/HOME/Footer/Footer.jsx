@@ -9,7 +9,7 @@ export default function Footer() {
             <img src={logoFest} alt="logo" />
         </div>
         <div className={`d-flex flex-column `}>
-        <Link className={`${styles.middle}`} to='/politique-de-confidentialité'>Politique de confidentialité</Link>
+        <Link className={`${styles.middle}`} to='/politiques-de-confidentialité'>Politique de confidentialité</Link>
         <Link className={`${styles.middle}`}to='/mentions-légales'>Mentions légales</Link>
         <p className={`${styles.middle}`}>Fest Connect © 2024</p>
         </div>

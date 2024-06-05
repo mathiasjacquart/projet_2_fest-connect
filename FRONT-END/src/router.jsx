@@ -8,6 +8,7 @@ import Error404 from "./components/pages/Error404/Error404"
 import Services from "./components/pages/Services/Services"
 import UserConnected from "./components/ProtectedRoutes/UserConnected"
 import UserNotConnected from "./components/ProtectedRoutes/UserNotConnected"
+import PrivacyPolicy from "./components/pages/PrivacyPolicy/PrivacyPolicy"
 
 export const router = createBrowserRouter ([
     {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter ([
             {
                 path:"/services",
                 element: <Services/>
+            },
+            {
+                path:"/politiques-de-confidentialité",
+                element: <PrivacyPolicy/>
             },
             {
                 path:"/my-account",
