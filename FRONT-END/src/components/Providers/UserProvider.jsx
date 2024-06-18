@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
 
-export default function UserProvider({ children }) {
+import {useNavigate}  from "react-router-dom"
+
+export default function UserProvider({ children, onClose }) {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userStorage = JSON.parse(localStorage.getItem("user"));
@@ -19,6 +22,9 @@ export default function UserProvider({ children }) {
   function logoutConnectedUser() {
     localStorage.removeItem("user");
     setUser(null);
+    navigate("/")
+    onClose();
+    
   }
 
   function setConnectedUser(userConnected) {

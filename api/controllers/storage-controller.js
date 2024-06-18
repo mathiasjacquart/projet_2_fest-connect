@@ -13,7 +13,15 @@ const getStorage = async (req, res) => {
       res.status(400).json({ error: error.message });
     }
   };
+const SaveURL = async (req, res) => {
+  const { urls } = req.body;
+  try {
+    const imageDocs = urls.map(({ url, title }) => ({ url, title }));
+    const savedDocs = await Storage.insertMany(imageDocs);
+    res.status(201).json(savedDocs);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
-
-
-module.exports = { getStorage}
+module.exports = { getStorage, SaveURL}

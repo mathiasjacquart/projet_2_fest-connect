@@ -1,0 +1,42 @@
+.modal{ 
+    width: 700px;
+    height: 500px;
+    background-color: var(--mj-secondary);
+    color: var(--mj-primary);
+    border-radius: 10px;
+    h3 { 
+        color: var(--mj-primary);
+        margin-bottom: 50px;
+        background-color: var(--mj-fourtiary);
+        padding: 20px 20px;
+        border-radius: 10px;
+        font-weight: 600;
+
+        
+    }
+    label { 
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px
+      };
+      input { 
+        width: 250px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid var(--mj-tertiary);
+        margin-bottom: 10px;
+        color: var(--mj-secondary);
+      }
+      input::placeholder{
+        color:var(--mj-tertiary)
+      }
+      input:focus-visible{ 
+        outline: var(--mj-tertiary) auto 1px;
+  
+      }
+      .textError { 
+        margin-top: 0px;
+        color: var(--mj-fourtiary);
+        font-size: 0.9rem;
+      }
+}

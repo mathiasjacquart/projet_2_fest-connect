@@ -1,21 +1,22 @@
 
-import styles from "./Connexion.module.scss"
+import styles from "./UserConnexion.module.scss"
 import {Link, NavLink} from "react-router-dom"
 import React, { useState, useContext } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signin } from "../../../apis/users";
-import ConnexionRedirection from "./ConnexionRedirection";
+import ConnexionRedirection from "./UserConnexionRedirection";
 import { UserContext } from "../../context/UserContext";
 
 
 function Connexion({onClose}) {
 
   const [feedback, setFeedback] = useState(null);
-  const [status, setStatus] = useState(0);
   const [showLoginRedirection, setShowLoginRedirection] = useState(false);
   const { setConnectedUser } = useContext(UserContext);
+
+  console.log(onClose);
 
 
   // schéma de validation
@@ -24,7 +25,7 @@ function Connexion({onClose}) {
     .string()
     .required("Le champ est obligatoire")
     .email()
-    .matches(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g, "Mail not valid"),
+    .matches(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g, "L'e-mail n'est pas valide"),
     password: yup.string().required("Le mot de passe est obligatoire"),
   });
 
@@ -55,9 +56,7 @@ function Connexion({onClose}) {
       if  (!response.message) {
         localStorage.setItem("user", JSON.stringify(response));
         setConnectedUser(response.user);
-        setFeedback(`Bienvenue ${response.user.username}`)
         setShowLoginRedirection(true);
-        ;
         reset(defaultValues);
 
       } else {
@@ -73,11 +72,15 @@ function Connexion({onClose}) {
     setFeedback(null);
   }
 
+  function handleCloseModal () {
+    setShowLoginRedirection(false);
+    
+  }
   return (
     <>
     
-      <div className={`${styles.modalBg}`}  >
-          <div className={`${styles.modalContent}`} > 
+      <div className={`${styles.modalBg}`}  onClick={onClose} >
+          <div className={`${styles.modalContent}`} onClick={(e) => e.stopPropagation()} > 
           
             <div>
               <i onClick={onClose}className="fa-solid fa-xmark"></i>

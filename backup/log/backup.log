@@ -1,0 +1,9 @@
+Starting backup process: 2024-06-18_09-13-00
+2024-06-18T09:13:01.740+0200	writing fest-connect.storages to /Users/mathi/www_mathias/FEST-CONNECT/projet_2_fest-connect/backup/saves/2024-06-18_09-13-00/fest-connect/storages.bson
+2024-06-18T09:13:01.761+0200	writing fest-connect.users to /Users/mathi/www_mathias/FEST-CONNECT/projet_2_fest-connect/backup/saves/2024-06-18_09-13-00/fest-connect/users.bson
+2024-06-18T09:13:01.801+0200	writing fest-connect.admins to /Users/mathi/www_mathias/FEST-CONNECT/projet_2_fest-connect/backup/saves/2024-06-18_09-13-00/fest-connect/admins.bson
+2024-06-18T09:13:01.843+0200	done dumping fest-connect.storages (0 documents)
+2024-06-18T09:13:01.843+0200	done dumping fest-connect.users (1 document)
+2024-06-18T09:13:01.856+0200	done dumping fest-connect.admins (1 document)
+Backup successful: 2024-06-18_09-13-00
+Script execution completed.

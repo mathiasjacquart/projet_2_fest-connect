@@ -1,0 +1,11 @@
+Starting restore process: 2024-06-11_11-35-50
+Restore path: /Users/mathi/www_mathias/FEST-CONNECT/projet_2_fest-connect/backup/saves/restore
+Log path: /Users/mathi/www_mathias/FEST-CONNECT/projet_2_fest-connect/backup/log/restore.log
+MongoDB URI: mongodb+srv://mathiasjacquart:azerty123456@cluster0.aki18iz.mongodb.net/fest-connect?retryWrites=true&w=majority&appName=Cluster0
+Running mongorestore...
+2024-06-11T11:35:55.974+0200	The --db and --collection flags are deprecated for this use-case; please use --nsInclude instead, i.e. with --nsInclude=${DATABASE}.${COLLECTION}
+2024-06-11T11:35:55.975+0200	building a list of collections to restore from /Users/mathi/www_mathias/FEST-CONNECT/projet_2_fest-connect/backup/saves/restore dir
+2024-06-11T11:35:55.976+0200	0 document(s) restored successfully. 0 document(s) failed to restore.
+Restore successful: 2024-06-11_11-35-50
+Script execution completed.
+

@@ -1,33 +1,48 @@
 import Header from "./components/HOME/Header/Header";
 import Footer from "./components/HOME/Footer/Footer";
-import styles from "./App.module.scss"
+import styles from "./App.module.scss";
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
-import UserProvider from "./components/Providers/UserProvider"
-
+import { useState, useEffect } from "react";
+import Drawer from "./components/Drawer/Drawer";
 
 function App() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const openModal = () => {
-    setIsModalOpen(true);
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  }; 
+  useEffect(() => {
+    if (isDrawerOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [isDrawerOpen]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handlecloseModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
     <>
-    <UserProvider>
-    <Header openModal = {openModal} closeModal = {closeModal} isModalOpen={isModalOpen}/>
-        <Outlet/>
-    <Footer/>
-    </UserProvider>
+      <Header
+        toggleModal={handlecloseModal}
+        isModalOpen={isModalOpen}
+        isOpen={isDrawerOpen}
+        onClose={toggleDrawer}
+      />
 
+      {isDrawerOpen && (
+        <div className={`${styles.overlay}`} onClick={toggleDrawer}></div>
+      )}
+      <Drawer isOpen={isDrawerOpen} onClose={toggleDrawer} />
+      <Outlet />
+      <Footer />
     </>
-
-  )
+  );
 }
 
-export default App
+export default App;

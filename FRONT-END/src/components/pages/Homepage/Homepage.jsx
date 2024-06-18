@@ -1,8 +1,9 @@
-import Button from "../../../Button"
 import SearchBar from "../../HOME/SearchBar/SearchBar"
 import Categorie from "../../HOME/Categorie/Categorie"
 import Avis from "../../HOME/Avis/Avis"
-import Connexion from "../../pages/Login/Connexion"
+import Connexion from "../Login/UserConnexion"
+import Upload from "../../Upload"
+import AdminRegister from "../../pages/Register/AdminRegister"
 // import { Link } from "react-router-dom"
 import { useState } from "react"
 //style
@@ -24,12 +25,20 @@ export default function Homepage({ showConnexion = false }) {
     setIsConnexionOpen(false);
   };
   return (
-    <>
+    
     <main className={`${styles.main}`}>
-      <div className={`${styles.intro}`}>
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h1>
-        <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita  </h2>
-        <Button/>
+      {/* <Upload></Upload> */}
+      <div className={`${styles.intro} `}> 
+        <div className={`d-flex flex-column`}>
+        <h1>Animez vos événements avec Fest Connect</h1>
+        <h2>Rencontrez et trouvez le talent qu'il vous faut pour rendre votre fête inoubliable  </h2>
+
+
+          <div className={`d-flex ${styles.btnContainer}`}>
+            <button className={`mj-btn-primary ${styles.btnPrimary}`}>À propos de nous</button>
+            <button className={`mj-btn-primary ${styles.btnPrimary}`}>Rejoignez-nous</button>
+          </div>
+        </div>
         <div className={`${styles.photoIntro}`}>
           <img src={backgroundImage} alt="landing-page-photo" />
         </div>
@@ -56,9 +65,10 @@ export default function Homepage({ showConnexion = false }) {
         </div>
       </div>
       <Avis/>
+
       {isConnexionOpen && <Connexion onClose={handleCloseConnexion} />}
     </main>
-    </>
+    
 
   )
 }

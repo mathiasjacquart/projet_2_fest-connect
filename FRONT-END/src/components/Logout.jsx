@@ -6,6 +6,7 @@ export default function Logout() {
   useEffect(() => {
     logoutConnectedUser();
   }, []);
+  
   return (
     <div>
       <h2>Déconnexion en cours ...</h2>

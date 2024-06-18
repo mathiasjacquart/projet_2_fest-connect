@@ -1,26 +1,24 @@
 import styles from "./Header.module.scss"
+import Drawer from "../../Drawer/Drawer"
 import logoFest from "../../../assets/image/LOGO-FEST-CONNECT.svg"
 import {Link, NavLink} from "react-router-dom"
-import Connexion from "../../pages/Login/Connexion"
+import Connexion from "../../pages/Login/UserConnexion"
 import { UserContext } from "../../context/UserContext"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
+
 // import logoAccount from "../../../assets/image/icons8-user-circle-48.png"
 
-export default function Header ({openModal, closeModal, isModalOpen}) {
+export default function Header ({toggleModal, isModalOpen, onClose}) {
     const { user } = useContext(UserContext);
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
+    console.log();
+
+
+
 
 
     return(
@@ -34,6 +32,7 @@ export default function Header ({openModal, closeModal, isModalOpen}) {
                     <li> <NavLink to="/about">À propos</NavLink></li>
                     <li> <NavLink to="/services">Services</NavLink></li>
                     <li><NavLink to="/blog">Blog</NavLink> </li>
+                    <li><NavLink to="/contact">Contact</NavLink> </li>
                 </ul>
             </nav>
             <div>
@@ -44,41 +43,21 @@ export default function Header ({openModal, closeModal, isModalOpen}) {
                         <Link to="/register" className="mj-btn-primary m-10">
                             Tes talents ? 
                         </Link>
-                        <Link to="/login" onClick={openModal}className="mj-btn-secondary">
+                        <Link to="/login" onClick={toggleModal}className="mj-btn-secondary">
                             Se connecter
                         </Link>
                         </>
                             
                     ):(
-                    <div>
-                        <button
-                        className="mj-btn-secondary"
-                        id="basic-button"
-                        aria-controls={open ? 'basic-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}
-                        >
-                        Mon compte
+                        <div className={`${styles.App}`}>
+                        <button onClick={onClose}className="mj-btn-secondary">
+                          Mon compte
                         </button>
-                        {/* <Menu
-                        id="basic-menu"
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                        MenuListProps={{
-                            'aria-labelledby': 'basic-button',
-                        }}
-                        >
-                        <MenuItem className={`${styles.MenuItemAccount}`}onClick={handleClose}>Mon profil</MenuItem>
-                        <MenuItem onClick={handleClose}>Mon compte</MenuItem>
-                        <MenuItem onClick={handleClose}>Se déconnecter</MenuItem>
-                        </Menu> */}
-                    </div>
+                      </div>
                     )
                 }   
 
-                 {isModalOpen && <Connexion onClose={closeModal}/>}
+                 {isModalOpen && <Connexion onClose={toggleModal}/>}
             </div>
         </header>
     )

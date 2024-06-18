@@ -1,3 +1,6 @@
+ @use  "../styles/mixin" as mixin;
+
+
  .p-5 {
      padding: 5px;
  }
@@ -25,6 +28,10 @@
  .m-10 {
      margin: 10px;
  }
+ .my-10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+ }
 
  .mr-15 {
      margin-right: 15px;
@@ -50,6 +57,24 @@
      max-width: 1600px;
      margin: auto;
      width: 100%;
+     @include mixin.xs { 
+        max-width: 100%;
+     }
+     @include mixin.sm { 
+        max-width: 540px;
+     }
+     @include mixin.md { 
+        max-width: 760px;
+     }
+     @include mixin.lg  { 
+        max-width: 960px;
+     }
+     @include mixin.xl{ 
+        max-width: 1140px;
+     }
+     @include mixin.xxl { 
+        max-width: 1400px;
+     }
  }
 
 .my-30 {
@@ -57,3 +82,14 @@
     margin-top: 30px;
 }
 
+ .no-scroll {
+        overflow: hidden;
+ }
+
+ .mh-100 {
+    min-height: 100vh;
+ }
+
+.w-100 { 
+    width: 100%;
+}
