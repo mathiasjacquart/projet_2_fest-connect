@@ -24,7 +24,6 @@ export default function AdminProvider({ children}) {
     localStorage.removeItem("admin");
     setAdmin(null);
     navigate("/admin")
-    onClose();
     
   }
 

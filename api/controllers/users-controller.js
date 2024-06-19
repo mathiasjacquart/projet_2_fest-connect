@@ -144,4 +144,14 @@ const deleteUser = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-module.exports = { deleteUser, updateUser, getUser, getUsers, signupUser, verifyMail, signinUser };
+
+const createUser = async (req, res) => { 
+  try {
+    const user = new User (req.body) 
+    await user.save();
+    res.status(200).json(user)
+  } catch (error) {
+    res.status(500).json ({ error : error.message})
+  }
+}
+module.exports = { deleteUser, updateUser, getUser, getUsers, signupUser, verifyMail, signinUser, createUser };

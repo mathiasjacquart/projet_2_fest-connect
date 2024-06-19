@@ -13,4 +13,10 @@ const userSchema = new mongoose.Schema(
         timestamps:true,
     }
 );
+//Conversion _id en id 
+userSchema.set('toJSON', {
+    virtuals: true,
+    versionKey: false,
+    transform: function (doc, ret) { delete ret._id }
+});
 module.exports = mongoose.model("User", userSchema);

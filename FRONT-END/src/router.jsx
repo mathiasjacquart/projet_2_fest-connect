@@ -12,10 +12,13 @@ import UserNotConnected from "./components/ProtectedRoutes/UserNotConnected";
 import AdminConnected from "./components/ProtectedRoutes/AdminConnected";
 import AdminConnexion from "./components/pages/Login/AdminConnexion";
 import AdminNotConnected from "./components/ProtectedRoutes/AdminNotConnected";
-import AdminDashboard from "./components/pages/admin/AdminDashboard";
+import AdminApp from "./components/pages/admin/AdminApp";
 import PrivacyPolicy from "./components/pages/PrivacyPolicy/PrivacyPolicy";
 import Contact from "./components/pages/Contact/Contact";
 import Logout from "./components/Logout";
+import Dashboard from "./components/pages/admin/Dashboard";
+import UserList from "./components/pages/admin/users/UserList";
+import UserCreate from "./components/pages/admin/users/UserCreate";
 
 const mainRoutes = {
   path: "/",
@@ -86,12 +89,27 @@ const adminRoutes = {
 };
 
 const adminDashboardRoutes = {
-  path: "/admin-dashboard",
+  path: "/admin-dashboard/",
   element: (
     <AdminConnected>
-      <AdminDashboard />
+      <AdminApp/>
     </AdminConnected>
   ),
+  children : [
+    {
+      path:"/admin-dashboard/users",
+      element: (
+      <UserList/>),
+      children :[
+        {
+          path: "/admin-dashboard/users/create",
+          element: (
+            <UserCreate/>
+          ),
+        },
+      ] 
+    }
+  ]
 };
 
 export const router = createBrowserRouter([
