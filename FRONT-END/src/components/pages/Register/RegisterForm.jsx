@@ -27,11 +27,16 @@ export default function RegisterForm() {
     password: yup
       .string()
       .required("Le mot de passe est obligatoire")
-      .min(5, "trop court"),
+      .min(5, "Mot de passe trop court"),
     confirmPassword: yup
       .string()
       .required("Vous devez confirmer votre mot de passe")
       .oneOf([yup.ref("password"), ""], "Les mots ne correspondent pas"),
+    role: yup
+    .boolean()
+    .required("Veuillez sélectionner votre rôle "),
+    
+  
     rgpd: yup
       .boolean()
       .oneOf([true], "Vous devez accepter les termes et les conditions"),
@@ -46,6 +51,7 @@ export default function RegisterForm() {
     email: "",
     password: "",
     confirmPassword: "",
+    role:false,
     rgpd: false,
   };
 
@@ -156,7 +162,18 @@ export default function RegisterForm() {
                         <p className="text-error">{errors.confirmPassword.message}</p>
                            )}
                     </div>
-     
+                  </div>
+                  <div className={`${styles.radioTitle}`}>
+                    <label htmlFor="role">Choissisez le rôle que vous souhaitez avoir sur Fest Connect : </label>
+                  </div>
+                  <div className={`${styles.radioInput}`}>
+                      <input type="radio"
+                      id="role" 
+                      {...register("role")} /> Je souhaite partager mon profil
+                     <input type="radio"
+                      id="role"
+                      {...register("role")} />
+                      Je recherche un prestataire pour mon évènement
                   </div>
                   <div className={`d-flex justify-content ${styles.rgpdInput}`} >
                       <label htmlFor="rgpd" className="mb-10">

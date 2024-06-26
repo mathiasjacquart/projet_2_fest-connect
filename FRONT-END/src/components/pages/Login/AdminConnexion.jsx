@@ -75,7 +75,7 @@ function AdminConnexion() {
 
   return (
     <>
-      <div className={`container mh-100 d-flex center`}> 
+      <div className={`mh-100 d-flex center ${styles.body}`}> 
         <div className={`d-flex center flex-column ${styles.modal}`}>
           <h3>Fest Connect</h3>
           <form onSubmit={handleSubmit(submit)}>

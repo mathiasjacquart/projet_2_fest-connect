@@ -1,6 +1,6 @@
 @use "../../../assets/styles/mixin" as mixin;
 
-main {
+.main {
     display: flex;
     flex-direction: column;
     .intro{

@@ -30,8 +30,12 @@
         
     }
     .RegisterForm { 
+
         h3 {
             margin: 50px 0px;
+        };
+        form { 
+          width: 1000px;
         }
         label { 
             width: 100%;
@@ -54,6 +58,13 @@
             outline: var(--mj-tertiary) auto 1px;
       
           }
+          .radioInput{ 
+            color:  var(--mj-secondary);
+            margin-bottom: 20px;
+            input { 
+              width: 10px;
+            }
+          }
 
     }
     .rgpdInput{ 
@@ -62,6 +73,11 @@
         }
         width: 100%;
       }
+    .radioTitle { 
+      margin: 20px 0px;
+      font-weight: 600;
+    }
+
 }
 
 

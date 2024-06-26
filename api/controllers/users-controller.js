@@ -16,7 +16,7 @@ const createTokenLogin = (_id) => {
 };
 
 const signupUser = async (req, res) => {
-  const { firstname, surname, username, email, password } = req.body;
+  const { firstname, surname, username, email, password, role } = req.body;
   console.log(req.body);
   try {
     const user = await User.findOne({ email });
@@ -32,6 +32,7 @@ const signupUser = async (req, res) => {
         username,
         email,
         password: hashpwd,
+        role,
         token,
       });
       await user.save();
