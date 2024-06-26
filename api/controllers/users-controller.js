@@ -7,6 +7,7 @@ const {
   sendInvalideToken,
 } = require("../email/email");
 
+//TOKEN EMAIL & LOGIN 
 const createTokenEmail = (email) => {
   return jwt.sign({ email }, process.env.SECRET, { expiresIn: "180s" });
 };
@@ -15,6 +16,8 @@ const createTokenLogin = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "3600s" });
 };
 
+
+// SIGN UP & SIGN IN 
 const signupUser = async (req, res) => {
   const { firstname, surname, username, email, password, role } = req.body;
   console.log(req.body);
@@ -155,4 +158,6 @@ const createUser = async (req, res) => {
     res.status(500).json ({ error : error.message})
   }
 }
+
+
 module.exports = { deleteUser, updateUser, getUser, getUsers, signupUser, verifyMail, signinUser, createUser };
