@@ -1,0 +1,171 @@
+{
+    
+        "musiciens": {
+            "urlphoto": "url_de_la_photo_pour_musiciens",
+            "sous_categories": {
+                "rock": {
+                    "urlphoto": "url_de_la_photo_pour_rock",
+                    "mots_cles": ["guitare électrique", "basse", "batterie", "chanteur"]
+                },
+                "jazz": {
+                    "urlphoto": "url_de_la_photo_pour_jazz",
+                    "mots_cles": ["saxophone", "piano", "contrebasse", "batterie"]
+                },
+                "classique": {
+                    "urlphoto": "url_de_la_photo_pour_classique",
+                    "mots_cles": ["violon", "piano", "orchestre", "soprano"]
+                },
+                "pop": {
+                    "urlphoto": "url_de_la_photo_pour_pop",
+                    "mots_cles": ["chanteur", "guitare acoustique", "synthétiseur", "basse"]
+                }
+            }
+        },
+        "disc_jockey": {
+            "urlphoto": "url_de_la_photo_pour_disc_jockey",
+            "sous_categories": {
+                "club": {
+                    "urlphoto": "url_de_la_photo_pour_club",
+                    "mots_cles": ["mixage", "turntablism", "bpm élevé", "remix"]
+                },
+                "mariage": {
+                    "urlphoto": "url_de_la_photo_pour_mariage",
+                    "mots_cles": ["playlist personnalisée", "animations", "éclairage", "micro"]
+                },
+                "corporatif": {
+                    "urlphoto": "url_de_la_photo_pour_corporatif",
+                    "mots_cles": ["musique d'ambiance", "sonorisation", "micro", "éclairage"]
+                },
+                "festivals": {
+                    "urlphoto": "url_de_la_photo_pour_festivals",
+                    "mots_cles": ["line-up", "sets", "bpm varié", "animations"]
+                }
+            }
+        },
+        "danseurs": {
+            "urlphoto": "url_de_la_photo_pour_danseurs",
+            "sous_categories": {
+                "hip_hop": {
+                    "urlphoto": "url_de_la_photo_pour_hip_hop",
+                    "mots_cles": ["breakdance", "freestyle", "battles", "crew"]
+                },
+                "classique": {
+                    "urlphoto": "url_de_la_photo_pour_classique",
+                    "mots_cles": ["ballet", "tutu", "chorégraphie", "danseurs étoiles"]
+                },
+                "contemporain": {
+                    "urlphoto": "url_de_la_photo_pour_contemporain",
+                    "mots_cles": ["expression corporelle", "improvisation", "scénographie", "duos"]
+                },
+                "latino": {
+                    "urlphoto": "url_de_la_photo_pour_latino",
+                    "mots_cles": ["salsa", "bachata", "cha-cha-cha", "merengue"]
+                }
+            }
+        },
+        "conférenciers": {
+            "urlphoto": "url_de_la_photo_pour_conférenciers",
+            "sous_categories": {
+                "motivation": {
+                    "urlphoto": "url_de_la_photo_pour_motivation",
+                    "mots_cles": ["inspiration", "succès", "résilience", "leadership"]
+                },
+                "éducation": {
+                    "urlphoto": "url_de_la_photo_pour_éducation",
+                    "mots_cles": ["enseignement", "apprentissage", "pédagogie", "connaissance"]
+                },
+                "entreprise": {
+                    "urlphoto": "url_de_la_photo_pour_entreprise",
+                    "mots_cles": ["business", "management", "stratégie", "innovation"]
+                },
+                "santé": {
+                    "urlphoto": "url_de_la_photo_pour_santé",
+                    "mots_cles": ["bien-être", "nutrition", "médecine", "exercice"]
+                }
+            }
+        },
+        "services_evenementiels": {
+            "urlphoto": "url_de_la_photo_pour_services_evenementiels",
+            "sous_categories": {
+                "organisation": {
+                    "urlphoto": "url_de_la_photo_pour_organisation",
+                    "mots_cles": ["planning", "logistique", "coordination", "gestion"]
+                },
+                "sonorisation": {
+                    "urlphoto": "url_de_la_photo_pour_sonorisation",
+                    "mots_cles": ["audio", "micro", "haut-parleurs", "mixage"]
+                },
+                "éclairage": {
+                    "urlphoto": "url_de_la_photo_pour_éclairage",
+                    "mots_cles": ["lumières", "scénographie", "projecteurs", "effets"]
+                },
+                "sécurité": {
+                    "urlphoto": "url_de_la_photo_pour_sécurité",
+                    "mots_cles": ["surveillance", "personnel", "gestion de foule", "protection"]
+                }
+            }
+        },
+        "locations_fetes": {
+            "urlphoto": "url_de_la_photo_pour_locations_fetes",
+            "sous_categories": {
+                "salles": {
+                    "urlphoto": "url_de_la_photo_pour_salles",
+                    "mots_cles": ["capacité", "ambiance", "localisation", "accessibilité"]
+                },
+                "matériel": {
+                    "urlphoto": "url_de_la_photo_pour_matériel",
+                    "mots_cles": ["tables", "chaises", "décoration", "équipement"]
+                },
+                "tentes": {
+                    "urlphoto": "url_de_la_photo_pour_tentes",
+                    "mots_cles": ["extérieur", "installation", "climatisation", "éclairage"]
+                },
+                "catering": {
+                    "urlphoto": "url_de_la_photo_pour_catering",
+                    "mots_cles": ["buffet", "menu", "service à table", "boissons"]
+                }
+            }
+        },
+        "variete": {
+            "urlphoto": "url_de_la_photo_pour_variete",
+            "sous_categories": {
+                "magiciens": {
+                    "urlphoto": "url_de_la_photo_pour_magiciens",
+                    "mots_cles": ["illusion", "prestidigitation", "spectacle", "scène"]
+                },
+                "humoristes": {
+                    "urlphoto": "url_de_la_photo_pour_humoristes",
+                    "mots_cles": ["stand-up", "sketch", "comédie", "improvisation"]
+                },
+                "acrobates": {
+                    "urlphoto": "url_de_la_photo_pour_acrobates",
+                    "mots_cles": ["cirque", "numéros aériens", "jonglage", "équilibrisme"]
+                },
+                "ventriloques": {
+                    "urlphoto": "url_de_la_photo_pour_ventriloques",
+                    "mots_cles": ["marionnettes", "voix", "comédie", "scène"]
+                }
+            }
+        },
+        "photographes": {
+            "urlphoto": "url_de_la_photo_pour_photographes",
+            "sous_categories": {
+                "mariage": {
+                    "urlphoto": "url_de_la_photo_pour_mariage",
+                    "mots_cles": ["cérémonie", "portraits", "couple", "réception"]
+                },
+                "portrait": {
+                    "urlphoto": "url_de_la_photo_pour_portrait",
+                    "mots_cles": ["studio", "lumière", "retouche", "personnalité"]
+                },
+                "événementiel": {
+                    "urlphoto": "url_de_la_photo_pour_événementiel",
+                    "mots_cles": ["candid", "cérémonies", "groupes", "ambiances"]
+                },
+                "mode": {
+                    "urlphoto": "url_de_la_photo_pour_mode",
+                    "mots_cles": ["shooting", "lookbook", "modèles", "éditorial"]
+                }
+            }
+        }
+}

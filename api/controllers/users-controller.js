@@ -1,4 +1,7 @@
 const User = require("../models/user.schema");
+const Client = require ("../models/client.schema");
+const Prestataire = require ("../models/prestataire.schema");
+const axios = require('axios');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const {
@@ -29,6 +32,25 @@ const signupUser = async (req, res) => {
       await sendConfirmationEmail(email, token);
       const salt = await bcrypt.genSalt(10);
       const hashpwd = await bcrypt.hash(password, salt);
+
+      // Générer un avatar random 
+      const avatarResponse = await axios.get('https://avatars.dicebear.com/api/initials/:seed.svg', {
+        params: {
+          seed: username,
+         
+        }
+      });
+      const avatarUrl = avatarResponse.config.url;
+      console.log(avatarUrl);
+      let relatedDoc;
+      if (role === "client") { 
+        relatedDoc = new Client({ businessname, photo, review, location, biography, description})
+      } else if (role === "prestataire") { 
+        relatedDoc = new Prestataire({ businessname, photo, service, location, biography, description, socials
+      })
+      }
+      await relatedDoc.save();
+
       const user = new User({
         firstname,
         surname,
@@ -36,7 +58,9 @@ const signupUser = async (req, res) => {
         email,
         password: hashpwd,
         role,
+        avatar: avatarUrl,
         token,
+        relatedId:relatedDoc._id
       });
       await user.save();
       res.status(200).json({
@@ -109,7 +133,7 @@ const signinUser = async (req, res) => {
 // Get all users
 const getUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find().populate("relatedId");
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -119,7 +143,7 @@ const getUsers = async (req, res) => {
 // Get single user by ID
 const getUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id).populate("relatedId");
     if (!user) return res.status(404).json({ message: 'User not found' });
     res.status(200).json(user);
   } catch (error) {

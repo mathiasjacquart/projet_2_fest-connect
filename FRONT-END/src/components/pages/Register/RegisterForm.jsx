@@ -174,12 +174,12 @@ export default function RegisterForm() {
                   <p className="text-error">{errors.role.message}</p>
                 )}
             </div>
-            <div className={`d-flex justify-content ${styles.rgpdInput}`}>
-              <div className={`${styles.ctn}`}>
-                <input checked="checked" type="checkbox" id="rgpd" {...register("rgpd")} />
-                <label htmlFor="rgpd" className="mb-10"></label>
-              </div>
-              <div>
+            <div className={`d-flex justify-content align-items-center ${styles.rgpdInput}`}>
+              
+                <input type="checkbox" id="rgpd" {
+                  ...register("rgpd")} className={`${styles.uiCheckbox}`} />
+                <label htmlFor="rgpd" className="mb-10">
+              
                 <p>
                 En soumettant ce formulaire, vous acceptez que vos données
                 personnelles soient traitées conformément à{" "}
@@ -188,7 +188,7 @@ export default function RegisterForm() {
                 </Link>{" "}
                 et aux dispositions du RGPD.
                 </p>
-              </div>
+                </label>
             </div>
             {errors.rgpd && (
                   <p className="text-error">{errors.rgpd.message}</p>

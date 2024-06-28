@@ -8,6 +8,9 @@ const port = process.env.PORT || 4000
 const userRoutes = require ("./routes/users")
 const storageRoutes = require("./routes/storages")
 const adminRoutes = require("./routes/admin")
+const categoryRoutes = require("./routes/category")
+const prestataireRoutes =  require("./routes/prestataire")
+const clientRoutes = require("./routes/client")
 const cron = require("node-cron")
 
 const app = express();
@@ -61,6 +64,9 @@ app.post('/restore', (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/storages" , storageRoutes)
 app.use("/api/admin", adminRoutes)
+app.use("/api/category", categoryRoutes)
+app.use("api/prestataire" , prestataireRoutes)
+app.use("api/client", clientRoutes)
 
 mongoose
     .connect(process.env.MONGO_URI)
