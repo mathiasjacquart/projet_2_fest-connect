@@ -19,6 +19,10 @@ import Logout from "./components/Logout";
 import Dashboard from "./components/pages/admin/Dashboard";
 import UserList from "./components/pages/admin/users/UserList";
 import UserCreate from "./components/pages/admin/users/UserCreate";
+import PostList from "./components/pages/admin/posts/PostList";
+import PostCreate from "./components/pages/admin/posts/PostCreate";
+import PostEdit from "./components/pages/admin/posts/PostEdit";
+import UserEdit from "./components/pages/admin/users/UserEdit";
 
 const mainRoutes = {
   path: "/",
@@ -97,6 +101,25 @@ const adminDashboardRoutes = {
   ),
   children : [
     {
+      path:"/admin-dashboard/prestataires",
+      element: (
+      <PostList/>),
+      children :[
+        {
+          path: "/admin-dashboard/prestataires/create",
+          element: (
+            <PostCreate/>
+          ),
+        },
+        {
+          path: "/admin-dashboard/prestataires/edit",
+          element: (
+            <PostEdit/>
+          ),
+        },
+      ] 
+    },
+    {
       path:"/admin-dashboard/users",
       element: (
       <UserList/>),
@@ -105,6 +128,12 @@ const adminDashboardRoutes = {
           path: "/admin-dashboard/users/create",
           element: (
             <UserCreate/>
+          ),
+        },
+        {
+          path: "/admin-dashboard/users/:id",
+          element: (
+            <UserEdit/>
           ),
         },
       ] 

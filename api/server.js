@@ -11,6 +11,7 @@ const adminRoutes = require("./routes/admin")
 const categoryRoutes = require("./routes/category")
 const prestataireRoutes =  require("./routes/prestataire")
 const clientRoutes = require("./routes/client")
+const reviewRoutes = require("./routes/review")
 const cron = require("node-cron")
 
 const app = express();
@@ -67,6 +68,7 @@ app.use("/api/admin", adminRoutes)
 app.use("/api/category", categoryRoutes)
 app.use("api/prestataire" , prestataireRoutes)
 app.use("api/client", clientRoutes)
+app.use("api/review", reviewRoutes)
 
 mongoose
     .connect(process.env.MONGO_URI)

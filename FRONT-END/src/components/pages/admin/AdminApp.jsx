@@ -11,7 +11,10 @@ import { MyLayout } from "./nav/MyLayout";
 import PostIcon from "@mui/icons-material/Book"
 import UserIcon from "@mui/icons-material/Group"
 import DashboardIcon from "@mui/icons-material/Dashboard"
-
+import CategoryCreate from "./createContent/CategoryCreate";
+import PostList from "./posts/PostList";
+import PostCreate from "./posts/PostCreate";
+import PostEdit from "./posts/PostEdit";
 
 
 const AdminApp = () => (
@@ -24,8 +27,10 @@ const AdminApp = () => (
 
 
     <Resource
-      name="posts"
-      list={UserList}
+      name="prestataires"
+      list={PostList}
+      edit= {PostEdit}
+      create={PostCreate}
       icon={PostIcon}
     />
     <Resource
@@ -35,6 +40,10 @@ const AdminApp = () => (
       create={UserCreate}
       icon={UserIcon}
     />
+    <Resource 
+      name="categories"
+      create={CategoryCreate}
+     />
   </Admin>
 );
 

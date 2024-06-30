@@ -10,6 +10,7 @@ const UserList = (props) => (
       <TextField source="surname" />
       <TextField source="username" />
       <EmailField source="email" />
+      <TextField source="role" />
       <EditButton />
       <DeleteButton />
     </Datagrid>

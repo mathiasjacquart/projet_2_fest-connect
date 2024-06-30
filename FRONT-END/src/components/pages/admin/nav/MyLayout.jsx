@@ -8,9 +8,10 @@ import LabelIcon from '@mui/icons-material/Label';
 const MyMenu = () => (
   <Menu>
     <Menu.DashboardItem />
-    <Menu.Item to="/admin-dashboard/posts" primaryText="Posts" leftIcon={<BookIcon />}/>
-    <Menu.Item to="/admin-dashboard/comments" primaryText="Comments" leftIcon={<ChatBubbleIcon />}/>
     <Menu.Item to="/admin-dashboard/users" primaryText="Users" leftIcon={<PeopleIcon />}/>
+    <Menu.Item to="/admin-dashboard/prestataires" primaryText="Posts" leftIcon={<BookIcon />}/>
+    <Menu.Item to="/admin-dashboard/categories" primaryText="Contenu" leftIcon={<ChatBubbleIcon />}/>
+
     <Menu.Item to="/admin-dashboard/custom-route" primaryText="Miscellaneous" leftIcon={<LabelIcon />}/>
   </Menu>
 );
