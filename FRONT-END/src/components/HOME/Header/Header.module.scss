@@ -49,9 +49,13 @@ nav ul li a{
   
     button {
       margin: 20px;
-      padding: 10px 20px;
+      padding: 10px 30px;
       font-size: 16px;
       cursor: pointer;
+      border-radius: 5px;
+      &:after{ 
+        content: '';
+      }
     }
   }
   

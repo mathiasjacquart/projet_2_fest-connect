@@ -77,6 +77,7 @@ export default function RegisterForm() {
       {!showRedirection ? (
         <div className={`${styles.RegisterForm} container`}>
           <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
+          <div className="d-flex flex-row jc-between">
           <form className="d-flex flex-column" onSubmit={handleSubmit(submit)}>
             <div className="d-flex">
               <div className="d-flex flex-column mr-30">
@@ -194,9 +195,18 @@ export default function RegisterForm() {
                   <p className="text-error">{errors.rgpd.message}</p>
                 )}
             <div className="d-flex justify-content-center mb-20">
-              <button className="mj-btn-primary">C'est parti !</button>
+              <button className="mj-btn-primary">Créer un compte</button>
             </div>
           </form>
+            <div className={`d-flex flex-column ${styles.menu}`}>
+              <p>Pourquoi nous choisir ?</p>
+
+              <p>Comment ça marche ? </p>
+              <p> Des expériences inspirantes</p>
+              <p>F.A.Q</p>
+            </div>
+          </div>
+
         </div>
       ) : (
         <RegisterRedirection feedback={feedback} />

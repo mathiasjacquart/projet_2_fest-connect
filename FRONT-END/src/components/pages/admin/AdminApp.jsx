@@ -11,10 +11,12 @@ import { MyLayout } from "./nav/MyLayout";
 import PostIcon from "@mui/icons-material/Book"
 import UserIcon from "@mui/icons-material/Group"
 import DashboardIcon from "@mui/icons-material/Dashboard"
-import CategoryCreate from "./createContent/CategoryCreate";
+import CategoryCreate from "./categories/CategoryCreate";
 import PostList from "./posts/PostList";
 import PostCreate from "./posts/PostCreate";
 import PostEdit from "./posts/PostEdit";
+import CategoryList from "./categories/CategoryList";
+import CategoryUpdate from "./categories/CategoryUpdate";
 
 
 const AdminApp = () => (
@@ -43,6 +45,9 @@ const AdminApp = () => (
     <Resource 
       name="categories"
       create={CategoryCreate}
+      list={CategoryList}
+      edit={CategoryUpdate}
+      
      />
   </Admin>
 );

@@ -46,13 +46,20 @@ const getCategories = async (req, res) => {
   
   const createCategory = async (req, res) => { 
     try {
-      const category = new Category (req.body) 
+      const { nameCategory, urlCategory, subCategories, prestataireId } = req.body;
+      const category = new Category({
+        nameCategory,
+        urlCategory,
+        subCategories,
+        prestataireId
+      });
       await category.save();
-      res.status(200).json(category)
+      res.status(200).json(category);
     } catch (error) {
-      res.status(500).json ({ error : error.message})
+      console.error('Error creating category:', error);
+      res.status(500).json({ error: error.message });
     }
-  }
+  };
 
 
 module.exports = {createCategory, deleteCategory, updateCategory, getCategory, getCategories}

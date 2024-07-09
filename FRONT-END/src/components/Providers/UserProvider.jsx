@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
-
+import axios from "axios"
 import {useNavigate}  from "react-router-dom"
 
 export default function UserProvider({ children, onClose }) {
@@ -17,6 +17,7 @@ export default function UserProvider({ children, onClose }) {
         logoutConnectedUser();
       }
     }
+
   }, []);
 
   function logoutConnectedUser() {

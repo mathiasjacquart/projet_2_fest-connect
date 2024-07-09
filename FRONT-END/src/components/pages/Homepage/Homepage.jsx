@@ -2,7 +2,6 @@ import SearchBar from "../../HOME/SearchBar/SearchBar"
 import Categorie from "../../HOME/Categorie/Categorie"
 import Avis from "../../HOME/Avis/Avis"
 import Connexion from "../Login/UserConnexion"
-import Upload from "../../Upload"
 import AdminRegister from "../../pages/Register/AdminRegister"
 // import { Link } from "react-router-dom"
 import { useState } from "react"
@@ -27,7 +26,7 @@ export default function Homepage({ showConnexion = false }) {
   return (
     
     <main className={`${styles.main}`}>
-      {/* <Upload></Upload> */}
+
       <div className={`${styles.intro} `}> 
         <div className={`d-flex flex-column`}>
         <h1>Animez vos événements avec Fest Connect</h1>

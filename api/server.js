@@ -8,7 +8,7 @@ const port = process.env.PORT || 4000
 const userRoutes = require ("./routes/users")
 const storageRoutes = require("./routes/storages")
 const adminRoutes = require("./routes/admin")
-const categoryRoutes = require("./routes/category")
+const categoryRoutes = require("./routes/categories")
 const prestataireRoutes =  require("./routes/prestataire")
 const clientRoutes = require("./routes/client")
 const reviewRoutes = require("./routes/review")
@@ -21,8 +21,25 @@ app.use(
         origin:"*"
     })
 );
+app.use("/api/users", userRoutes);
+app.use("/api/storages" , storageRoutes)
+app.use("/api/admin", adminRoutes)
+app.use("/api/categories", categoryRoutes)
+app.use("api/prestataire" , prestataireRoutes)
+app.use("api/client", clientRoutes)
+app.use("api/review", reviewRoutes)
 
-// Définir les chemins pour les scripts de sauvegarde et de logs
+mongoose
+    .connect(process.env.MONGO_URI)
+    .then(()=> {
+        app.listen(port, () => { 
+            console.log(`connected to db and listening on port : ${port}`);
+        });
+    })
+    .catch((err) => console.log(err)) 
+
+
+    
 const backupScript = path.join(__dirname, 'backup.sh');
 const logPath = path.join(__dirname, 'logs', 'backup.log');
 
@@ -61,22 +78,3 @@ app.post('/restore', (req, res) => {
       res.send('Restore initiated successfully');
     });
   });
-
-app.use("/api/users", userRoutes);
-app.use("/api/storages" , storageRoutes)
-app.use("/api/admin", adminRoutes)
-app.use("/api/category", categoryRoutes)
-app.use("api/prestataire" , prestataireRoutes)
-app.use("api/client", clientRoutes)
-app.use("api/review", reviewRoutes)
-
-mongoose
-    .connect(process.env.MONGO_URI)
-    .then(()=> {
-        app.listen(port, () => { 
-            console.log(`connected to db and listening on port : ${port}`);
-        });
-    })
-    .catch((err) => console.log(err)) 
-
-

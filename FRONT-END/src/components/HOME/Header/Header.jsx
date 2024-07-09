@@ -51,7 +51,8 @@ export default function Header ({toggleModal, isModalOpen, onClose}) {
                     ):(
                         <div className={`${styles.App}`}>
                         <button onClick={onClose}className="mj-btn-secondary">
-                          Mon compte
+                        <img src={user.avatar} alt="" />
+                          <p>{user.username} </p>
                         </button>
                       </div>
                     )

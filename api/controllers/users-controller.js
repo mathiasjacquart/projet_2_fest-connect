@@ -34,22 +34,22 @@ const signupUser = async (req, res) => {
       const hashpwd = await bcrypt.hash(password, salt);
 
       // Générer un avatar random 
-      const avatarResponse = await axios.get('https://avatars.dicebear.com/api/initials/:seed.svg', {
-        params: {
-          seed: username,
+      // const avatarResponse = await axios.get('https://avatars.dicebear.com/api/initials/:seed.svg', {
+      //   params: {
+      //     seed: username,
          
-        }
-      });
-      const avatarUrl = avatarResponse.config.url;
-      console.log(avatarUrl);
-      let relatedDoc;
-      if (role === "client") { 
-        relatedDoc = new Client({ businessname, photo, review, location, biography, description})
-      } else if (role === "prestataire") { 
-        relatedDoc = new Prestataire({ businessname, photo, service, location, biography, description, socials
-      })
-      }
-      await relatedDoc.save();
+      //   }
+      // });
+      // const avatarUrl = avatarResponse.config.url;
+      // console.log(avatarUrl);
+      // let relatedDoc;
+      // if (role === "client") { 
+      //   relatedDoc = new Client({ businessname, photo, review, location, biography, description})
+      // } else if (role === "prestataire") { 
+      //   relatedDoc = new Prestataire({ businessname, photo, service, location, biography, description, socials
+      // })
+      // }
+      // await relatedDoc.save();
 
       const user = new User({
         firstname,
@@ -58,9 +58,9 @@ const signupUser = async (req, res) => {
         email,
         password: hashpwd,
         role,
-        avatar: avatarUrl,
+        // avatar: avatarUrl,
         token,
-        relatedId:relatedDoc._id
+        // relatedId:relatedDoc._id
       });
       await user.save();
       res.status(200).json({
@@ -93,7 +93,8 @@ const verifyMail = async (req, res) => {
       //Token encore valide
       await User.findOneAndUpdate({ email: decoded.email }, { token: null });
       await sendValidationAccount(decoded.email);
-      res.json({ message: "Inscription confirmée avec succès", status: 200 });
+      res.redirect('http://localhost:5173/');
+      
     } else {
       await User.findOneAndDelete({ email: decoded.email });
       await sendInvalideToken(decoded.email);

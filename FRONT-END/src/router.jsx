@@ -5,6 +5,7 @@ import Homepage from "./components/pages/Homepage/Homepage";
 import About from "./components/pages/About/About";
 import Account from "./components/pages/Account/Account";
 import Register from "./components/pages/Register/Register";
+import RegisterRedirection from "./components/pages/Register/RegisterRedirection";
 import Error404 from "./components/pages/Error404/Error404";
 import Services from "./components/pages/Services/Services";
 import UserConnected from "./components/ProtectedRoutes/UserConnected";
@@ -23,6 +24,9 @@ import PostList from "./components/pages/admin/posts/PostList";
 import PostCreate from "./components/pages/admin/posts/PostCreate";
 import PostEdit from "./components/pages/admin/posts/PostEdit";
 import UserEdit from "./components/pages/admin/users/UserEdit";
+import CategoryList from "./components/pages/admin/categories/CategoryList";
+import CategoryCreate from "./components/pages/admin/categories/CategoryCreate";
+import CategoryUpdate from "./components/pages/admin/categories/CategoryUpdate";
 
 const mainRoutes = {
   path: "/",
@@ -43,6 +47,13 @@ const mainRoutes = {
           <Register />
         </UserNotConnected>
       ),
+      children:[
+        {
+          path:"/register/sucess",
+          element: 
+              <RegisterRedirection/>
+        }
+      ]
     },
     {
       path: "/services",
@@ -101,6 +112,25 @@ const adminDashboardRoutes = {
   ),
   children : [
     {
+      path:"/admin-dashboard/categories",
+      element: (
+      <CategoryList/>),
+      children :[
+        {
+          path: "/admin-dashboard/categories/create",
+          element: (
+            <CategoryCreate/>
+          ),
+        },
+        {
+          path: "/admin-dashboard/categories/edit",
+          element: (
+            <CategoryUpdate/>
+          ),
+        },
+      ] 
+    },
+    {
       path:"/admin-dashboard/prestataires",
       element: (
       <PostList/>),
@@ -145,7 +175,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    // errorElement: <Error404 />,
+    errorElement: <Error404 />,
     children: [mainRoutes, adminRoutes, adminDashboardRoutes],
   },
 ]);

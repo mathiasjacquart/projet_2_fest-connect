@@ -33,3 +33,19 @@ export async function signin(values) {
     console.error(error);
   }
 }
+
+export async function getUser(values) {
+  try {
+      const response = await fetch(`${BASE_URL}/users/:id`, {
+        method: "GET",
+        headers: { 
+          "Content-Type": "application/json",
+
+        },
+        body: JSON.stringify(values)
+      });
+  } catch (error) {
+    console.error(error);
+    
+  }
+}

@@ -4,8 +4,8 @@ import {Card, CardContent, CardHeader} from "@mui/material"
 export default function Dashboard() {
   return (
     <Card>
-      <CardHeader title="Welcome to the administration" />
-      <CardContent>Lorem ipsum sic dolor amet...</CardContent>
+      <CardHeader title="Bienvenue dans l'espace administrateur" />
+      <CardContent></CardContent>
     </Card> 
   )
 }
