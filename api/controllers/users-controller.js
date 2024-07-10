@@ -1,26 +1,23 @@
-const User = require("../models/user.schema");
-const Client = require ("../models/client.schema");
-const Prestataire = require ("../models/prestataire.schema");
-const axios = require('axios');
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const Avatars = require('@dicebear/avatars').default;
+const style = require('@dicebear/avatars-initials-sprites').default;
+const User = require('../models/user.schema');
 const {
   sendConfirmationEmail,
   sendValidationAccount,
   sendInvalideToken,
-} = require("../email/email");
+} = require('../email/email');
 
-//TOKEN EMAIL & LOGIN 
 const createTokenEmail = (email) => {
-  return jwt.sign({ email }, process.env.SECRET, { expiresIn: "180s" });
+  return jwt.sign({ email }, process.env.SECRET, { expiresIn: '180s' });
 };
 
 const createTokenLogin = (_id) => {
-  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "3600s" });
+  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: '3600s' });
 };
 
-
-// SIGN UP & SIGN IN 
 const signupUser = async (req, res) => {
   const { firstname, surname, username, email, password, role } = req.body;
   console.log(req.body);
@@ -33,43 +30,33 @@ const signupUser = async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       const hashpwd = await bcrypt.hash(password, salt);
 
-      // Générer un avatar random 
-      // const avatarResponse = await axios.get('https://avatars.dicebear.com/api/initials/:seed.svg', {
-      //   params: {
-      //     seed: username,
+      // Créer un avatar
+      const avatars = new Avatars(style, { 
+        base64: true,
+        radius:50,
+        size:48,
+        backgroundColor:'#EF233C'
          
-      //   }
-      // });
-      // const avatarUrl = avatarResponse.config.url;
-      // console.log(avatarUrl);
-      // let relatedDoc;
-      // if (role === "client") { 
-      //   relatedDoc = new Client({ businessname, photo, review, location, biography, description})
-      // } else if (role === "prestataire") { 
-      //   relatedDoc = new Prestataire({ businessname, photo, service, location, biography, description, socials
-      // })
-      // }
-      // await relatedDoc.save();
+      });
+      const avatar = avatars.create(`${firstname} ${surname}`);
 
-      const user = new User({
+      const newUser = new User({
         firstname,
         surname,
         username,
         email,
         password: hashpwd,
         role,
-        // avatar: avatarUrl,
+        avatar,
         token,
-        // relatedId:relatedDoc._id
       });
-      await user.save();
+      await newUser.save();
       res.status(200).json({
-        message:
-          "Veuillez confirmer votre inscription en consultant votre boite mail",
+        message: 'Veuillez confirmer votre inscription en consultant votre boite mail',
         status: 200,
       });
     } else {
-      res.status(400).json({ message: "Compte déjà existant.", status: 400 });
+      res.status(400).json({ message: 'Compte déjà existant.', status: 400 });
     }
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -86,21 +73,17 @@ const verifyMail = async (req, res) => {
   console.log(decoded);
   try {
     if (!isTokenNull) {
-      res.status(400).json({ message: "Token déjà validé.", status: 400 });
+      res.status(400).json({ message: 'Token déjà validé.', status: 400 });
       return;
     }
     if (decoded.exp * 1000 > new Date().getTime()) {
-      //Token encore valide
       await User.findOneAndUpdate({ email: decoded.email }, { token: null });
       await sendValidationAccount(decoded.email);
       res.redirect('http://localhost:5173/');
-      
     } else {
       await User.findOneAndDelete({ email: decoded.email });
       await sendInvalideToken(decoded.email);
-      res
-        .status(400)
-        .json({ message: "Token non valide ou expiré", status: 400 });
+      res.status(400).json({ message: 'Token non valide ou expiré', status: 400 });
     }
   } catch (error) {
     console.error(error);
@@ -118,33 +101,31 @@ const signinUser = async (req, res) => {
           const token = createTokenLogin(user._id);
           res.status(200).json({ user, token });
         } else {
-          res.status(400).json({ message: "Mauvais Email et/ou Password" });
+          res.status(400).json({ message: 'Mauvaise adresse e-mail ou mot de passe' });
         }
       } else {
-        res.status(400).json({ message: "Email non validé" });
+        res.status(400).json({ message: 'Email non validé' });
       }
     } else {
-      res.status(400).json({ message: "Mauvais Email et/ou Password" });
+      res.status(400).json({ message: 'Mauvaise adresse e-mail ou mot de passe' });
     }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
-// Get all users
 const getUsers = async (req, res) => {
   try {
-    const users = await User.find().populate("relatedId");
+    const users = await User.find().populate('relatedId');
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-// Get single user by ID
 const getUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).populate("relatedId");
+    const user = await User.findById(req.params.id).populate('relatedId');
     if (!user) return res.status(404).json({ message: 'User not found' });
     res.status(200).json(user);
   } catch (error) {
@@ -152,7 +133,6 @@ const getUser = async (req, res) => {
   }
 };
 
-// Update user by ID
 const updateUser = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -163,7 +143,6 @@ const updateUser = async (req, res) => {
   }
 };
 
-// Delete user by ID
 const deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
@@ -174,15 +153,23 @@ const deleteUser = async (req, res) => {
   }
 };
 
-const createUser = async (req, res) => { 
+const createUser = async (req, res) => {
   try {
-    const user = new User (req.body) 
+    const user = new User(req.body);
     await user.save();
-    res.status(200).json(user)
+    res.status(200).json(user);
   } catch (error) {
-    res.status(500).json ({ error : error.message})
+    res.status(500).json({ error: error.message });
   }
-}
+};
 
-
-module.exports = { deleteUser, updateUser, getUser, getUsers, signupUser, verifyMail, signinUser, createUser };
+module.exports = {
+  deleteUser,
+  updateUser,
+  getUser,
+  getUsers,
+  signupUser,
+  verifyMail,
+  signinUser,
+  createUser,
+};

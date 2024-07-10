@@ -40,6 +40,10 @@
           padding: 20px 0px;
           border-bottom: var(--mj-tertiary) solid 0.5px;
           margin: 0px 0px;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
       button { 

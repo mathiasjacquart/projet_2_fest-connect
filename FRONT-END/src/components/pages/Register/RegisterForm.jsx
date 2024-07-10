@@ -1,5 +1,5 @@
 import styles from "./RegisterForm.module.scss";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,7 +8,8 @@ import { useNavigate, Link } from "react-router-dom";
 import RegisterRedirection from "./RegisterRedirection";
 
 
-export default function RegisterForm() {
+export default function RegisterForm({handleClickOne, handleClickTwo, handleClickThree, handleClickFour}) {
+
   const [feedback, setFeedback] = useState(null);
   const [showRedirection, setShowRedirection] = useState(false);
 
@@ -200,11 +201,11 @@ export default function RegisterForm() {
             </div>
           </form>
             <div className={`d-flex flex-column ${styles.menu}`}>
-              <p>Pourquoi nous choisir ?</p>
+              <p onClick={handleClickOne}>Pourquoi nous choisir ?</p>
 
-              <p>Comment ça marche ? </p>
-              <p> Des partenaires de confiance</p>
-              <p>F.A.Q</p>
+              <p onClick={handleClickTwo}>Comment ça marche ? </p>
+              <p onClick={handleClickThree}> Des partenaires de confiance</p>
+              <p onClick={handleClickFour}>F.A.Q</p>
             </div>
           </div>
 

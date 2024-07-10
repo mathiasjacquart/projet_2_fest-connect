@@ -26,24 +26,25 @@ export default function Homepage({ showConnexion = false }) {
   return (
     
     <main className={`${styles.main}`}>
+      <div className={`${styles.containerintro}`}>
+        <div className={`${styles.intro} `}> 
+          <div className={`d-flex flex-column`}>
+            <h1>Animez vos événements avec Fest Connect</h1>
+            <h2>Rencontrez et trouvez le talent qu'il vous faut pour rendre votre fête inoubliable  </h2>
 
-      <div className={`${styles.intro} `}> 
-        <div className={`d-flex flex-column`}>
-        <h1>Animez vos événements avec Fest Connect</h1>
-        <h2>Rencontrez et trouvez le talent qu'il vous faut pour rendre votre fête inoubliable  </h2>
 
-
-          <div className={`d-flex ${styles.btnContainer}`}>
-            <button className={`mj-btn-primary ${styles.btnPrimary}`}>À propos de nous</button>
-            <button className={`mj-btn-primary ${styles.btnPrimary}`}>Rejoignez-nous</button>
+            <div className={`d-flex ${styles.btnContainer}`}>
+              <button className={`mj-btn-primary ${styles.btnPrimary}`}>À propos de nous</button>
+              <button className={`mj-btn-primary ${styles.btnPrimary}`}>Rejoignez-nous</button>
+            </div>
+         </div>
+          <div className={`${styles.photoIntro}`}>
+            <img src={backgroundImage} alt="homepage-photo" />
           </div>
         </div>
-        <div className={`${styles.photoIntro}`}>
-          <img src={backgroundImage} alt="landing-page-photo" />
-        </div>
-      </div>
       
-      <SearchBar/>
+        <SearchBar/>
+      </div>
       <Categorie/>
       <div className={`${styles.reassurance}`}>
         <div className={`${styles.reassuranceItems}`}> 

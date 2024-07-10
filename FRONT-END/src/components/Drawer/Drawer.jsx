@@ -9,11 +9,11 @@ const Drawer = ({ isOpen, onClose }) => {
         <button onClick={onClose} className="close-btn">&times;</button>
       </div> */}
       <ul className="drawer-menu">
-        <li> <NavLink end>Mon compte</NavLink></li>
-        <li> <NavLink>Mon profil</NavLink></li>
-        <li> <NavLink>Messagerie</NavLink></li>
-        <li> <NavLink>Mes éléments enregistrés</NavLink></li>
-        <li> <NavLink to='/logout'>Se déconnecter</NavLink></li>
+        <li> <NavLink onClick={onClose} to="/my-account" end>Mon compte</NavLink></li>
+        <li> <NavLink onClick={onClose}>Mon profil</NavLink></li>
+        <li> <NavLink onClick={onClose}>Messagerie</NavLink></li>
+        <li> <NavLink onClick={onClose}>Mes éléments enregistrés</NavLink></li>
+        <li> <NavLink onClick={onClose} to='/logout'>Se déconnecter</NavLink></li>
 
       </ul>
     </div>

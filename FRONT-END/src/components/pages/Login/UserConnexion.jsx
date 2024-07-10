@@ -16,7 +16,8 @@ function Connexion({onClose}) {
   const [showLoginRedirection, setShowLoginRedirection] = useState(false);
   const { setConnectedUser } = useContext(UserContext);
 
-  console.log(onClose);
+
+
 
 
   // schéma de validation
@@ -58,6 +59,7 @@ function Connexion({onClose}) {
         setConnectedUser(response.user);
         setShowLoginRedirection(true);
         reset(defaultValues);
+        onClose();
 
       } else {
         setFeedback(response.message);
@@ -121,7 +123,10 @@ function Connexion({onClose}) {
               </form>
             </div>
           ) : (
-            <ConnexionRedirection feedback={feedback}> </ConnexionRedirection>
+         
+               <ConnexionRedirection feedback={feedback}> </ConnexionRedirection>
+      
+           
 
           )
           }       

@@ -3,11 +3,15 @@
 .main {
     display: flex;
     flex-direction: column;
+    .containerintro {
+        display: flex;
+        flex-direction: column;
+    }
     .intro{
         
         justify-content: space-between;
         display: flex;
-        margin-left: 50px;
+        margin-left: 150px;
         @include mixin.xl { 
             width: auto;
         }

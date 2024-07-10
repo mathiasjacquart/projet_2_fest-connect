@@ -1,3 +1,5 @@
+@use "../../../assets/styles/mixin" as mixin;
+
 main { 
 
     .searchBar {
@@ -5,8 +7,18 @@ main {
 
         display: flex;
         align-items: center;
-        justify-content: center; 
-        margin-top: -87px;
+        justify-content: center;
+        @include mixin.xxxl {
+            margin-top: -300px;
+        }
+        @include mixin.xxl {
+            margin-top: -100px;
+        }
+        @include mixin.xl {
+            margin-top: -250px;
+        }
+
+        
    
 
     form {

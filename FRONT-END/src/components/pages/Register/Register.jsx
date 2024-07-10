@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import RegisterForm from './RegisterForm';
 import Accordion from "./Accordion"
 
@@ -15,12 +15,37 @@ import ImageSend from "../../../assets/image/register_icons/send.png";
 import ImageSearch from "../../../assets/image/register_icons/search.png";
 
 export default function Register() {
+  const ContentOne = useRef(null);
+  const ContentTwo = useRef(null);
+  const ContentThree = useRef(null);
+  const ContentFour = useRef(null);
+
+  function handleClickOne() {
+    ContentOne.current.scrollIntoView({
+      behavior:"smooth"
+    })
+  }
+  function handleClickTwo() {
+    ContentTwo.current.scrollIntoView({
+      behavior:"smooth"
+    })
+  }
+  function handleClickThree() {
+    ContentThree.current.scrollIntoView({
+      behavior:"smooth"
+    })
+  }
+  function handleClickFour() {
+    ContentFour.current.scrollIntoView({
+      behavior:"smooth"
+    })
+  }
   return (
     <div>
-      <RegisterForm />
+      <RegisterForm handleClickOne={handleClickOne} handleClickTwo={handleClickTwo} handleClickThree={handleClickThree} handleClickFour={handleClickFour}  />
       <div className={`${styles.RegisterContainer} d-flex flex-column`}>
         <div className='container'>
-          <h3>Pourquoi nous choisir ?</h3>
+          <h3 ref={ContentOne}>Pourquoi nous choisir ?</h3>
           <div className='d-flex flex-row justify-content-around mb-20'>
             <div className='d-flex flex-column'>
               <div className={styles.reassuranceContent}>
@@ -62,7 +87,7 @@ export default function Register() {
         </div>
         <div className={styles.stepContainer} >
           <div className="container"> 
-          <h3>Comment ça marche ?</h3>
+          <h3 ref={ContentTwo}>Comment ça marche ?</h3>
           <div className='d-flex flex-row justify-content-around'>
           
 
@@ -112,7 +137,7 @@ export default function Register() {
           <div className='' >
             <div > 
             <div className='container'>
-            <h3>Des partenaires de confiance</h3>
+            <h3 ref={ContentThree}>Des partenaires de confiance</h3>
             
             <PartnerSlider/>
             </div>   
@@ -121,7 +146,7 @@ export default function Register() {
           </div>
           <div>
           <div className='container'>
-          <h3>Notre F.A.Q</h3>
+          <h3 ref={ContentFour}>Notre F.A.Q</h3>
             <Accordion/>
           </div>
         </div>

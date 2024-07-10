@@ -1,4 +1,5 @@
 .RegisterContainer {
+    margin-bottom: 50px;
     p {
       color: var(--mj-tertiary) !important;
       font-size: 0.8em;
@@ -33,6 +34,7 @@
   
   .stepContainer {
     background-color: var(--mj-secondary);
+    padding-bottom: 30px;
     h3{ 
         color: var(--mj-primary);
     }
