@@ -7,6 +7,7 @@ import { signup } from "../../../apis/users";
 import { useNavigate, Link } from "react-router-dom";
 import RegisterRedirection from "./RegisterRedirection";
 
+
 export default function RegisterForm() {
   const [feedback, setFeedback] = useState(null);
   const [showRedirection, setShowRedirection] = useState(false);
@@ -71,12 +72,12 @@ export default function RegisterForm() {
     <div className={`${styles.register}`}>
       <div className={`${styles.bgImg}`}>
         <div className={`${styles.titre}`}>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+          <p>REJOIGNEZ Fest Connect et TRANSFORMEZ vos ÉVÉNEMENTS ! </p>
         </div>
       </div>
       {!showRedirection ? (
         <div className={`${styles.RegisterForm} container`}>
-          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
+          <h3>Créez votre profil et trouvez votre bonheur </h3>
           <div className="d-flex flex-row jc-between">
           <form className="d-flex flex-column" onSubmit={handleSubmit(submit)}>
             <div className="d-flex">
@@ -202,7 +203,7 @@ export default function RegisterForm() {
               <p>Pourquoi nous choisir ?</p>
 
               <p>Comment ça marche ? </p>
-              <p> Des expériences inspirantes</p>
+              <p> Des partenaires de confiance</p>
               <p>F.A.Q</p>
             </div>
           </div>

@@ -1,11 +1,68 @@
 .RegisterContainer {
-    p {
-        color: var(--mj-tertiary) !important;
-        font-size: 0.8em;
+    p {
+      color: var(--mj-tertiary) !important;
+      font-size: 0.8em;
+    }
+  
+    h3 {
+      margin: 50px 0 30px 0;
+    }
+  }
+  
+  .reassuranceContent {
+    width: 565px;
+    border: solid 0.5px var(--mj-tertiary);
+    box-shadow: 0px 0px 6px 5px rgba(89, 88, 88, 0.34);
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(97, 97, 97, 0.34);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 10px;
+    margin: 15px 0px;
+  
+    p {
+      color: var(--mj-tertiary);
+      padding: 0 10px;
+    }
+  }
+  
+  .reassuranceImage {
+    padding: 10px 15px;
+    border-right: 0.2px solid var(--mj-tertiary);
+  }
+  
+  .stepContainer {
+    background-color: var(--mj-secondary);
+    h3{ 
+        color: var(--mj-primary);
     }
 
-    h3 { 
-        margin: 50px 0 15px 0px ;
-    }
 
-}
+  }
+  
+  .stepContent {
+    width: 200px;
+    text-align: center;
+    margin: 20px;
+  
+    .stepImage {
+      padding: 25px 0px;
+      border-bottom: 0.4px solid var(--mj-tertiary);
+    }
+  
+    p {
+      color: var(--mj-tertiary);
+      font-size: 1em;
+    }
+  }
+  .partenaireContainer{ 
+    margin: 50px 0;
+    padding: 20px 0;
+
+  }
+  .partner{
+    img { 
+        width: 150px;
+        height: 100px;
+    }
+  }
