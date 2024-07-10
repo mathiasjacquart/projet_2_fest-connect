@@ -28,6 +28,7 @@ export default function CategorieItem({ c }) {
           backgroundImage: `url(${c.urlCategory})`,
         }}
       >
+        <p>{c.nameCategory}</p>
         <div className={styles.overlay} />
       </a.div>
     </div>
