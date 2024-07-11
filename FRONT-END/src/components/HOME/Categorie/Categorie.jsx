@@ -5,7 +5,19 @@ import { getAllCategories } from "../../../apis/categorie";
 
 export default function Categorie() {
   const [allCategories, setAllCategories] = useState([]);
+  const [allCategoriesTwo, setAllCategoriesTwo] = useState([]);
 
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const categoriesFromApi = await getAllCategories();
+        setAllCategories(categoriesFromApi);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchCategories();
+  }, []);
   useEffect(() => {
     async function fetchCategories() {
       try {
@@ -24,9 +36,14 @@ export default function Categorie() {
         <h3>Trouvez le prestataire qu'il vous faut</h3>
         <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
         <div className={styles.items}>
-          {allCategories.map((c) => (
-            <CategorieItem key={c._id} c={c} />
+          {allCategories.map((c, d) => (
+            <CategorieItem key={c._id} c={c} d={d} />
+            
           ))}
+          
+        </div>
+        <div>
+
         </div>
       </div>
     </div>

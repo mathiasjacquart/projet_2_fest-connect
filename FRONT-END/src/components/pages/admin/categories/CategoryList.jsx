@@ -1,9 +1,10 @@
 import React from 'react';
-import { List, Datagrid, TextField, ArrayField, SingleFieldList, ChipField, ReferenceManyField } from 'react-admin';
+import { List, Datagrid, TextField, ArrayField, SingleFieldList, ChipField, EditButton, DeleteButton } from 'react-admin';
+import CategoryEdit from './CategoryUpdate'; // Ensure the path is correct
 
 const CategoryList = (props) => (
   <List {...props}>
-    <Datagrid rowClick="edit">
+    <Datagrid rowClick={CategoryEdit}>
       <TextField source="nameCategory" label="Catégorie" />
       <TextField source="urlCategory" label="Catégorie Image" />
       <ArrayField source="subCategories" label="Sous catégories">
@@ -17,6 +18,8 @@ const CategoryList = (props) => (
           </ArrayField>
         </Datagrid>
       </ArrayField>
+      <EditButton />
+      <DeleteButton />
     </Datagrid>
   </List>
 );

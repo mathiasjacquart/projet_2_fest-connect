@@ -49,19 +49,19 @@ export default function Homepage({ showConnexion = false }) {
       <div className={`${styles.reassurance}`}>
         <div className={`${styles.reassuranceItems}`}> 
           <img src={logoGuarantee} alt="icone garantie" />
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quaerat consectetur aperiam est? </p>
+          <p>Tous nos prestataires sont soigneusement vérifiés pour garantir la qualité et la fiabilité de leurs services. </p>
         </div>
         <div className={`${styles.reassuranceItems}`}> 
           <img src={logoSecure} style={{height:"60px", width:"60px"}}alt="icone paiement sécurisé" />
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quaerat consectetur aperiam est? </p>
+          <p>Notre plateforme utilise les dernières technologies de cryptage pour garantir que toutes vos informations personnelles et financières sont protégées. </p>
         </div>
         <div className={`${styles.reassuranceItems}`}> 
           <img src={logoBooking}  alt="icone réservation gratuite" />
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quaerat consectetur aperiam est? </p>
+          <p>Trouvez et réservez rapidement le prestataire idéal pour votre événement en quelques clics. </p>
         </div>
         <div className={`${styles.reassuranceItems}`}> 
           <img src={logoCustomerSupport} alt="icone service client" />
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quaerat consectetur aperiam est? </p>
+          <p>Notre équipe de support client est disponible à tout moment pour répondre à vos questions. </p>
         </div>
       </div>
       <Avis/>

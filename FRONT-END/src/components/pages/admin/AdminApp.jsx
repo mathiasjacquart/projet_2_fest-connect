@@ -17,6 +17,7 @@ import PostCreate from "./posts/PostCreate";
 import PostEdit from "./posts/PostEdit";
 import CategoryList from "./categories/CategoryList";
 import CategoryUpdate from "./categories/CategoryUpdate";
+import CategoryEdit from "./categories/CategoryUpdate";
 
 
 const AdminApp = () => (
@@ -46,7 +47,7 @@ const AdminApp = () => (
       name="categories"
       create={CategoryCreate}
       list={CategoryList}
-      edit={CategoryUpdate}
+      edit={CategoryEdit}
       
      />
   </Admin>
