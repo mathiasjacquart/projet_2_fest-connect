@@ -29,7 +29,7 @@ export default function CategorieItem({ c}) {
           opacity: opacity.to((o) => o),
           transform: transform.to(t => `${t} rotateY(180deg)`),
           backgroundImage: `url(${c.urlCategory})`,
-        }}
+        }}  
       >
         {c.subCategories.map((subCategory, index) => (
           <article className="mb-1°"key={index}>{subCategory.nameSubCategory}</article>

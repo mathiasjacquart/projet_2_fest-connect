@@ -251,3 +251,16 @@
         transition: all 0.3s ease;
       }
 }
+.Redirection { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--mj-secondary);
+  color:var(--mj-primary);
+  font-weight: 500;
+  border-radius: 10px;
+  margin-top: 50px;
+  padding: 20px 30px;
+  
+}

@@ -1,4 +1,18 @@
 .header { 
+    a{ 
+        text-decoration: none;
+        h1 { 
+            font-size: 1.5rem;
+            margin-left: 10px;
+            color: var(--mj-primary);
+            font-family: "Bagel Fat One", system-ui;
+            font-weight: 400;
+        }
+        img { 
+            border-radius: 10px;
+        }
+    }
+
     background-color: var(--mj-secondary) ;
     min-height: 100px;
     width: 100%;
@@ -46,12 +60,19 @@ nav ul li a{
 
 .App {
     img {
-        width: 48px;
+        width: 40px;
         height: auto;
         margin-right: 10px
     }
     button {
         padding: 5px 10px ;
+        border-radius: 50px;
+        border: none;
+        cursor:pointer;
+    }
+    p{ 
+        color: var(--mj-secondary);
+        font-weight: 600;
     }
     
 }

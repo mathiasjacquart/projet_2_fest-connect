@@ -49,15 +49,15 @@ export default function Homepage({ showConnexion = false }) {
       <div className={`${styles.reassurance}`}>
         <div className={`${styles.reassuranceItems}`}> 
           <img src={logoGuarantee} alt="icone garantie" />
-          <p>Tous nos prestataires sont soigneusement vérifiés pour garantir la qualité et la fiabilité de leurs services. </p>
+          <p>Tous nos prestataires sont soigneusement vérifiés. </p>
         </div>
         <div className={`${styles.reassuranceItems}`}> 
           <img src={logoSecure} style={{height:"60px", width:"60px"}}alt="icone paiement sécurisé" />
-          <p>Notre plateforme utilise les dernières technologies de cryptage pour garantir que toutes vos informations personnelles et financières sont protégées. </p>
+          <p>Les dernières technologies de cryptage pour sécuriser  vos informations personnelles.</p>
         </div>
         <div className={`${styles.reassuranceItems}`}> 
           <img src={logoBooking}  alt="icone réservation gratuite" />
-          <p>Trouvez et réservez rapidement le prestataire idéal pour votre événement en quelques clics. </p>
+          <p>Trouvez le prestataire idéal pour votre événement. </p>
         </div>
         <div className={`${styles.reassuranceItems}`}> 
           <img src={logoCustomerSupport} alt="icone service client" />

@@ -27,9 +27,11 @@ import UserEdit from "./components/pages/admin/users/UserEdit";
 import CategoryList from "./components/pages/admin/categories/CategoryList";
 import CategoryCreate from "./components/pages/admin/categories/CategoryCreate";
 import CategoryUpdate from "./components/pages/admin/categories/CategoryUpdate";
+import { userLoader } from "./components/loaders/UserLoader";
 
 const mainRoutes = {
   path: "/",
+  // loader:{userLoader},
   element: <App />,
   children: [
     {
@@ -67,8 +69,17 @@ const mainRoutes = {
       path: "/politiques-de-confidentialité",
       element: <PrivacyPolicy />,
     },
+    // {
+    //   path: "/my-account/*",
+    //   element: (
+    //     <UserConnected>
+    //       <Account />
+    //     </UserConnected>
+    //   ),
+    // },
     {
-      path: "/my-account",
+      path: "/my-account/:id",
+      
       element: (
         <UserConnected>
           <Account />

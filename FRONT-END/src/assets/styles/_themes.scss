@@ -83,3 +83,11 @@ h4 {
 .active{
   text-decoration: underline;
 }
+.logo { 
+  width: 40px;
+  height: auto;
+  &:hover{
+    filter: contrast(1.1);
+    
+  }
+}
