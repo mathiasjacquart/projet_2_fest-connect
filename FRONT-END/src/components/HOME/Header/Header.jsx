@@ -25,7 +25,7 @@ export default function Header({ toggleModal, isModalOpen, onClose }) {
 
     return (
         <header className={`${styles.header}`}>
-            <div>
+            <div className={styles.LogoHead}>
                 <Link to="/" className="d-flex flex-row align-items-center">
                     <div className="logo">
                         <img src={logoFest} alt="logo" />
@@ -69,7 +69,7 @@ export default function Header({ toggleModal, isModalOpen, onClose }) {
                     {isModalOpen && <Connexion onClose={toggleModal} />}
                 </div>
             </div>
-            <div>
+            <div className={styles.BurgerMenuContainer}>
                 <i
                     onClick={handleShowMenu}
                     className={`fas fa-bars mr-10 ${styles.BurgerMenu}`}
@@ -77,6 +77,10 @@ export default function Header({ toggleModal, isModalOpen, onClose }) {
             </div>
 
             {showMenu && (
+                <>
+                <div className={styles.calc}>
+
+                </div>
                 <div className={styles.mobileMenu}>
                     <ul>
                         <li> <NavLink to="/" end>Accueil</NavLink></li>
@@ -86,9 +90,10 @@ export default function Header({ toggleModal, isModalOpen, onClose }) {
                         <li><NavLink to="/contact">Contact</NavLink> </li>
                     </ul>
                 </div>
+                </>
             )}
-            <div>
-            <i class="fa-solid fa-user"></i>
+            <div className={styles.AccountMenu}>
+            <i className={`fa-solid fa-user ${styles.AccountMenu}`}></i>
             </div>
         </header>
     )

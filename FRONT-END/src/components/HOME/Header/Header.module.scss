@@ -24,6 +24,13 @@
     @include mixin.xs { 
         height: 80px;
     }
+    .LogoHead{ 
+        @include mixin.xs { 
+            order: 1;
+        }
+       
+        
+    }
     h1 { 
         @include mixin.xs { 
             display: none;
@@ -105,5 +112,64 @@ nav ul li a{
     @include mixin.xs {
       display: block !important;
       font-size: 1.8rem;
+      
+    }
+  }
+  .AccountMenu {
+    i {
+        color: var(--mj-primary);
+        font-size: 2.2rem;
+        display: none !important;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+        }
+        @include mixin.xs {
+          display: block !important;
+          font-size: 1.8rem;
+        }
+      }
+      @include mixin.xs {
+        order: 2;
+      }
+    }
+
+  .BurgerMenuContainer {
+    @include mixin.xs {
+        order: 0;
+      }
+  }
+
+  .calc {
+    position: fixed;
+    top:100px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+  .mobileMenu { 
+    background-color: var(--mj-secondary);
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    top:100px;
+    transition: ease-in-out 2s;
+    ul li a {
+        margin: 10px 30px; 
+        color: var(--mj-primary);
+        list-style: none;
+        text-decoration: none;
+        font-size: 1.1rem;
+        padding-bottom: 7px;
+
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    ul li {
+        padding: 15px 0px;
     }
   }
