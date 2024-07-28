@@ -1,3 +1,5 @@
+@use "../../../assets/styles/mixin" as mixin;
+
 .header { 
     a{ 
         text-decoration: none;
@@ -19,9 +21,18 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    @include mixin.xs { 
+        height: 80px;
+    }
+    h1 { 
+        @include mixin.xs { 
+            display: none;
+        }
+    }
     img {
         width: 60px;
         height: auto;
+        
 
     }
     nav {
@@ -30,6 +41,7 @@
             list-style: none;
         }
     }
+
 
 
 }
@@ -76,6 +88,22 @@ nav ul li a{
     }
     
 }
-
-
-  
+.burgerNav{ 
+    display: flex;
+    @include mixin.xs { 
+        display: none;
+    }
+}
+.BurgerMenu {
+    color: var(--mj-primary);
+    font-size: 2.2rem;
+    display: none !important;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+    @include mixin.xs {
+      display: block !important;
+      font-size: 1.8rem;
+    }
+  }

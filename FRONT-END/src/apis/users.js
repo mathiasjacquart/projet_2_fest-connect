@@ -49,3 +49,16 @@ export async function getUser(values) {
     
   }
 }
+export async function updateUser(values) { 
+  try {
+      const response = await fetch(`${BASE_URL}/users/:id`, {
+        method: "PUT",
+        headers:{ 
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(values)
+      })
+  } catch (error) {
+    console.error(error);
+  }
+}
