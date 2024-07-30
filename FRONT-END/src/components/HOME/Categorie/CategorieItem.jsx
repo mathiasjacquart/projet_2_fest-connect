@@ -1,6 +1,7 @@
 import styles from "./CategorieItem.module.scss";
 import React, { useState } from "react";
 import { useSpring, animated as a } from "@react-spring/web";
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 export default function CategorieItem({ c}) {
   const [flipped, set] = useState(false);
@@ -11,7 +12,8 @@ export default function CategorieItem({ c}) {
   });
 
   return (
-    <div className={styles.container} onClick={() => set((state) => !state)}>
+    <div className={styles.container} >
+
       <a.div
         className={`${styles.card} ${styles.front}`}
         style={{
@@ -20,6 +22,13 @@ export default function CategorieItem({ c}) {
           backgroundImage: `url(${c.urlCategory})`,
         }}
       >
+        <div className={`${styles.CircleArrow}`} onClick={() => set((state) => !state)}>
+          <KeyboardArrowRightIcon
+          sx={{
+            color:"white"
+
+          }}/>
+      </div>
         <p>{c.nameCategory}</p>
         <div className={styles.overlay} />
       </a.div>
@@ -31,10 +40,17 @@ export default function CategorieItem({ c}) {
           backgroundImage: `url(${c.urlCategory})`,
         }}  
       >
+           <div className={`${styles.CircleArrow}`} onClick={() => set((state) => !state)}>
+          <KeyboardArrowRightIcon
+          sx={{
+            color:"white"
+
+          }}/>
+      </div>
         {c.subCategories.map((subCategory, index) => (
           <article className="mb-1°"key={index}>{subCategory.nameSubCategory}</article>
         ))}
-
+    
         <div className={styles.overlay} />
       </a.div>
     </div>

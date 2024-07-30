@@ -9,7 +9,7 @@ import styles from "./App.module.scss";
 
 function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isCookieConsentOpen, setIsCookieConsentOpen] = useState(true); // Default to true
+  const [isCookieConsentOpen, setIsCookieConsentOpen] = useState(true); 
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);

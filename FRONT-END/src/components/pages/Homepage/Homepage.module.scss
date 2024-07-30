@@ -23,6 +23,10 @@
         @include mixin.lg { 
             width: auto;
         }
+        @include mixin.xs { 
+        margin-left: 0px;
+            
+        }
 
 
         
@@ -32,9 +36,18 @@
             margin-top: 150px;
             margin-bottom: 20px;
             width: 800px;
-            font-size: 3rem;            @include mixin.xl { 
+            font-size: 3rem;            
+            
+            @include mixin.xl { 
                 width: 615px;
                 margin-top: 80px;
+            }
+            @include mixin.xs { 
+                width: 100%;
+                font-size: 36px;
+                padding: 0 50px;
+                margin-top: 100px;
+
             }
             
             
@@ -49,6 +62,13 @@
             @include mixin.xl { 
                 width: 500px;
             }
+            @include mixin.xs { 
+                width: 100%;
+                font-size: 20px;
+                margin-top: 10px;
+                margin-bottom: 30px;
+                padding: 0 50px;
+            }
 
         }
         .photoIntro {
@@ -57,10 +77,19 @@
             @include mixin.sm { 
                 display: none;
             }
+            @include mixin.xs { 
+                display: none;
+            }
         }
         
         .btnContainer {
             width: 100%;
+            @include mixin.xs { 
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
         }
         
         
@@ -68,7 +97,10 @@
             margin-right:30px;
             padding: 10px 30px !important;
             width: 250px;
-        
+            @include mixin.xs { 
+                margin:15px 0px;
+                width: 225px;
+            }
         }
 
     }
@@ -80,6 +112,10 @@
         justify-content: space-evenly;
         align-items: center;
         padding: 60px 0px;
+        @include mixin.xs {
+            flex-direction: column;
+
+        }
         
     } .reassuranceItems {
         color: var(--mj-primary);
@@ -91,7 +127,28 @@
         text-align: center;
         padding: 0px 40px;
         max-height:20vh;
+        @include mixin.xs {
+            flex-direction: column;
+            width: 300px;
+            margin: 15px 0px;
+            
+        }
       
+    }
+}
+
+
+h3 { 
+    @include mixin.xs {
+        margin: 0 50px;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+}
+h4 { 
+    @include mixin.xs {
+        margin: 0 50px;
+        font-size: 16px;
     }
 }
 

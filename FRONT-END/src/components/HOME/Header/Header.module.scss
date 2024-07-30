@@ -1,167 +1,196 @@
 @use "../../../assets/styles/mixin" as mixin;
 
-.header { 
-    a{ 
+.header {
+    a {
         text-decoration: none;
-        h1 { 
+        h1 {
             font-size: 1.5rem;
             margin-left: 10px;
             color: var(--mj-primary);
             font-family: "Bagel Fat One", system-ui;
             font-weight: 400;
         }
-        img { 
+        img {
             border-radius: 10px;
         }
     }
 
-    background-color: var(--mj-secondary) ;
-    min-height: 100px;
+    background-color: var(--mj-secondary);
+    height: 100px;
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    @include mixin.xs { 
-        height: 80px;
+    @include mixin.xs {
+        height: 75px;
+        position: fixed;
+        z-index: 500;
+        border-bottom: 1px solid var(--mj-primary);
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     }
-    .LogoHead{ 
-        @include mixin.xs { 
-            order: 1;
+    .LogoHead {
+        @include mixin.xs {
+            display: none;
         }
-       
-        
     }
-    h1 { 
-        @include mixin.xs { 
+    h1 {
+        @include mixin.xs {
             display: none;
         }
     }
     img {
-        width: 60px;
-        height: auto;
-        
-
+        @include mixin.xs {
+            
+        }
     }
     nav {
-
+        margin-right: 60px;
         li {
             list-style: none;
         }
     }
-
-
-
 }
 
-nav ul li a{
-    margin: 10px 30px; 
+nav ul li a {
+    margin: 10px 30px;
     color: var(--mj-primary);
-    list-style: none;
     text-decoration: none;
     font-size: 1.1rem;
     padding-bottom: 7px;
-    
 }
 
-.active{
-    text-decoration: double;}
+.active {
+    text-decoration: double;
+}
 
-.logoAccount { 
+.logoAccount {
     font-size: 50px;
-    color: var(--mj-fourtiary)
+    color: var(--mj-fourtiary);
 }
 
-.MenuItemAccount{
+.MenuItemAccount {
     width: 159px;
     z-index: 999;
     color: var(--mj-fourtiary);
 }
 
 .App {
+    margin-left: 150px;
     img {
         width: 40px;
         height: auto;
-        margin-right: 10px
+        margin-right: 10px;
     }
     button {
-        padding: 5px 10px ;
+        padding: 5px 10px;
         border-radius: 50px;
         border: none;
-        cursor:pointer;
+        cursor: pointer;
     }
-    p{ 
+    p {
         color: var(--mj-secondary);
         font-weight: 600;
     }
-    
 }
-.burgerNav{ 
+
+.AppMobile { 
+    display: none;
+    @include mixin.xs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--mj-primary);
+        border-radius: 50px;
+        width: 32px;
+        height: 32px;
+        img {
+            width: 30px;
+            height: auto;
+           
+        }
+    }
+
+}
+
+.burgerNav {
     display: flex;
-    @include mixin.xs { 
+    align-items: center;
+    @include mixin.xs {
         display: none;
     }
 }
+
 .BurgerMenu {
     color: var(--mj-primary);
     font-size: 2.2rem;
     display: none !important;
     cursor: pointer;
     &:hover {
-      opacity: 0.8;
+        opacity: 0.8;
     }
     @include mixin.xs {
-      display: block !important;
-      font-size: 1.8rem;
-      
+        display: block !important;
+        font-size: 1.8rem;
     }
-  }
-  .AccountMenu {
+    &.open {
+        content: "\f00d"; /* Font Awesome unicode for cross icon */
+        font-family: "Font Awesome 5 Free"; /* Ensure to include the Font Awesome library */
+        font-weight: 900; /* Required for Font Awesome solid icons */
+    }
+}
+
+.AccountMenu {
     i {
         color: var(--mj-primary);
         font-size: 2.2rem;
         display: none !important;
         cursor: pointer;
         &:hover {
-          opacity: 0.8;
+            opacity: 0.8;
         }
         @include mixin.xs {
-          display: block !important;
-          font-size: 1.8rem;
+            display: block !important;
+            font-size: 1.8rem;
         }
-      }
-      @include mixin.xs {
-        order: 2;
-      }
     }
+    @include mixin.xs {
+        order: 2;
+    }
+}
 
-  .BurgerMenuContainer {
+.BurgerMenuContainer {
     @include mixin.xs {
         order: 0;
-      }
-  }
+    }
+}
 
-  .calc {
+.calc {
     position: fixed;
-    top:100px;
+    top: 100px;
     left: 0;
     width: 100%;
     height: 100vh;
-  }
-  .mobileMenu { 
+    overflow: hidden;
+
+}
+
+.mobileMenu {
     background-color: var(--mj-secondary);
     position: absolute;
     width: 100%;
-    height: 400px;
-    top:100px;
-    transition: ease-in-out 2s;
-    ul li a {
-        margin: 10px 30px; 
-        color: var(--mj-primary);
-        list-style: none;
-        text-decoration: none;
-        font-size: 1.1rem;
-        padding-bottom: 7px;
+    left: -430px;
+    top: 75px;
+    transition: left s ease;
+    
+    border-bottom: 1px solid var(--mj-primary);    
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    .noBorder{
+        border-top: none !important;
+     }
+    
+    &.open {
 
+        left: 0;
     }
     ul {
         display: flex;
@@ -170,6 +199,52 @@ nav ul li a{
         justify-content: center;
     }
     ul li {
-        padding: 15px 0px;
+        padding: 15px 0;
+        width: 200px;
+        border-top: 0.1px solid var(--mj-primary);
+        text-align: center;
+
     }
-  }
+
+    ul li a {
+        margin: 10px 30px;
+        color: var(--mj-primary);
+        text-decoration: none;
+        font-size: 1.1rem;
+        padding-bottom: 7px;
+
+        
+    }
+}
+
+.AccountMenuMobile { 
+    display: none;
+    @include mixin.xs {
+    display: block;
+    background-color: var(--mj-secondary);
+    position: absolute;
+    width: 100%;
+    top: 75px;
+    transition: transform 0.3s ease-in-out;
+    padding: 30px 0px;
+    border-bottom: 1px solid var(--mj-primary);    
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    &.close { 
+        display: none !important;
+    }
+    
+
+        // transform: translateY(-100%);
+ a {
+            margin: 10px 30px;
+            color: var(--mj-primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding-bottom: 7px;
+            width: 200px !important;
+        }
+    }
+
+}
+
+

@@ -1,3 +1,4 @@
+@use "../../../assets/styles/mixin" as mixin;
 footer { 
     background-color: var(--mj-secondary);
     min-height: 15vh;
@@ -5,10 +6,17 @@ footer {
     align-items: center;
     justify-content: space-around;
     text-decoration: none;
+    padding: 20px 0px;
+    @include mixin.xs {
+        flex-direction: column;
+    }
     img { 
         width: 50px;
         height: auto;
         border-radius: 10px;
+        @include mixin.xs {
+            display: none;
+        }
     }
     .middle { 
         text-decoration: none;
@@ -16,6 +24,10 @@ footer {
         color: var(--mj-primary);
         margin-top: 20px;
         font-weight: 500;
+        @include mixin.xs {
+        margin-top: 10px;
+        }
+        
 
     } 
 
@@ -26,7 +38,18 @@ footer {
     img { width: 30px;
         height: 30px;
     margin-left: 20px;
-   
+    @include mixin.xs {
+        
+        display: block;
+       
+    }
+    
+    }
+    @include mixin.xs {
+        margin-top: 5px;
+        justify-content: center;
+        width: 100%;
+        
     }
 }
 

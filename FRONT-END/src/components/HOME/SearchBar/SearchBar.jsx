@@ -7,9 +7,9 @@ export default function SearchBar() {
         <div>
           <p>Qu'est-ce que vous recherchez ?</p>
         </div>
-        <div className="d-flex flex-row align-items-center">
-          <div className="d-flex flex-column ">
-            <label>Je recherche</label>
+        <div className={`d-flex flex-row align-items-center ${styles.form}`}>
+          <div className={ `d-flex flex-column  ` }>
+            <label>Je recherche :</label>
             <input type="text" placeholder="Groupe de rock, barman, DJ..." />
           </div>
           <div className="d-flex flex-column">

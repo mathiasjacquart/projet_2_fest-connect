@@ -3,7 +3,7 @@
 main { 
 
     .searchBar {
-        width: 100%;
+       
 
         display: flex;
         align-items: center;
@@ -17,6 +17,12 @@ main {
         @include mixin.xl {
             margin-top: -250px;
         }
+        @include mixin.xs {
+            
+            margin: 30px 50px
+            
+        }
+        
 
         
    
@@ -32,8 +38,20 @@ main {
         border-radius: 10px;
         justify-content: center;
         flex-direction: column;
-       
         padding-left: 30px;
+        @include mixin.xs {
+        padding: 15px 20px;
+          min-height: 300px;
+          justify-content: space-evenly;
+         }
+       
+        
+        .form { 
+            @include mixin.xs {
+               flex-direction: column;
+             
+            }
+        }
 
         p{
             font-size: 1.2em;
@@ -55,9 +73,16 @@ main {
             margin-right: 50px;
             color: var(--mj-secondary);
             font-size: 0.9rem;
+            @include mixin.xs {
+                margin: 15px 0px;
+            }
             
         }button {
             margin-left: 100px;
+            @include mixin.xs {
+                margin: 15px 0px;
+              
+             }
         }
         }
     }
