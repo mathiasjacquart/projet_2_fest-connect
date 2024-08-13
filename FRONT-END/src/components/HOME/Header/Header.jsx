@@ -11,11 +11,14 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { useEffect } from "react";
 
 export default function Header({ toggleModal, isModalOpen, onClose, isOpen }) {
     const { user } = useContext(UserContext);
     const [showMenu, setShowMenu] = useState(false);
     const [showAccountMenu, setShowAccountMenu] = useState(false)
+    const [isOpenMenu, setIsOpen] = useState(false);
+
     function handleClickLogin() {
         toggleModal(true);
         handleShowAccountMenu(false)  
@@ -28,6 +31,7 @@ export default function Header({ toggleModal, isModalOpen, onClose, isOpen }) {
     }
     console.log(showAccountMenu);
     console.log(showMenu);
+
 
     return (
 
@@ -84,8 +88,8 @@ export default function Header({ toggleModal, isModalOpen, onClose, isOpen }) {
 
             {showMenu && (
                 <>
-                    <div className={styles.calc}></div>
-                    <div className={`${styles.mobileMenu} ${showMenu ? styles.open : ""}`}>
+                 
+                    <div className={`${styles.mobileMenu} `}>
                         <ul>
                             <li className={styles.noBorder}><NavLink  to="/" end>Accueil</NavLink></li>
                             <li><NavLink to="/about">À propos</NavLink></li>

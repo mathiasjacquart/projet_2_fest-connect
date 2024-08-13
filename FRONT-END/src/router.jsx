@@ -30,10 +30,13 @@ import CategoryCreate from "./components/pages/admin/categories/CategoryCreate";
 import CategoryUpdate from "./components/pages/admin/categories/CategoryUpdate";
 import { userLoader } from "./components/loaders/UserLoader";
 
+
+
 const mainRoutes = {
   path: "/",
-  // loader:{userLoader},
+  
   element: <App />,
+ 
   children: [
     {
       path: "/",
@@ -70,22 +73,25 @@ const mainRoutes = {
       path: "/politiques-de-confidentialité",
       element: <PrivacyPolicy />,
     },
-    // {
-    //   path: "/my-account/*",
-    //   element: (
-    //     <UserConnected>
-    //       <Account />
-    //     </UserConnected>
-    //   ),
-    // },
+
     {
       path: "/my-account/:id",
-      
       element: (
         <UserConnected>
           <Account />
         </UserConnected>
       ),
+      loader:userLoader,
+    },
+    {
+      path: "/my-account/*",
+      element: (
+        <UserConnected>
+          <Account />
+        </UserConnected>
+        
+      ),
+      
     },
     {
       path: "/logout",
@@ -94,6 +100,7 @@ const mainRoutes = {
           <Logout />
         </UserConnected>
       ),
+      // loader:userLoader,
     },
     {
       path: "/login",
@@ -187,7 +194,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <Error404 />,
+    // errorElement: <Error404 />,
     children: [mainRoutes, adminRoutes, adminDashboardRoutes],
   },
 ]);

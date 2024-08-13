@@ -1,7 +1,7 @@
 
 import styles from "./UserConnexion.module.scss"
 import {Link, NavLink} from "react-router-dom"
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,7 +17,16 @@ function Connexion({onClose}) {
   const { setConnectedUser } = useContext(UserContext);
 
 
-
+  useEffect(() => { 
+    let timer;
+    if (showLoginRedirection) {
+      timer = 
+      setTimeout(() => {
+        setShowLoginRedirection(false)
+    }, 2000)
+  }
+  return () => clearTimeout(timer)
+}, [showLoginRedirection]);
 
 
   // schéma de validation

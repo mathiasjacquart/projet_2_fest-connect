@@ -24,7 +24,7 @@ export default function RegisterForm({handleClickOne, handleClickTwo, handleClic
     password: yup
       .string()
       .required("Le mot de passe est obligatoire")
-      .min(5, "Mot de passe trop court"),
+      .min(9, "Mot de passe trop court"),
     confirmPassword: yup
       .string()
       .required("Vous devez confirmer votre mot de passe")
@@ -153,7 +153,7 @@ export default function RegisterForm({handleClickOne, handleClickTwo, handleClic
                   htmlFor="radio1"
                 >
                   <span className={`${styles.radioButtonCustom}`}></span>
-                  Je souhaite partager mon profil
+                  Je souhaite proposer mes services pour un évènement. 
                 </label>
               </div>
               <div className={`${styles.radioButton}`}>

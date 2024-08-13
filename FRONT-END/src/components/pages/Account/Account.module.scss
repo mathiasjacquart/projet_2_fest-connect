@@ -6,7 +6,9 @@
         margin: 40px;
         text-align: center;
     }
-    .AccountContainer { 
+    .AccountContainer {     
+        display: flex;
+        flex: row;
 
         
     }
