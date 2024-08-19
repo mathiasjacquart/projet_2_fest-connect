@@ -8,6 +8,16 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+const sendContactForm = async (email, message, firstname, surname) => {
+  const mailOptions = { 
+    from: email, 
+    to: process.env.EMAIL_USER,
+    subject: `${firstname} ${surname} Formulaire de contact`,
+    html: `Bonjour, je me permets de vous contact pour la raison suivante : <br/>
+    ${message}`
+  };
+  await transporter.sendMail(mailOptions)
+}
 const sendConfirmationEmail = async (email, token) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
@@ -45,4 +55,5 @@ module.exports = {
   sendConfirmationEmail,
   sendValidationAccount,
   sendInvalideToken,
+  sendContactForm
 };

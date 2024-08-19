@@ -11,7 +11,8 @@ const adminRoutes = require("./routes/admin")
 const categoryRoutes = require("./routes/categories")
 const prestataireRoutes =  require("./routes/prestataire")
 const clientRoutes = require("./routes/client")
-const reviewRoutes = require("./routes/review")
+const reviewRoutes = require("./routes/review");
+const contactRoutes = require("./routes/contact")
 const cron = require("node-cron")
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(
         origin:"*"
     })
 );
+app.use("/api/contact",contactRoutes)
 app.use("/api/users", userRoutes);
 app.use("/api/storages" , storageRoutes)
 app.use("/api/admin", adminRoutes)
