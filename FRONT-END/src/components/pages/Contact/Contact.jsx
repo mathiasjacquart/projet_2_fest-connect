@@ -56,50 +56,50 @@ export default function Contact() {
   return (
     <div className={`${styles.contact} mh-100`}>
       <div className={`${styles.contactBackground} `}>
-         <div className={` container d-flex flex-row justify-content-around`}>
+         <div className={`${styles.contactContainer} container d-flex flex-row justify-content-around`}>
             <div className={`${styles.contentLeft} d-flex flex-column `} >
           {!showRedirection ? (
             <>
                       <h3>Contactez-nous </h3>
                       <form className="d-flex flex-column" onSubmit={handleSubmit(submit)} >
 
-                          <div className={`${styles.surnameForm} d-flex flex-row `}>
-                            <div className="d-flex  align-items-center">
+                            <div className="d-flex  flex-column">
                             <label htmlFor="firstname">Prénom : </label>
                             <input
+                            placeholder="ex : Jean"
                               type="text"
                               {...register("firstname")}
                               id="firstname"
                             />
                             {errors.firstname && (
-                              <p className="text-error">{errors.firstname.message}</p>
+                              <p className={styles.textError}>{errors.firstname.message}</p>
                             )}
                             </div>
-                            <div>
+                            <div className="d-flex  flex-column">
                             <label htmlFor="surname">Nom : </label>
-                            <input type="text" {...register("surname")} id="surname" />
+                            <input type="text" {...register("surname")} id="surname" placeholder="ex : Morel"/>
                             {errors.surname && (
-                              <p className="text-error">{errors.surname.message}</p>
+                              <p className={styles.textError}>{errors.surname.message}</p>
                             )}
                             </div>
      
-                          </div>
+                          
                           <div className="d-flex flex-column">
                             <label htmlFor="email">Adresse-mail : </label>
-                            <input type="email" {...register("email")} id="email" />
+                            <input type="email" {...register("email")} id="email" placeholder="contact@example.fr" />
                             {errors.email && (
-                              <p className="text-error">{errors.email.message}</p>
+                              <p className={styles.textError}>{errors.email.message}</p>
                             )}
                           </div>
                           <div className="d-flex flex-column ">
                             <label htmlFor="message">Message:</label>
                             <textarea
-                      
+                              placeholder="Ecrivez votre message ici (max: 250 caractères)"
                               {...register("message")}
                               id="message"
                             />
                             {errors.message && (
-                              <p className="text-error">{errors.message.message}</p>
+                              <p className={styles.textError}>{errors.message.message}</p>
                             )}
             
                           </div>
@@ -111,15 +111,33 @@ export default function Contact() {
                       </form></>
 
           ) : (
-              <>
-              <p>{feedback && <p>{feedback}</p>}</p>
-              </>
+              <div className={styles.feedback}>
+              <p >{feedback && <p>{feedback}</p>}</p>
+              </div>
           )}
 
 
 
             </div>
             <div className={`${styles.contentRight} `}>
+              <h3>A propos de nous</h3>
+              <div>
+                <p>
+                Bienvenue sur <strong>FestConnect</strong>, la plateforme qui transforme vos idées d'événements en réalités mémorables. 
+                </p>
+                <hr />
+              </div>
+              <div>
+                <p>Nous sommes là pour <strong>vous accompagner</strong> à chaque étape de votre projet. </p>
+                <hr />
+              </div>
+              <div>
+                <p>N'hésitez pas à nous contacter pour <strong>discuter de vos idées, poser vos questions,</strong> ou simplement en savoir plus sur ce que nous pouvons faire pour vous.  </p>
+               <hr />
+              </div>
+              <div className={styles.LastP}>
+                <p style={{textAlign:"center", fontWeight:"600"}}>Ensemble, faisons de votre prochain événement un moment extraordinaire.</p>
+              </div>
 
 </div>
         </div>

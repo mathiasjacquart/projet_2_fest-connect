@@ -10,11 +10,13 @@ const transporter = nodemailer.createTransport({
 
 const sendContactForm = async (email, message, firstname, surname) => {
   const mailOptions = { 
-    from: email, 
+    from:process.env.EMAIL_USER, 
     to: process.env.EMAIL_USER,
+    replyTo: email,
     subject: `${firstname} ${surname} Formulaire de contact`,
-    html: `Bonjour, je me permets de vous contact pour la raison suivante : <br/>
-    ${message}`
+    html: `Bonjour, voici mon adresse e-mail : ${email}. <br/>
+    je me permets de vous contact pour la raison suivante : <br/>
+     ${message}`
   };
   await transporter.sendMail(mailOptions)
 }

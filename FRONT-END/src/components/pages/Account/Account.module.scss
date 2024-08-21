@@ -1,6 +1,7 @@
 .Account { 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     
     h3 { 
         margin: 40px;
@@ -8,8 +9,43 @@
     }
     .AccountContainer {     
         display: flex;
-        flex: row;
+        justify-content: center;
+        height: auto;
 
+        .formUpdate { 
+            color : var(--mj-primary);
+            background-color: var(--mj-secondary);
+            padding: 25px 100px;
+            border-radius: 10px;
+            input { 
+              
+                padding: 10px;
+                border-radius: 10px;
+                border: 1px solid var(--mj-tertiary);
+                
+                color: var(--mj-secondary);
+                font-family: "Montserrat", sans-serif;
+        }
+        input::placeholder{
+            color:var(--mj-tertiary)
+          }
+          input:focus-visible{ 
+            outline: var(--mj-tertiary) auto 1px;
+
+      
+          }
+          button { 
+             padding: 10px 20px !important;
+             font-size: 16px;
+             height: 40px;
+             width: 105px;
+          }
+          label { 
+            font-weight: 600;
+            text-decoration: underline;
+            margin-right: 8px;
+          }
+    }
         
     }
 }
