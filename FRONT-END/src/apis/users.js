@@ -27,8 +27,10 @@ export async function signin(values) {
       body: JSON.stringify(values),
     });
 
-    const newUser = await response.json();
+    const newUser = await response.json(); 
+    console.log(newUser);
     return newUser;
+   
   } catch (error) {
     console.error(error);
   }

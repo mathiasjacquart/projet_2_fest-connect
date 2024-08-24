@@ -1,0 +1,19 @@
+.Profile{ 
+    .ProfileContainer { 
+        .Stepper { 
+          
+            margin-top: 50px;
+        }
+        .FormContainer { 
+            background-color: var(--mj-secondary);
+            border-radius: 10px;
+            color: var(--mj-primary);
+            padding: 20px 100px;
+            margin-top: 25px;
+            input{
+                border-radius: 10px;
+            }
+  
+        }
+    }
+}

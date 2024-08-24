@@ -6,7 +6,6 @@ import {useNavigate}  from "react-router-dom"
 export default function AdminProvider({ children}) {
   const [admin, setAdmin] = useState(null);
   const navigate = useNavigate();
-  console.log(admin);
 
   useEffect(() => {
     const adminStorage = JSON.parse(localStorage.getItem("admin")); 

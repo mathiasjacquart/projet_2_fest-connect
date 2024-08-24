@@ -16,6 +16,7 @@ import AdminConnexion from "./components/pages/Login/AdminConnexion";
 import AdminNotConnected from "./components/ProtectedRoutes/AdminNotConnected";
 import AdminApp from "./components/pages/admin/AdminApp";
 import PrivacyPolicy from "./components/pages/PrivacyPolicy/PrivacyPolicy";
+import Profile from "./components/pages/Profile/Profile"
 import Contact from "./components/pages/Contact/Contact";
 import Logout from "./components/Logout";
 import Dashboard from "./components/pages/admin/Dashboard";
@@ -29,6 +30,7 @@ import CategoryList from "./components/pages/admin/categories/CategoryList";
 import CategoryCreate from "./components/pages/admin/categories/CategoryCreate";
 import CategoryUpdate from "./components/pages/admin/categories/CategoryUpdate";
 import { userLoader } from "./components/loaders/UserLoader";
+
 
 
 
@@ -81,13 +83,32 @@ const mainRoutes = {
           <Account />
         </UserConnected>
       ),
-      loader:userLoader,
+      // loader:userLoader,
     },
     {
       path: "/my-account/*",
       element: (
         <UserConnected>
           <Account />
+        </UserConnected>
+        
+      ),
+      
+    },
+    {
+      path: "/myProfile/:id",
+      element: (
+        <UserConnected>
+          <Profile/>
+        </UserConnected>
+      ),
+      loader:userLoader,
+    },
+    {
+      path: "/myProfile/*",
+      element: (
+        <UserConnected>
+          <Profile/>
         </UserConnected>
         
       ),

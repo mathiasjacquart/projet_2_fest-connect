@@ -7,7 +7,7 @@ import { UserContext } from '../context/UserContext';
 
 export default function Drawer ({ isOpen, onClose }) {
   const { user } = useContext(UserContext)
-  console.log(user);
+
 
   if (!user) {
     return null;
@@ -18,8 +18,8 @@ export default function Drawer ({ isOpen, onClose }) {
         <button onClick={onClose} className="close-btn">&times;</button>
       </div> */}
       <ul className="drawer-menu">
-        <li> <NavLink onClick={onClose} to={`/my-account/${user.id}`} end>Mon compte</NavLink></li>
-        <li> <NavLink onClick={onClose}>Mon profil</NavLink></li>
+        <li> <NavLink onClick={onClose} to={`my-account/${user.id}`} end>Mon compte</NavLink></li>
+        <li> <NavLink to={`myProfile/${user.id}`} onClick={onClose}>Mon profil</NavLink></li>
         <li> <NavLink onClick={onClose}>Messagerie</NavLink></li>
         <li> <NavLink onClick={onClose}>Mes éléments enregistrés</NavLink></li>
         <li> <NavLink onClick={onClose} to='/logout'>Se déconnecter</NavLink></li>

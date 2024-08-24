@@ -96,7 +96,7 @@ const signinUser = async (req, res) => {
     const user = await User.findOne({ email });
     if (user) {
       if (!user.token) {
-        const match = await bcrypt.compare(password, user.password);
+        const match = await bcrypt.compare(password, user.password)
         if (match) {
           const token = createTokenLogin(user._id);
           res.status(200).json({ user, token });
@@ -135,13 +135,42 @@ const getUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    const { password, ...updateData } = req.body;
+
+    // Vérifier si le mot de passe est présent dans la requête
+    if (password) {
+      // Vérifier si le mot de passe est déjà chiffré
+      const isHashed = password.startsWith('$2a$') || password.startsWith('$2b$') || password.startsWith('$2y$');
+      
+      if (!isHashed) {
+        // Si le mot de passe n'est pas chiffré, le chiffrer
+        const saltRounds = 10;
+        updateData.password = await bcrypt.hash(password, saltRounds);
+      } else {
+        // Si le mot de passe est déjà chiffré, ne pas le modifier
+        updateData.password = password;
+      }
+    }
+
+    // Mise à jour de l'utilisateur
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      { new: true, runValidators: true } // runValidators: pour s'assurer que les validations du modèle sont respectées
+    );
+
+    console.log(user);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
     res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 
 const deleteUser = async (req, res) => {
   try {

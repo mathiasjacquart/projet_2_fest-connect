@@ -11,6 +11,7 @@ export default function UserProvider({ children, onClose }) {
     const userStorage = JSON.parse(localStorage.getItem("user"));
     if (userStorage) {
       const { token, user } = userStorage;
+      console.log(userStorage);
       if (token && isTokenValid(token)) {
         setUser(user);
       } else {
@@ -30,6 +31,8 @@ export default function UserProvider({ children, onClose }) {
 
   function setConnectedUser(userConnected) {
     setUser(userConnected);
+    // localStorage.setItem("user", JSON.stringify({ user: userConnected, token: userConnected.token }));
+
   }
 
   function isTokenValid(token) {
@@ -39,7 +42,7 @@ export default function UserProvider({ children, onClose }) {
 
   return (
     <UserContext.Provider
-      value={{ user, setConnectedUser, logoutConnectedUser }}
+      value={{ user, setConnectedUser, logoutConnectedUser, setUser }}
     >
       {children}
     </UserContext.Provider>

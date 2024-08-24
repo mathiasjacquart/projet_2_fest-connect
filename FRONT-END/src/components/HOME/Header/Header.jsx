@@ -29,8 +29,7 @@ export default function Header({ toggleModal, isModalOpen, onClose, isOpen }) {
     function handleShowAccountMenu() {
         setShowAccountMenu(prevShowAccountMenu => !prevShowAccountMenu);
     }
-    console.log(showAccountMenu);
-    console.log(showMenu);
+
 
 
     return (

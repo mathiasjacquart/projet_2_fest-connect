@@ -17,12 +17,12 @@ function App() {
 
   const handleCookieAccept = () => {
     setIsCookieConsentOpen(false);
-    Cookies.set("Fest_Connect_Cookie", true, { expires: 150 });
+    Cookies.set("Fest_Connect_Cookie", true, { expires: 0.5 });
   };
 
   const handleCookieDecline = () => {
     setIsCookieConsentOpen(false);
-    Cookies.set("Fest_Connect_Cookie", false, { expires: 150 });
+    Cookies.set("Fest_Connect_Cookie", false, { expires: 0.5 });
   };
 
   useEffect(() => {
@@ -87,7 +87,7 @@ function App() {
           boxShadow: "0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
           border: 'solid 1px #EDF2F4',
         }}
-        expires={150}
+        expires={0.5}
       >
         Ce site internet utilise des cookies conformément à sa <Link style={{ color: "#EF233C" }} to="/politiques-de-confidentialité">Politique de confidentialité</Link>.
       </CookieConsent>

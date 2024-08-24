@@ -7,7 +7,7 @@ const providerSchema = new mongoose.Schema(
         service:  { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
         biography: {type:String, required: true},
         description: {type:String, required: true},
-        location: { type: mongoose.Schema.Types.ObjectId, ref: "Location", required:true },
+        location: { type: mongoose.Schema.Types.ObjectId, ref: "Location" },
         userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, 
         socials: {type:String, required: true},
     },
