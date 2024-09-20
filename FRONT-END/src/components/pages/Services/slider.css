@@ -1,0 +1,38 @@
+/* sliderStyles.css */
+
+.slick-slider {
+    margin: 20px 0; /* Ajoute de l'espace autour du slider */
+  }
+  
+  .slick-list {
+    width: 100% !important;
+    height: 100% !important;
+    margin-right: 50px !important;
+  }
+  
+  .slick-slide {
+    transition: all 0.3s ease; /* Animation lors du changement de slide */
+  }
+  
+  .slick-prev,
+  .slick-next {
+    z-index: 1; /* Assure que les flèches sont au-dessus des images */
+    font-size: 24px; /* Taille des flèches */
+    color: #fff; /* Couleur des flèches */
+  }
+  
+  .slick-prev,
+  
+  .slick-next {
+ display: none !important;
+  }
+  .slick-dots li button:before { 
+    font-size: 8px;
+    color: var(--mj-fourtiary);
+  }
+  .slick-dots li.slick-active button:before {
+    opacity: .75;
+    color: var(--mj-fourtiary);
+  }
+
+  

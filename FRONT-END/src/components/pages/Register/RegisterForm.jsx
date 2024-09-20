@@ -58,7 +58,6 @@ export default function RegisterForm({handleClickOne, handleClickTwo, handleClic
   });
 
   async function submit(values) {
-    console.log(values);
     try {
       const response = await signup(values);
       console.log(response);
@@ -197,7 +196,7 @@ export default function RegisterForm({handleClickOne, handleClickTwo, handleClic
                   <p className="text-error">{errors.rgpd.message}</p>
                 )}
             <div className="d-flex justify-content-center mb-20">
-              <button className="mj-btn-primary">Créer un compte</button>
+              <button type="submit" className="mj-btn-primary">Créer un compte</button>
             </div>
           </form>
             <div className={`d-flex flex-column ${styles.menu}`}>

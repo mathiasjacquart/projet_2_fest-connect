@@ -90,11 +90,11 @@ export default function Header({ toggleModal, isModalOpen, onClose, isOpen }) {
                  
                     <div className={`${styles.mobileMenu} `}>
                         <ul>
-                            <li className={styles.noBorder}><NavLink  to="/" end>Accueil</NavLink></li>
-                            <li><NavLink to="/about">À propos</NavLink></li>
-                            <li><NavLink to="/services">Services</NavLink></li>
-                            <li><NavLink to="/blog">Blog</NavLink></li>
-                            <li><NavLink to="/contact">Contact</NavLink></li>
+                            <li onClick={handleShowMenu}  className={styles.noBorder}><NavLink  to="/" end>Accueil</NavLink></li>
+                            <li><NavLink  onClick={handleShowMenu} to="/about">À propos</NavLink></li>
+                            <li><NavLink  onClick={handleShowMenu}to="/services">Services</NavLink></li>
+                            <li><NavLink  onClick={handleShowMenu}to="/blog">Blog</NavLink></li>
+                            <li><NavLink  onClick={handleShowMenu}to="/contact">Contact</NavLink></li>
                         </ul>
                     </div>
                 </>

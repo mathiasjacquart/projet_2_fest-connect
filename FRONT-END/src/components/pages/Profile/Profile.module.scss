@@ -1,8 +1,13 @@
 .Profile{ 
     .ProfileContainer { 
+      h3 { 
+        font-weight: 600;
+        margin-top: 30px;
+      }
         .Stepper { 
           
             margin-top: 50px;
+           
         }
         .FormContainer { 
             background-color: var(--mj-secondary);
@@ -10,10 +15,109 @@
             color: var(--mj-primary);
             padding: 20px 100px;
             margin-top: 25px;
-            input{
+            margin-bottom: 20px;
+            width: 60vw;
+            min-height: 50vh;
+            
+            form{
+                select { 
+                                  
+                    padding: 10px;
+                    border-radius: 10px;
+                    border: 1px solid var(--mj-tertiary);
+                    
+                    color: var(--mj-secondary);
+                    font-family: "Montserrat", sans-serif;
+                }
+                select::placeholder{
+                    color:var(--mj-tertiary)
+                  }
+                  select:focus-visible{ 
+                    outline: var(--mj-tertiary) auto 1px;
+        
+              
+                  }
+                  option {
+                    color: var(--mj-secondary);
+                    font-family: "Montserrat", sans-serif;
+                    &:focus-visible{
+                      background-color: var(--mj-tertiary);
+                    }
+                    &:focus-visible{
+                      outline: var(--mj-tertiary) auto 1px;
+        
+                    }
+                  }
+                label { 
+                    font-size: 20px;
+                    font-weight:600 ;
+                    margin-top: 20px;
+                }
+
+                .inputFile{
+                    display: none;
+                }
+                .inputBusinessname {
+                    width: 250px;
+                }
+                .ButtonFile{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 300px;
+                height: 300px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                // background-color: var(--mj-primary);
+                border: 1px solid var(--mj-tertiary);
                 border-radius: 10px;
+                i{
+                    font-size: 2em;
+                    cursor: pointer;
+                }
+                }
+                
+                input { 
+              
+                    padding: 10px;
+                    border-radius: 10px;
+                    border: 1px solid var(--mj-tertiary);
+                    
+                    color: var(--mj-secondary);
+                    font-family: "Montserrat", sans-serif;
+    
             }
-  
+            input::placeholder{
+                color:var(--mj-tertiary)
+              }
+              input:focus-visible{ 
+                outline: var(--mj-tertiary) auto 1px;
+    
+          
+              }
+              textarea{
+                padding: 10px;
+                border-radius: 10px;
+                border: 1px solid var(--mj-tertiary);
+                margin-bottom: 15px;
+                color: var(--mj-secondary);
+                resize: none;
+                font-family:  "Montserrat", sans-serif;
+                min-height: 150px;
+                margin-top: 5px;
+               
+                }
+            textarea::placeholder{
+                color:var(--mj-tertiary)
+              }
+              textarea:focus-visible{ 
+                outline: var(--mj-tertiary) auto 1px;
+          
+              }
+      
+            }
+            
+
         }
     }
 }

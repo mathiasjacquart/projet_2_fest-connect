@@ -1,0 +1,174 @@
+@use "../../../assets/styles/mixin" as mixin;
+
+.About {
+    span {
+        color:var(--mj-fourtiary);
+        font-weight: 600;
+    }
+    h3 { 
+       margin: 10px 0px;
+       font-weight: 600;
+    }
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+  
+    .videoOverlay {
+      position: relative;
+      height: 40vh;
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 15px;
+
+  
+      video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        filter: brightness(0.7);
+        
+      }
+  
+      .titleOverlay {
+        @include mixin.xs{ 
+            top: 65%;
+            left: 50%;
+
+        }
+        position: absolute;
+        top: 65%;
+        left: 15.5%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 2rem;
+        font-weight: 600;
+        text-align: center;
+        /* background: rgba(0, 0, 0, 0.5); */
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+      }
+    }
+    .history {
+        margin: 40px 0px;
+        padding: 50px 0px;
+        color: var(--mj-primary);
+        width: 100vw;
+        background-color: var(--mj-secondary);
+        .historyWrapper{
+            @include mixin.xs{ 
+                flex-direction: column;
+                align-content: center;
+
+            }
+
+        }
+        span { 
+           color: var(--mj-primary);
+        }
+        h3 { 
+            color: var(--mj-primary);
+        }
+        .Imghistory { 
+            @include mixin.xs{ 
+                height: 200px;
+                width: 250px;
+
+            }
+            margin-top: 10px;
+            margin-right: 30px;
+            position: relative;
+            height: 250px;
+            width: 800px;
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                // object-position: center 30%;
+                border-radius: 10px;
+            }
+        }
+    }
+    .stepContainer {
+        // background-color: var(--mj-secondary);
+        padding-bottom: 30px;
+        h3{ 
+            color: var(--mj-secondary);
+        }
+
+        .stepWrapper{
+            @include mixin.xs{ 
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+            }
+        }
+      }
+      
+      .stepContent {
+        width: 200px;
+        text-align: center;
+        margin: 20px;
+      
+        .stepImage {
+          padding: 25px 0px;
+          border-bottom: 0.4px solid var(--mj-tertiary);
+
+          img {
+            border-radius: 50px;
+            border: 1px solid var(--mj-tertiary);
+          }
+        }
+      
+        p {
+          color: var(--mj-tertiary);
+          font-size: 1em;
+          font-weight: 500;
+        }
+      }
+      .containerValeurs {
+        @include mixin.xs{ 
+            flex-direction: column;
+        }
+        margin: 35px 0px;
+        .contentValeurs {
+            @include mixin.xs{ 
+                align-items: center;
+            }
+            display: flex;
+            flex-direction: column;
+            margin: 0px 25px;
+            img{
+                max-width: 30vw;
+                max-height: 30vh;
+            }
+            p{
+                text-align: center;
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
+        }
+      }
+      .TitreValeur{ 
+        margin-top: 20px;
+        color: var(--mj-primary);
+        font-family: "Bagel Fat One", system-ui;
+        font-weight: 400;
+        font-size: 2rem;
+        background-color: var(--mj-fourtiary);
+        border-radius: 10px;
+        padding: 0px 40px;
+        margin-bottom: 30px;
+        @include mixin.xs{ 
+            text-align: center;
+            padding: 0px 30px;
+        }
+
+      }
+      button{ 
+        margin-bottom: 50px;
+
+      }
+  }
+  

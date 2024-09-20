@@ -11,7 +11,7 @@ const categorySchema = new mongoose.Schema(
         nameCategory: { type: String, required: true},
         urlCategory: { type: String, required: true},
         subCategories: [subCategorySchema],
-        prestataireId: { type: mongoose.Schema.Types.ObjectId, ref:'Provider'}
+        prestataireIds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Provider' }]
     }
 );
 

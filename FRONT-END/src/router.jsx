@@ -30,7 +30,10 @@ import CategoryList from "./components/pages/admin/categories/CategoryList";
 import CategoryCreate from "./components/pages/admin/categories/CategoryCreate";
 import CategoryUpdate from "./components/pages/admin/categories/CategoryUpdate";
 import { userLoader } from "./components/loaders/UserLoader";
-
+import ResetPassword from "./components/pages/Login/ResetPassword";
+import LegalNotice from "./components/pages/MentionsLégales/MentionsLégales";
+import ProfileTest from "./components/pages/Profile/ProfileTest"
+import PrestataireProfile from "./components/pages/Services/PrestataireProfile";
 
 
 
@@ -42,7 +45,7 @@ const mainRoutes = {
   children: [
     {
       path: "/",
-      element: <Homepage />,
+      element: <Homepage isModal />,
     },
     {
       path: "/about",
@@ -64,8 +67,12 @@ const mainRoutes = {
       ]
     },
     {
-      path: "/services",
+      path: "/services/",
       element: <Services />,
+    },
+    {
+      path: "/services/:id",
+      element: <PrestataireProfile/>,
     },
     {
       path: "/contact",
@@ -74,6 +81,11 @@ const mainRoutes = {
     {
       path: "/politiques-de-confidentialité",
       element: <PrivacyPolicy />,
+    },
+    {
+      path: "/mentions-légales",
+      element: <LegalNotice/>
+
     },
 
     {
@@ -96,24 +108,16 @@ const mainRoutes = {
       
     },
     {
-      path: "/myProfile/:id",
+      path: "/myProfile/",
       element: (
         <UserConnected>
           <Profile/>
         </UserConnected>
       ),
-      loader:userLoader,
+
     },
-    {
-      path: "/myProfile/*",
-      element: (
-        <UserConnected>
-          <Profile/>
-        </UserConnected>
-        
-      ),
-      
-    },
+
+
     {
       path: "/logout",
       element: (
@@ -128,6 +132,14 @@ const mainRoutes = {
       element: (
         <UserNotConnected>
           <Homepage />
+        </UserNotConnected>
+      ),
+    },
+    {
+      path: "/reset-password/:id",
+      element: (
+        <UserNotConnected>
+          <ResetPassword/>
         </UserNotConnected>
       ),
     },

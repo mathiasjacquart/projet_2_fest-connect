@@ -13,6 +13,7 @@ const prestataireRoutes =  require("./routes/prestataire")
 const clientRoutes = require("./routes/client")
 const reviewRoutes = require("./routes/review");
 const contactRoutes = require("./routes/contact")
+const locationRoutes = require("./routes/locations")
 const cron = require("node-cron")
 
 const app = express();
@@ -27,9 +28,10 @@ app.use("/api/users", userRoutes);
 app.use("/api/storages" , storageRoutes)
 app.use("/api/admin", adminRoutes)
 app.use("/api/categories", categoryRoutes)
-app.use("api/prestataire" , prestataireRoutes)
-app.use("api/client", clientRoutes)
-app.use("api/review", reviewRoutes)
+app.use("/api/providers" , prestataireRoutes)
+app.use("/api/client", clientRoutes)
+app.use("/api/review", reviewRoutes)
+app.use('/api/locations', locationRoutes); 
 
 mongoose
     .connect(process.env.MONGO_URI)

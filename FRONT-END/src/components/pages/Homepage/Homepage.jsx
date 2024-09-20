@@ -9,7 +9,7 @@ import { useState } from "react"
 import styles from "./Homepage.module.scss"
 //import photos header
 import backgroundImage from  "../../../assets/image/photo-bg-header.png"
-
+import { Link } from "react-router-dom"
 // import logo réassurance
 import logoBooking from "../../../assets/image/reassurance/icons8-booking-60.png"
 import logoCustomerSupport from "../../../assets/image/reassurance/icons8-customer-support-60.png"
@@ -34,8 +34,8 @@ export default function Homepage({ showConnexion = false }) {
 
 
             <div className={`d-flex ${styles.btnContainer}`}>
-              <button className={`mj-btn-primary ${styles.btnPrimary}`}>À propos de nous</button>
-              <button className={`mj-btn-primary ${styles.btnPrimary}`}>Rejoignez-nous</button>
+              <Link to="/about"className={`mj-btn-primary ${styles.btnPrimary}`}>À propos de nous</Link>
+              <Link to="/register" className={`mj-btn-primary ${styles.btnPrimary}`}>Rejoignez-nous</Link>
             </div>
          </div>
           <div className={`${styles.photoIntro}`}>

@@ -28,7 +28,7 @@ main {
    
 
     form {
-        
+        padding: 30px 0px 10px 30px;
         width: 900px;
         display: flex;
         z-index: 99;
@@ -38,7 +38,7 @@ main {
         border-radius: 10px;
         justify-content: center;
         flex-direction: column;
-        padding-left: 30px;
+        // padding-left: 30px;
         @include mixin.xs {
         padding: 15px 20px;
           min-height: 300px;
@@ -47,6 +47,7 @@ main {
        
         
         .form { 
+            margin-top:6px;
             @include mixin.xs {
                flex-direction: column;
              
@@ -66,13 +67,18 @@ main {
         }
         input{
             width: 200px;
-            border: none;
-            border-bottom: var(--mj-tertiary) 0.5px solid;
-            background-color:rgba(237, 242, 244, 0.85);
-            height: 25px;
-            margin-right: 50px;
+            padding: 7px;
+            border-radius: 10px;
+            border: 1px solid var(--mj-tertiary);
+            margin-bottom: 15px;
             color: var(--mj-secondary);
-            font-size: 0.9rem;
+            font-family: "Montserrat", sans-serif;
+          }
+          input::placeholder{
+            color:var(--mj-tertiary)
+          }
+          input:focus-visible{ 
+            outline: var(--mj-tertiary) auto 1px;
             @include mixin.xs {
                 margin: 15px 0px;
             }

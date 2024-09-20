@@ -1,0 +1,30 @@
+@use "../../../assets/styles/mixin" as mixin;
+
+.Services{ 
+    min-height: 100vh;
+    h3 { margin-top: 20px;}
+    .backgroundOverlay{
+
+        position: relative;
+        height: 40vh;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 15px;
+        img{ 
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center 70%;
+            filter: brightness(0.7);
+            
+        }
+
+    }
+    .displayItems{ 
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+}

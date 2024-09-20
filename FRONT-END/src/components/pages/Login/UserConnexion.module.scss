@@ -10,6 +10,13 @@
     align-items: center;
     z-index: 999;
   }
+
+  .ResetPassword {
+    margin: 0 30px;
+    p {
+      padding: 0 14px;
+    }
+  }
   
   .modalContent {
     background: var(--mj-primary);
@@ -73,11 +80,18 @@
         text-decoration: none;
       }
       span{ 
-        color: #EF233C
+        color: #EF233C;
+        cursor: pointer;
+        &:hover{
+          text-decoration: underline;
+          color: #EF233C
+          
+        }
       }
     }
     .ForgottenPassword {
       margin-top: 10px;
+
     }
 
   }

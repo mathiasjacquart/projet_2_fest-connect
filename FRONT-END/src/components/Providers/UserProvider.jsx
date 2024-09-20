@@ -25,9 +25,18 @@ export default function UserProvider({ children, onClose }) {
     localStorage.removeItem("user");
     setUser(null);
     navigate("/")
-    onClose();
+    if(onClose)onClose();
     
   }
+
+  const updateUser = (updatedUserData) => {
+    setUser(prevState => ({
+      ...prevState,
+      ...updatedUserData,
+      token: prevState.token
+    }));
+
+  };
 
   function setConnectedUser(userConnected) {
     setUser(userConnected);
@@ -42,7 +51,7 @@ export default function UserProvider({ children, onClose }) {
 
   return (
     <UserContext.Provider
-      value={{ user, setConnectedUser, logoutConnectedUser, setUser }}
+      value={{ user, setConnectedUser, logoutConnectedUser, updateUser,setUser }}
     >
       {children}
     </UserContext.Provider>

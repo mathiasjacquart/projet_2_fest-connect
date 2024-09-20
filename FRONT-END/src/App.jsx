@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import CookieConsent, { Cookies } from "react-cookie-consent";
 import Header from "./components/HOME/Header/Header";
 import Footer from "./components/HOME/Footer/Footer";
@@ -10,7 +11,7 @@ import styles from "./App.module.scss";
 function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isCookieConsentOpen, setIsCookieConsentOpen] = useState(true); 
-
+  const navigate = useNavigate()
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
@@ -44,6 +45,7 @@ function App() {
 
   const handleCloseModal = () => {
     setIsModalOpen(!isModalOpen);
+    navigate('/')
   };
 
   return (
@@ -86,6 +88,8 @@ function App() {
           fontSize: '1rem',
           boxShadow: "0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
           border: 'solid 1px #EDF2F4',
+          padding: '11px 35px',
+          fontWeight:"500"
         }}
         expires={0.5}
       >

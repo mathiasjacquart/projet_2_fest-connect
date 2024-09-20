@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema(
         password: {type:String, required: true},
         role: {type:String, required:true},
         avatar: { type:String, required:false},
-        relatedId: { type: mongoose.Schema.Types.ObjectId, refPath: 'role' },
+        prestataireId: { type: mongoose.Schema.Types.ObjectId, refPath: 'Providers' },
         token:String,
     },
     {

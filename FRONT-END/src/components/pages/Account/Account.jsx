@@ -180,11 +180,11 @@ export default function Account() {
         className="d-flex align-items-center jc-between mb-20"
         onSubmit={handleSubmit((data) => onSubmit(data, 'role'))}
       >
-        <label className="mr-10">Rôle :</label>
+        <label >Rôle :</label>
         {editField === 'role' ? (
           <>
-            <div className="mr-10">
-              <label>
+            <div >
+              <label className={styles.labelRadio}>
                 <input
                   type="radio"
                   value="Client"
@@ -192,7 +192,7 @@ export default function Account() {
                 />
                 Client
               </label>
-              <label className="ml-20">
+              <label className={styles.labelRadio}>
                 <input
                   type="radio"
                   value="Prestataire"

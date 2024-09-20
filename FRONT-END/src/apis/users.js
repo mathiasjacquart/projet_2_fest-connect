@@ -35,6 +35,24 @@ export async function signin(values) {
     console.error(error);
   }
 }
+export async function sendEmailPassword(value) {
+  try {
+    const response = await fetch(`${BASE_URL}/forgotten-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(value),
+    });
+
+    const newUser = await response.json(); 
+    console.log(newUser);
+    return newUser;
+   
+  } catch (error) {
+    console.error(error);
+  }
+}
 export async function updateUser(values) { 
   try {
       const response = await fetch(`${BASE_URL}/:id`, {

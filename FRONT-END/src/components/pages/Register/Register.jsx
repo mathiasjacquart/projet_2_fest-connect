@@ -53,7 +53,7 @@ export default function Register() {
                   <img src={ImageSecurity} alt="Sécurité" />
                 </div>
                 <div>
-                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at quidem obcaecati odio?</p>
+                  <p>Vos transactions sont sécurisées grâce à notre système de protection avancé.</p>
                 </div>
               </div>
               <div className={styles.reassuranceContent}>
@@ -61,7 +61,7 @@ export default function Register() {
                   <img src={ImageVerified} alt="Vérifié" />
                 </div>
                 <div>
-                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at quidem obcaecati odio?</p>
+                  <p>Tous nos prestataires sont vérifiés pour garantir la qualité.</p>
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function Register() {
                   <img src={ImageEasy} alt="Facile" />
                 </div>
                 <div>
-                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at quidem obcaecati odio?</p>
+                  <p>Trouvez rapidement l'artiste parfait pour votre événement.</p>
                 </div>
               </div>
               <div className={styles.reassuranceContent}>
@@ -79,7 +79,7 @@ export default function Register() {
                   <img src={ImageSupportClient} alt="Support Client" />
                 </div>
                 <div>
-                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero at quidem obcaecati odio?</p>
+                  <p>Notre équipe est disponible 24/7 pour vous aider.</p>
                 </div>
               </div>
             </div>

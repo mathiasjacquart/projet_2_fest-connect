@@ -5,7 +5,7 @@ import { getAllCategories } from "../../../apis/categorie";
 
 export default function Categorie() {
   const [allCategories, setAllCategories] = useState([]);
-  const [allCategoriesTwo, setAllCategoriesTwo] = useState([]);
+
 
   useEffect(() => {
     async function fetchCategories() {
@@ -18,17 +18,7 @@ export default function Categorie() {
     }
     fetchCategories();
   }, []);
-  useEffect(() => {
-    async function fetchCategories() {
-      try {
-        const categoriesFromApi = await getAllCategories();
-        setAllCategories(categoriesFromApi);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchCategories();
-  }, []);
+
 
   return (
     <div className={styles.categorie}>

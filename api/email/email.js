@@ -8,6 +8,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+
 const sendContactForm = async (email, message, firstname, surname) => {
   const mailOptions = { 
     from:process.env.EMAIL_USER, 
@@ -26,6 +27,16 @@ const sendConfirmationEmail = async (email, token) => {
     to: email,
     subject: "Confirmation d'inscription",
     html: `<p>Merci de vous être inscrit ! Cliquez sur le lien suivant pour confirmer l'inscription : <a href="http://localhost:4560/api/users/verifyMail/${token}">Confirmer l'inscription</a>.</p>`,
+  };
+
+  await transporter.sendMail(mailOptions);
+};
+const sendForgottenPassword = async (email, token) => {
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: email,
+    subject: "Mot de passe oublié",
+    html: `<p>Vous avez oublié votre mot de passe sur Fest Connect ? Pas de problème ! Cliquez sur le lien suivant pour réinitialiser votre mot de passe : <a href="http://localhost:4560/api/users/resetPassword/${token}">Réinitialiser le mot de passe </a>.</p>`,
   };
 
   await transporter.sendMail(mailOptions);
@@ -57,5 +68,6 @@ module.exports = {
   sendConfirmationEmail,
   sendValidationAccount,
   sendInvalideToken,
-  sendContactForm
+  sendContactForm,
+  sendForgottenPassword 
 };

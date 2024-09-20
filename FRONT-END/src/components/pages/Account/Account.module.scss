@@ -25,6 +25,7 @@
                 
                 color: var(--mj-secondary);
                 font-family: "Montserrat", sans-serif;
+
         }
         input::placeholder{
             color:var(--mj-tertiary)
@@ -33,6 +34,10 @@
             outline: var(--mj-tertiary) auto 1px;
 
       
+          }
+          .labelRadio {
+            font-weight: 400;
+            text-decoration: none;
           }
           button { 
              padding: 10px 20px !important;
