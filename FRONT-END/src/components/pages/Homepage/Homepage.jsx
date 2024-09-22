@@ -4,7 +4,7 @@ import Avis from "../../HOME/Avis/Avis"
 import Connexion from "../Login/UserConnexion"
 import AdminRegister from "../../pages/Register/AdminRegister"
 // import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 //style
 import styles from "./Homepage.module.scss"
 //import photos header
@@ -15,14 +15,55 @@ import logoBooking from "../../../assets/image/reassurance/icons8-booking-60.png
 import logoCustomerSupport from "../../../assets/image/reassurance/icons8-customer-support-60.png"
 import logoGuarantee from "../../../assets/image/reassurance/icons8-guarantee-60.png"
 import logoSecure from "../../../assets/image/reassurance/icons8-secure-50.png"
-// import './App.css'
+import Slider from "react-slick";
+import "./sliderReview.css"
+import { Rating } from "@mui/material"
 
 export default function Homepage({ showConnexion = false }) {
+  const[reviews, setReviews] = useState(null)
+  async function getReviews() {
+    try {
+      const response = await fetch(`http://localhost:4560/api/reviews`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      const reviewData = await response.json();
+      console.log(reviewData);
+      
+      return reviewData;
+    } catch (error) {
+      console.error("Failed to fetch prestataire data", error);
+    }
+  }
+
+  useEffect(() => {
+    async function fetchReviews() {
+      try {
+        const allReviews = await getReviews();
+
+        setReviews(allReviews);
+      } catch (error) {
+        console.error("Error fetching reviews", error);
+      }
+    }
+      fetchReviews(); 
+    
+  }, []);
+  console.log(reviews);
+  
+  
   const [isConnexionOpen, setIsConnexionOpen] = useState(showConnexion);
+
 
   const handleCloseConnexion = () => {
     setIsConnexionOpen(false);
   };
+  if (!reviews) { 
+    return <div>Loading...</div>; // Placeholder while data is being fetched
+  
+  }
   return (
     
     <main className={`${styles.main}`}>
@@ -65,6 +106,27 @@ export default function Homepage({ showConnexion = false }) {
         </div>
       </div>
       <Avis/>
+      <div className={`container d-flex flex-row ${styles.SliderReview}`}>
+      {/* <Slider > */}
+      { reviews.map((review) => (
+          <div key={review._id} className={styles.review}>
+            <div className={styles.userReview}>
+              <img src={review.userId.avatar} alt="avatar" />
+              <p>{review.userId.username}</p>
+            </div>
+            <div className={styles.contentReview}>
+            <p>{review.title}</p>
+            <article>{review.content}</article>
+            <div className={styles.Rating}>
+            <Rating  value={review.note} readOnly />
+            </div>
+        
+            </div>
+            
+          </div>
+      ))}
+      {/* </Slider> */}
+      </div>
 
       {isConnexionOpen && <Connexion onClose={handleCloseConnexion} />}
     </main>
