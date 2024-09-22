@@ -138,6 +138,7 @@
       
     }
     .review {
+        margin: 30px 0px;
         display: flex !important;
         flex: 0 0 30% !important;
         margin-right: 20px; /* Add some space between the reviews */
@@ -156,11 +157,11 @@
             justify-content: center;
             align-items: center;
             img{ 
-                width: 50px;
+                width: 35px;
                 height: auto
             }
             p{
-                font-size: 16px;
+                font-size: 12px;
                 font-weight: 400;
             }
         }
@@ -183,6 +184,9 @@
         }
 
         }
+    }
+    .CtaEnd {
+        margin-top: 50px;
     }
     
 }

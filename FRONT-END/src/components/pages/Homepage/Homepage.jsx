@@ -127,6 +127,26 @@ export default function Homepage({ showConnexion = false }) {
       ))}
       {/* </Slider> */}
       </div>
+      <div className={styles.CtaEnd}>
+        <div className="container">
+          <h3>
+            Prestataire ou client ? 
+          </h3>
+          <h4>
+            Qui que vous soyez trouvez la personne qu'il vous faut
+          </h4>
+          <div className="d-flex flex-row"> 
+            <div className={styles.contentCta}>
+              
+            </div>
+            <div className={styles.contentCta}>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
 
       {isConnexionOpen && <Connexion onClose={handleCloseConnexion} />}
     </main>
