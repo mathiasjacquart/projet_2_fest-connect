@@ -34,7 +34,7 @@ import ResetPassword from "./components/pages/Login/ResetPassword";
 import LegalNotice from "./components/pages/MentionsLégales/MentionsLégales";
 import ProfileTest from "./components/pages/Profile/ProfileTest"
 import PrestataireProfile from "./components/pages/Services/PrestataireProfile";
-
+import Review from "./components/review/Review";
 
 
 const mainRoutes = {
@@ -86,6 +86,10 @@ const mainRoutes = {
       path: "/mentions-légales",
       element: <LegalNotice/>
 
+    },
+    {
+      path:"/review",
+      element: <Review/>
     },
 
     {

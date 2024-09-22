@@ -30,7 +30,7 @@ app.use("/api/admin", adminRoutes)
 app.use("/api/categories", categoryRoutes)
 app.use("/api/providers" , prestataireRoutes)
 app.use("/api/client", clientRoutes)
-app.use("/api/review", reviewRoutes)
+app.use("/api/reviews", reviewRoutes)
 app.use('/api/locations', locationRoutes); 
 
 mongoose

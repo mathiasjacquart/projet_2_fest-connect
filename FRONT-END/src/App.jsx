@@ -78,17 +78,17 @@ function App() {
           color: "#EDF2F4",
           backgroundColor: "#EF233C ",
           borderRadius: '10px',
-          fontSize: '1rem',
+          fontSize: '1.2rem',
           boxShadow: "0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)"
         }}
         declineButtonStyle={{
           color: "#EDF2F4",
           backgroundColor: "#2B2D42",
           borderRadius: '10px',
-          fontSize: '1rem',
+          fontSize: '18px',
           boxShadow: "0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
           border: 'solid 1px #EDF2F4',
-          padding: '11px 35px',
+          padding: '10px 35px',
           fontWeight:"500"
         }}
         expires={0.5}

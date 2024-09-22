@@ -4,7 +4,9 @@ const Review  = require("../models/review.schema")
 const getReviews = async (req, res) => {
     console.log(req.body);
     try {
-      const reviews = await Review.find();
+      const reviews = await Review.find()
+      .populate('userId')
+      .populate('prestataireId')
       res.status(200).json(reviews);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -48,7 +50,9 @@ const getReviews = async (req, res) => {
     try {
       const review = new Review (req.body) 
       await review.save();
-      res.status(200).json(review)
+      res.status(200).json({ 
+        message: "Votre avis a bien été enregistré"
+      })
     } catch (error) {
       res.status(500).json ({ error : error.message})
     }

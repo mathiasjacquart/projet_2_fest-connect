@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import styles from "./PrestataireProfile.module.scss"
 import { Link, useParams} from 'react-router-dom'
 import 'slick-carousel/slick/slick.css';
@@ -8,12 +8,44 @@ import Slider from "react-slick";
 import ClickedHeart from "../../../assets/image/serviceprofil/heart2.png"
 import NotClickedHeart from "../../../assets/image/serviceprofil/heart1.png"
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
+import Review from '../../review/Review';
+import { UserContext } from '../../context/UserContext';
+import Rating from '@mui/material/Rating';
+
 export default function PrestataireProfile() {
    
   const { id } = useParams(); 
   const [prestataire, setPrestataire] = useState(null); 
   const [isLiked, setIsLiked] = useState(false)
+  const [isUserConnected, setIsUserConnected] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const {user} = useContext(UserContext);
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [reviews, setReviews] = useState(null)
 
+  const handleCloseModal = () => {  
+      setShowModal(false)
+  };
+  console.log(user);
+  
+  console.log(id);
+  
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser || user) {
+      setIsUserConnected(true);
+    } else {
+      setIsUserConnected(false);
+    }
+  }, [user]);
+  const handleWriteReview= () => {
+    if (!isUserConnected) {
+      setShowModal(true); 
+    } else {
+      setShowReviewForm(true);
+    }
+  };
+  
   const handleLikeButton = () => { 
     setIsLiked(!isLiked)
   }
@@ -48,10 +80,53 @@ export default function PrestataireProfile() {
       fetchProfile(); 
     }
   }, [id]);
+  async function getReviews() {
+    try {
+      const response = await fetch(`http://localhost:4560/api/reviews`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      const reviewData = await response.json();
+      console.log(reviewData);
+      
+      return reviewData;
+    } catch (error) {
+      console.error("Failed to fetch prestataire data", error);
+    }
+  }
+
+  useEffect(() => {
+    async function fetchReviews() {
+      try {
+        const allReviews = await getReviews();
+        
+       
+        const filteredReviews = allReviews.filter(review => review.prestataireId.id === id);
+        setReviews(filteredReviews);
+      } catch (error) {
+        console.error("Error fetching reviews", error);
+      }
+    }
+  
+    if (id) {
+      fetchReviews(); 
+    }
+  }, [id]);
+  
+
+
   console.log(prestataire);
+  console.log(reviews);
+  
 
   if (!prestataire) {
     return <div>Loading...</div>; // Placeholder while data is being fetched
+  }
+  if (!reviews) { 
+    return <div>Loading...</div>; // Placeholder while data is being fetched
+  
   }
 
 
@@ -79,17 +154,39 @@ export default function PrestataireProfile() {
         }
       });
     
-      // Retourner les sous-catégories correspondantes
+
       return matchingSubcategories;
     }
     
-    // Utilisation de la fonction
+
     const matchedSubcategories = getMatchingSubcategories(prestataire);
     
     console.log(matchedSubcategories);
     
       return (
+        
     <div className={styles.PrestataireProfile}>
+    {showModal &&
+      
+      <div className={`${styles.modalBg}`} onClick={handleCloseModal}>
+      <div className={`${styles.modalContent}`} onClick={(e) => e.stopPropagation()}>
+        <div>
+          <i onClick={handleCloseModal} className="fa-solid fa-xmark"></i>
+        </div>
+        <div className='d-flex center h-100'>
+        <div className='d-flex flex-column center'>
+          <p>
+            Vous devez être connecté pour pouvoir rédiger un avis. 
+          </p>
+          <Link to='/login'className='mj-btn-primary'>Se connecter</Link>
+        </div>
+        </div>
+
+      </div>
+    </div>
+}
+
+      <>
         <div className={styles.btnRetour}>
             <Link  className="mj-btn-primary"to="/services"> <ArrowBackOutlinedIcon/> <p>Retour</p></Link>
         </div>
@@ -165,9 +262,48 @@ export default function PrestataireProfile() {
           </div>
         </div>
         <div className={`${styles.avis} container`}>
+        
+          {!showReviewForm ? (
+                      <div className='d-flex flex-row'>
+                        {reviews.length > 0 ? (
+                            reviews.map((review) => (
+                              <div key={review._id} className={styles.review}>
+                                <div className={styles.userReview}>
+                                  <img src={review.userId.avatar} alt="avatar" />
+                                  <p>{review.userId.username}</p>
+                                </div>
+                                <div className={styles.contentReview}>
+                                <p>{review.title}</p>
+                                <article>{review.content}</article>
+                                <div className={styles.Rating}>
+                                <Rating  value={review.note} readOnly />
+                                </div>
+                            
+                                </div>
+                                
+                              </div>
+                            ))
+                          ) : (
+                            <p>Cet utilisateur n'a pas encore d'avis.</p>
+                          )}
+                    </div>
+                    
+          ):(       <div>
+            <Review p={id}/>
+
+            </div>)}
+            <div className='d-flex center'>
+              <button onClick={handleWriteReview} className='mj-btn-primary'>Rédiger un avis</button>
+            </div>
+
 
         </div>
-
+ 
+      </>
+  
     </div>
+    
+
+  
   )
 }

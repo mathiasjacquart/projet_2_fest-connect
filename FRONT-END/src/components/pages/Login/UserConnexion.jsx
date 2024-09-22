@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -15,6 +15,21 @@ function Connexion({ onClose }) {
   const [forgottenPassword, setForgottenPassword] = useState(false);
   const navigate = useNavigate()
   const [feedbackEmail, setFeedbackEmail] = useState(null)
+
+  const [redirectionTimeout, setRedirectionTimeout] = useState(null);
+
+  useEffect(() => {
+    if (showLoginRedirection) {
+      // Lancer un timer de 5 secondes quand la redirection est affichée
+      const timer = setTimeout(() => {
+        setShowLoginRedirection(false); // Masquer la redirection après 5 secondes
+      }, 3000);
+
+      // Nettoyer le timer quand le composant est démonté ou quand showLoginRedirection est changé
+      setRedirectionTimeout(timer);
+      return () => clearTimeout(timer);
+    }
+  }, [showLoginRedirection]);
   // Schéma pour la connexion
   const schemaLogin = yup.object({
     email: yup
