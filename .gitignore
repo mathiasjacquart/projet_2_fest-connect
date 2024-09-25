@@ -1,1 +1,6 @@
 node_modules
+dist
+api/node_modules
+api/.env
+FRONT-END/node_modules
+.env

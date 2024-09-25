@@ -1,4 +1,4 @@
-require ('dotenv').config();
+require('dotenv').config();
 const express = require('express')
 const path = require("path")
 const {exec} = require("child_process")
@@ -16,6 +16,8 @@ const contactRoutes = require("./routes/contact")
 const locationRoutes = require("./routes/locations")
 const cron = require("node-cron")
 
+
+
 const app = express();
 app.use(express.json());
 app.use(
@@ -32,7 +34,7 @@ app.use("/api/providers" , prestataireRoutes)
 app.use("/api/client", clientRoutes)
 app.use("/api/reviews", reviewRoutes)
 app.use('/api/locations', locationRoutes); 
-
+console.log('Variables d\'environnement:', process.env);  
 mongoose
     .connect(process.env.MONGO_URI)
     .then(()=> {
@@ -82,3 +84,10 @@ app.post('/restore', (req, res) => {
       res.send('Restore initiated successfully');
     });
   });
+
+const __DIRNAME = path.resolve();
+
+app.use(express.static(path.join(__DIRNAME, "FRONT-END/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__DIRNAME, "FRONT-END", "dist", "index.html"));
+});
