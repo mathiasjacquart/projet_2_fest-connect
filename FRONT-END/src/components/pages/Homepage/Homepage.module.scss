@@ -187,6 +187,59 @@
     }
     .CtaEnd {
         margin-top: 50px;
+        margin-bottom: 50px;
+        .contentCta{
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column; 
+            width: 500px;
+             // border: 0.1px solid rgb(243, 243, 243);
+            box-shadow: 0px 0px 6px 5px rgba(110, 110, 110, 0.34);
+            border-radius: 10px;
+           
+            .contentCtaImg{
+                position: relative;
+                p{  
+                    position: absolute;
+                    left: 39%;
+                    top: 38%;
+                    color: var(--mj-primary);
+                    z-index: 3;
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+                 height: 150px;
+               
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center 10%;
+                    filter: brightness(0.5);
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                }
+
+            }
+            .contentCtaText{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                p { 
+                    font-size: 14px;
+                    width: 200px;
+                   
+                    
+                }
+                .contentCtaBtn{
+                    color: var(--mj-secondary);
+                    cursor: pointer;
+                    margin-left: 10px;
+
+                }
+            }
+        }
     }
     
 }

@@ -17,7 +17,12 @@ import logoGuarantee from "../../../assets/image/reassurance/icons8-guarantee-60
 import logoSecure from "../../../assets/image/reassurance/icons8-secure-50.png"
 import Slider from "react-slick";
 import "./sliderReview.css"
+//import images
+
+import PrestataireImg from "../../../assets/image/homeprestataire.jpg"
+import ClientImg from "../../../assets/image/organisateurHome.jpg"
 import { Rating } from "@mui/material"
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export default function Homepage({ showConnexion = false }) {
   const[reviews, setReviews] = useState(null)
@@ -133,14 +138,28 @@ export default function Homepage({ showConnexion = false }) {
             Prestataire ou client ? 
           </h3>
           <h4>
-            Qui que vous soyez trouvez la personne qu'il vous faut
+            Nous vous donnons toutes les clés pour un événement réussi
           </h4>
-          <div className="d-flex flex-row"> 
+          <div className="d-flex flex-row justify-content-around"> 
             <div className={styles.contentCta}>
-              
+              <div className={styles.contentCtaImg}>
+                <p>Prestataire</p>
+                <img src={PrestataireImg} alt="" />
+              </div>
+              <div className={styles.contentCtaText}>
+                <p>Lorem </p>
+                <ArrowForwardIosIcon className={styles.contentCtaBtn}/>
+              </div>
             </div>
             <div className={styles.contentCta}>
-
+              <div className={styles.contentCtaImg}>
+                <p>Organisateur</p>
+                <img src={ClientImg} alt="" />
+              </div>
+              <div className={styles.contentCtaText}>
+                <p> Trouvez l'idée qui rendra votre fête plus originale </p>
+                <ArrowForwardIosIcon className={styles.contentCtaBtn}/>
+              </div>
             </div>
 
           </div>
