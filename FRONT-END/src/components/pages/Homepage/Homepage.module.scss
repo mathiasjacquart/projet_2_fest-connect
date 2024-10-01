@@ -170,7 +170,7 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
+   
             flex-direction: column;
             p{ 
                 font-size: 20px;
@@ -185,8 +185,8 @@
         .Rating{ 
             width: 100%;
             display: flex;
-            align-items: center;
-            justify-content: center;
+ 
+            // justify-content: center;
             span { 
    
             }

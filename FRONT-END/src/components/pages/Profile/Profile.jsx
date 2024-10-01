@@ -11,7 +11,7 @@ import { UserContext } from '../../context/UserContext';
 export default function Profile() {
 
   const { user, setConnectedUser, updateUser } = useContext(UserContext);
-console.log(user);
+
 
   const [imgPreviews, setImgPreviews] = useState([]);
   const [imgFiles, setImgFiles] = useState([]);
@@ -36,8 +36,6 @@ console.log(user);
 
 
 
-console.log(user.prestataireId);
-
 
 
 // VERIFICATION SI LE USER A UN PROFIL PRESTATAIRE
@@ -61,7 +59,6 @@ console.log(user.prestataireId);
       if (user?.prestataireId) {
         try {
           const prestataire = await getPrestataireById(user.prestataireId);
-          console.log();
           
           if (prestataire) {
             setIsProfileExist(true);
@@ -109,11 +106,7 @@ console.log(user.prestataireId);
       return { ok: false, message: error.message };
     }
   }
-  useEffect(() => {
-    if (imgFiles.length > 0) {
-      imgFiles.forEach((file) => uploadFile(file));
-    }
-  }, [imgFiles]);
+
 
   //AUTOCOMPLETION ET CHARGEMENT DES LOCATIONS DANS L'INPUT
   useEffect(() => {
@@ -246,6 +239,12 @@ console.log(user.prestataireId);
       }
     })
   };
+
+  useEffect(() => {
+    if (imgFiles.length > 0) {
+      imgFiles.forEach((file) => uploadFile(file));
+    }
+  }, [imgFiles]);
   // ONCHANGE DES IMAGES 
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
@@ -268,9 +267,6 @@ console.log(user.prestataireId);
           }
           return prev;
         });
-  
-        // Appeler uploadFile après la lecture et avant l'ajout à imgFiles
-        uploadFile(file);
       };
   
       reader.readAsDataURL(file);
@@ -309,12 +305,16 @@ console.log(user.prestataireId);
       }
     );
   };
+  console.log(imgFiles);
+  console.log(imgPreviews);
+  console.log(imgLinks);
+  
+  
   
 
   function updateUserInLocalStorage(updatedUser) {
     const userStorage = JSON.parse(localStorage.getItem("user"));
-    console.log(userStorage);
-    
+ 
 
     if (userStorage) {
       const updatedStorage = {

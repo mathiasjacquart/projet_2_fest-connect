@@ -193,7 +193,7 @@ export default function PrestataireProfile() {
             <Link  className="mj-btn-primary"to="/services"> <ArrowBackOutlinedIcon/> <p>Retour</p></Link>
         </div>
         <div className='container d-flex '>
-          <div className='d-flex flex-row mt-20'>
+          <div className='d-flex flex-row align-items-center mt-20'>
             <div >
             <Slider {...settings} className={styles.photoCarrousel}>
             {prestataire && prestataire.photo && 
