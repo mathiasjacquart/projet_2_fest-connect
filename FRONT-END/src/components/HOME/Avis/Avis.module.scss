@@ -1,9 +1,11 @@
 @use "../../../assets/styles/mixin" as mixin;
 main {
     .avis {
-        margin-top: 100px;
+        margin-top: 50px;
         width: 100%;        
-        
+        h4 { 
+            margin-bottom: 20px;
+        }
         @include mixin.xs {
             margin-top: 50px;
             

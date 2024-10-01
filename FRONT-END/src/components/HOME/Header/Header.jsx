@@ -60,10 +60,10 @@ export default function Header({ toggleModal, isModalOpen, onClose, isOpen }) {
                 </nav>
                 <div>
                     {!user ? (
-                        <>
+                        <div className={styles.Register}>
                             <Link to="/register" className="mj-btn-primary m-10">Tes talents ?</Link>
                             <Link to="/login" onClick={toggleModal} className="mj-btn-secondary">Se connecter</Link>
-                        </>
+                        </div>
                     ) : (
                         <div className={`${styles.App}`}>
                             <button onClick={onClose} className="d-flex flex-row align-items-center">

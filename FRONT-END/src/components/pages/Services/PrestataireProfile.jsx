@@ -45,7 +45,9 @@ export default function PrestataireProfile() {
       setShowReviewForm(true);
     }
   };
-  
+   const handleBackReview = () => { 
+    setShowReviewForm(!showReviewForm)
+   }
   const handleLikeButton = () => { 
     setIsLiked(!isLiked)
   }
@@ -205,6 +207,9 @@ export default function PrestataireProfile() {
             </Slider>
             </div>
             <div className={styles.infosProfile }>
+                <div>
+                <img  onClick={handleLikeButton}  src={isLiked ? ClickedHeart : NotClickedHeart} alt="" />
+                </div>
                  <div className={styles.businessname}>
                     <p>{prestataire.businessname}</p>
                   </div>
@@ -221,7 +226,7 @@ export default function PrestataireProfile() {
                     <p><span>Mobilité </span><br/>Je suis prêt à me déplacer jusqu'à {prestataire.surrounding} kms </p>
                   </div>
                   <div className={styles.btnContact}>
-                  <img  onClick={handleLikeButton}  src={isLiked ? ClickedHeart : NotClickedHeart} alt="" />
+   
                   <button className='mj-btn-primary'>Contactez</button>
               
                  
@@ -264,7 +269,7 @@ export default function PrestataireProfile() {
         <div className={`${styles.avis} container`}>
         
           {!showReviewForm ? (
-                      <div className='d-flex flex-row'>
+                      <div className='d-flex flex-row flex-wrap'>
                         {reviews.length > 0 ? (
                             reviews.map((review) => (
                               <div key={review._id} className={styles.review}>
@@ -288,12 +293,25 @@ export default function PrestataireProfile() {
                           )}
                     </div>
                     
-          ):(       <div>
-            <Review p={id}/>
-
-            </div>)}
+          ):(
+            <div className='container'>
+            <div className={styles.btnRetour}>
+            <button onClick={handleBackReview} className=" d-flex center mj-btn-primary"to="/services"> <ArrowBackOutlinedIcon/> <p>Retour aux avis</p></button>
+            </div>
             <div className='d-flex center'>
-              <button onClick={handleWriteReview} className='mj-btn-primary'>Rédiger un avis</button>
+              
+              <Review p={id}/>
+  
+              </div>
+            </div>
+)}
+
+            <div className='d-flex center'>
+              {
+                !showReviewForm &&
+                <button onClick={handleWriteReview} className='mj-btn-primary'>Rédiger un avis</button>
+              }
+              
             </div>
 
 

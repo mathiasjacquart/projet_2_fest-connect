@@ -38,6 +38,13 @@
       }
 
     .btnRetour {
+        button{
+            width: 250px;
+            p{
+                margin: 0px;
+            }
+           
+        }
         margin-top: 30px;
         margin-left: 40px;
         width: 150px;
@@ -63,7 +70,7 @@
             border-radius: 10px; 
             width: 100%;
             max-height: 50vh;
-            object-fit: cover;  /* Conserve les proportions tout en remplissant la zone */
+            object-fit: cover;
         }
     }
     .infosProfile { 
@@ -77,10 +84,13 @@
         color: var(--mj-primary);
         line-height: auto;
         .businessname{ 
-            font-size: 2em;
+            font-size: 20px;
             text-align: center;
             color: var(--mj-primary);
             font-weight: 600;
+            p {
+                margin: 0;
+            }
         }
         .biography {
             p{ 
@@ -181,9 +191,7 @@
             }
         .Rating{ 
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin-top: 15px;
             span { 
    
             }

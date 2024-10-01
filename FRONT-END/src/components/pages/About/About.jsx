@@ -83,7 +83,7 @@ export default function About() {
         <div className={styles.Imghistory}>
           <img src={history} alt="photo idée solution" />
         </div>
-        <div className='w-100'>
+        <div className=''>
           <p> <span>Fest Connect</span> est née d'une idée simple : <span>organiser un événement devrait être un plaisir</span>, et non une source de stress. </p> 
           <p> Après avoir constaté les défis rencontrés lors de la recherche de prestataires fiables, nous avons décidé de créer une solution qui simplifierait cette étape cruciale. </p>
           <p> Fondée par des passionnés de l'événementiel, Fest Connect est le fruit de plusieurs années d'expérience combinée dans le domaine, avec un objectif clair : <span>rendre la planification événementielle accessible à tous.</span></p>

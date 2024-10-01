@@ -29,9 +29,9 @@ export default function Services() {
           <img src={backgroundImage} alt="fête événement" />
           <SearchBarServices/>
       </div>
-      <div className="container">
+      <div className={styles.ServicesContainer}>
       <h3>Trouvez le prestataire qu'il vous faut</h3>
-      <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+      <h4>Tous nos prestataires sont vérifiés au préalable</h4>
       <div className={styles.displayItems}>
         {allPrestataires.map((p) => (
           <PrestatairesItem key={p.id} p={p}></PrestatairesItem>

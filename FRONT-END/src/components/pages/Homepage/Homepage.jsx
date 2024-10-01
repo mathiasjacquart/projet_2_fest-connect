@@ -47,8 +47,8 @@ export default function Homepage({ showConnexion = false }) {
     async function fetchReviews() {
       try {
         const allReviews = await getReviews();
-
-        setReviews(allReviews);
+        const limitedReviews = allReviews.slice(0, 4);
+        setReviews(limitedReviews);
       } catch (error) {
         console.error("Error fetching reviews", error);
       }
@@ -147,7 +147,7 @@ export default function Homepage({ showConnexion = false }) {
                 <img src={PrestataireImg} alt="" />
               </div>
               <div className={styles.contentCtaText}>
-                <p>Lorem </p>
+                <p>Trouvez le bon prestataire pour votre fête </p>
                 <ArrowForwardIosIcon className={styles.contentCtaBtn}/>
               </div>
             </div>
