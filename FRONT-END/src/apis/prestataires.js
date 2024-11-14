@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:4560/api/providers"; 
+const BASE_URL = "https://fest-connect.onrender.com/api/providers"; 
 
 export async function getAllPrestataires () {
     try {

@@ -58,7 +58,7 @@ const CategoryCreate = (props) => {
     }));
     
     try {
-      const response = await fetch("http://localhost:4560/api/categories", {
+      const response = await fetch("https://fest-connect.onrender.com/api/categories", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

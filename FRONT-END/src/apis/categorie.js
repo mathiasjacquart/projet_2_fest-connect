@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:4560/api/categories"; 
+const BASE_URL = "https://fest-connect.onrender.com/api/categories"; 
 
 export async function getAllCategories () {
     try {

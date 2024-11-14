@@ -1,7 +1,7 @@
 import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 
-const apiUrl = 'http://localhost:4560/api';
+const apiUrl = 'https://fest-connect.onrender.com/api';
 const httpClient = fetchUtils.fetchJson;
 
 export default {
