@@ -3,17 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-"scripts": {
-  "server": "nodemon api/server.js",
-  "start": "node api/server.js",
-  "build": "npm i & npm i --prefix FRONT-END & npm i --prefix api && npm run build --prefix FRONT-END"
-},
+  "scripts": {
+    "server": "nodemon api/server.js",
+    "start": "node api/server.js",
+    "build": "npm i & npm i --prefix FRONT-END & npm i --prefix api && npm run build --prefix FRONT-END"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.0",
-    "socket.io": "^4.8.0"
+    "socket.io": "^4.8.0",
+    "vite": "^5.4.11"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
