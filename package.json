@@ -6,7 +6,7 @@
   "scripts": {
     "server": "nodemon api/server.js",
     "start": "node api/server.js",
-    "build": "npm i & npm i --prefix FRONT-END & npm i --prefix api && npm run build --prefix FRONT-END"
+    "build": "npm i & npm i --prefix FRONT-END --production=false & npm i --prefix api && npm run build --prefix FRONT-END"
   },
   "keywords": [],
   "author": "",
