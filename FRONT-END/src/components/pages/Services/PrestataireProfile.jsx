@@ -53,7 +53,7 @@ export default function PrestataireProfile() {
   }
   async function getPrestataireById(id) {
     try {
-      const response = await fetch(`https://fest-connect.onrender.com/api/providers/${id}`, {
+      const response = await fetch(`http://localhost:4560/api/providers/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -84,7 +84,7 @@ export default function PrestataireProfile() {
   }, [id]);
   async function getReviews() {
     try {
-      const response = await fetch(`https://fest-connect.onrender.com/api/reviews`, {
+      const response = await fetch(`http://localhost:4560/api/reviews`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json"

@@ -1,4 +1,4 @@
-const BASE_URL = "https://fest-connect.onrender.com/api/contact";
+const BASE_URL = "http://localhost:4560/api/contact";
 
 export async function sendMessage(values) {
   try {

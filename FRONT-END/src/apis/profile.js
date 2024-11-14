@@ -25,7 +25,7 @@ export async function getAllLocations (query) {
 
 export async function createProfile (values) { 
     try {
-        const response = await fetch ("https://fest-connect.onrender.com/api/providers", {
+        const response = await fetch ("http://localhost:4560/api/providers", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"

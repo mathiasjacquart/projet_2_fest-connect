@@ -41,7 +41,7 @@ export default function Profile() {
 // VERIFICATION SI LE USER A UN PROFIL PRESTATAIRE
   async function getPrestataireById(prestataireId) {
     try {
-      const response = await fetch(`https://fest-connect.onrender.com/api/providers/${prestataireId}`, {
+      const response = await fetch(`http://localhost:4560/api/providers/${prestataireId}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -86,7 +86,7 @@ export default function Profile() {
   // FONCTION UPDATE DES DONNEES DANS LA BDD 
   async function updateProfile(submissionData) {
     try {
-      const response = await fetch(`https://fest-connect.onrender.com/api/providers/${user.prestataireId}`, {
+      const response = await fetch(`http://localhost:4560/api/providers/${user.prestataireId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"

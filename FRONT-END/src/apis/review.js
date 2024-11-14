@@ -2,7 +2,7 @@
 
 export async function createReview (values) { 
     try {
-        const response = await fetch ("https://fest-connect.onrender.com/api/reviews", {
+        const response = await fetch ("http://localhost:4560/api/reviews", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"

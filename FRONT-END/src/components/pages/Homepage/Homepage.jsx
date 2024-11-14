@@ -16,7 +16,9 @@ import logoCustomerSupport from "../../../assets/image/reassurance/icons8-custom
 import logoGuarantee from "../../../assets/image/reassurance/icons8-guarantee-60.png"
 import logoSecure from "../../../assets/image/reassurance/icons8-secure-50.png"
 import Slider from "react-slick";
-import "./sliderReview.css"
+// import "./sliderReview.css"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 //import images
 
 import PrestataireImg from "../../../assets/image/homeprestataire.jpg"
@@ -28,7 +30,7 @@ export default function Homepage({ showConnexion = false }) {
   const[reviews, setReviews] = useState(null)
   async function getReviews() {
     try {
-      const response = await fetch(`https://fest-connect.onrender.com/api/reviews`, {
+      const response = await fetch(`http://localhost:4560/api/reviews`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -66,9 +68,44 @@ export default function Homepage({ showConnexion = false }) {
     setIsConnexionOpen(false);
   };
   if (!reviews) { 
-    return <div>Loading...</div>; // Placeholder while data is being fetched
-  
+    return <section class="dots-container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+  </section>; 
   }
+  const settings = {
+  
+  dots: true,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  initialSlide: 0,
+  responsive: [
+    {
+      breakpoint: 1500,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: false,
+        dots: true
+      }
+    },
+
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite:false,
+        dots: true,
+      }
+    }
+  ]
+};
   return (
     
     <main className={`${styles.main}`}>
@@ -112,7 +149,7 @@ export default function Homepage({ showConnexion = false }) {
       </div>
       <Avis/>
       <div className={`container d-flex flex-row ${styles.SliderReview}`}>
-      {/* <Slider > */}
+      <Slider {...settings} >
       { reviews.map((review) => (
           <div key={review._id} className={styles.review}>
             <div className={styles.userReview}>
@@ -130,7 +167,7 @@ export default function Homepage({ showConnexion = false }) {
             
           </div>
       ))}
-      {/* </Slider> */}
+      </Slider>
       </div>
       <div className={styles.CtaEnd}>
         <div className="container">
@@ -140,7 +177,7 @@ export default function Homepage({ showConnexion = false }) {
           <h4>
             Nous vous donnons toutes les clés pour un événement réussi
           </h4>
-          <div className="d-flex flex-row justify-content-around"> 
+          <div className={styles.contentContainer}> 
             <div className={styles.contentCta}>
               <div className={styles.contentCtaImg}>
                 <p>Prestataire</p>

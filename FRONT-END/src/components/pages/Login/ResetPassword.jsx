@@ -36,7 +36,7 @@ export default function ResetPassword() {
 
       async function submitPassword(values) {
         try {
-          const response = await fetch(`https://fest-connect.onrender.com/api/users/resetPassword/${id}`, {
+          const response = await fetch(`http://localhost:4560/api/users/resetPassword/${id}`, {
             method: "PUT",
             headers: { 
               "Content-Type": "application/json"
