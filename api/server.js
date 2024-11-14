@@ -34,7 +34,6 @@ app.use("/api/providers" , prestataireRoutes)
 app.use("/api/client", clientRoutes)
 app.use("/api/reviews", reviewRoutes)
 app.use('/api/locations', locationRoutes); 
-console.log('Variables d\'environnement:', process.env);  
 mongoose
     .connect(process.env.MONGO_URI)
     .then(()=> {
