@@ -75,7 +75,7 @@ export default function Account() {
         [field]: data[field],
       };
 
-      const response = await fetch(`http://localhost:4560/api/users/${user.id}`, {
+      const response = await fetch(`https://fest-connect.onrender.com/api/users/${user.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -30,7 +30,7 @@ export default function Homepage({ showConnexion = false }) {
   const[reviews, setReviews] = useState(null)
   async function getReviews() {
     try {
-      const response = await fetch(`http://localhost:4560/api/reviews`, {
+      const response = await fetch(`https://fest-connect.onrender.com/api/reviews`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
