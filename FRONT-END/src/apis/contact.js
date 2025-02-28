@@ -1,4 +1,6 @@
-const BASE_URL = "https://fest-connect.onrender.com/api/contact";
+const BASE_URL = `${
+  import.meta.env.VITE_API_BASE_URL
+}/contact`;
 
 export async function sendMessage(values) {
   try {

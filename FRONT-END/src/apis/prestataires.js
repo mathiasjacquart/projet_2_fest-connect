@@ -1,4 +1,6 @@
-const BASE_URL = "https://fest-connect.onrender.com/api/providers"; 
+const BASE_URL = `${
+  import.meta.env.VITE_API_BASE_URL
+}/providers`; 
 
 export async function getAllPrestataires () {
     try {
