@@ -12,25 +12,25 @@
       "headers": {
         "Content-Type": "application/javascript"
       },
-      "dest": "/dist/assets/$1"
+      "dest": "/assets/$1"
     },
     {
       "src": "/(.*\\.js)",
       "headers": {
         "Content-Type": "application/javascript"
       },
-      "dest": "/dist/$1"
+      "dest": "/$1"
     },
     {
       "src": "/(.*\\.css)",
       "headers": {
         "Content-Type": "text/css"
       },
-      "dest": "/dist/$1"
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/dist/index.html"
+      "dest": "/index.html"
     }
   ],
   "headers": [
