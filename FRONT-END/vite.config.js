@@ -12,20 +12,13 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       output: {
-        entryFileNames: "assets/[name]-[hash].js",
-        chunkFileNames: "assets/[name]-[hash].js",
-        assetFileNames: "assets/[name]-[hash].[ext]",
+        entryFileNames: "assets/[name].[hash].js",
+        chunkFileNames: "assets/[name].[hash].js",
+        assetFileNames: "assets/[name].[hash].[ext]",
         manualChunks: {
           vendor: ["react", "react-dom", "react-router-dom"],
         },
       },
-    },
-  },
-  server: {
-    port: 3000,
-    open: true,
-    headers: {
-      "Content-Type": "application/javascript",
     },
   },
   resolve: {
