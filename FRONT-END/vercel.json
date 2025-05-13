@@ -4,11 +4,22 @@
   "outputDirectory": "dist",
   "routes": [
     {
-      "src": "/assets/(.*)\\.js",
+      "src": "/assets/js/(.*)\\.js",
       "headers": {
         "Content-Type": "application/javascript"
       },
-      "dest": "/assets/$1.js"
+      "dest": "/assets/js/$1.js"
+    },
+    {
+      "src": "/assets/img/(.*)",
+      "dest": "/assets/img/$1"
+    },
+    {
+      "src": "/assets/css/(.*)\\.css",
+      "headers": {
+        "Content-Type": "text/css"
+      },
+      "dest": "/assets/css/$1.css"
     },
     {
       "src": "/(.*)\\.js",
@@ -16,13 +27,6 @@
         "Content-Type": "application/javascript"
       },
       "dest": "/$1.js"
-    },
-    {
-      "src": "/(.*)\\.css",
-      "headers": {
-        "Content-Type": "text/css"
-      },
-      "dest": "/$1.css"
     },
     {
       "src": "/(.*)",
