@@ -18,7 +18,7 @@ export default defineConfig({
         chunkFileNames: "assets/js/[name].[hash].js",
         assetFileNames: (assetInfo) => {
           // Garde la structure de dossiers pour les images
-          if (/\.(png|jpe?g|gif|svg|webp|ico)$/i.test(assetInfo.name)) {
+          if (/\.(png|jpe?g|gif|svg|webp|ico|mp4)$/i.test(assetInfo.name)) {
             return `assets/img/[name].[hash].[ext]`;
           }
 
