@@ -40,8 +40,6 @@ export default function Homepage({ showConnexion = false }) {
         }
       );
       const reviewData = await response.json();
-      console.log(reviewData);
-
       return reviewData;
     } catch (error) {
       console.error("Failed to fetch prestataire data", error);
@@ -49,15 +47,14 @@ export default function Homepage({ showConnexion = false }) {
   }
 
   useEffect(() => {
-    async function fetchReviews() {
+    const fetchReviews = async () => {
       try {
-        const allReviews = await getReviews();
-        const limitedReviews = allReviews.slice(0, 4);
-        setReviews(limitedReviews);
+        const reviewData = await getReviews();
+        setReviews(reviewData);
       } catch (error) {
-        console.error("Error fetching reviews", error);
+        console.error(error);
       }
-    }
+    };
     fetchReviews();
   }, []);
 

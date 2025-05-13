@@ -1,14 +1,15 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from "react";
 import styles from "./Account.module.scss";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { UserContext } from '../../context/UserContext';
+import { UserContext } from "../../context/UserContext";
 
 export default function Account() {
   const { user, setConnectedUser } = useContext(UserContext);
   const [editField, setEditField] = useState(null);
   const [currentValues, setCurrentValues] = useState({});
+  const [feedback, setFeedback] = useState("");
 
   useEffect(() => {
     if (user) {
@@ -35,11 +36,17 @@ export default function Account() {
     role: yup.object({
       role: yup
         .string()
-        .oneOf(["Client", "Prestataire"], "Le rôle doit être soit 'Client' soit 'Prestataire'")
+        .oneOf(
+          ["Client", "Prestataire"],
+          "Le rôle doit être soit 'Client' soit 'Prestataire'"
+        )
         .required("Le rôle est requis"),
     }),
     password: yup.object({
-      password: yup.string().min(9, "Mot de passe trop court").required("Mot de passe requis"),
+      password: yup
+        .string()
+        .min(9, "Mot de passe trop court")
+        .required("Mot de passe requis"),
       confirmPassword: yup
         .string()
         .oneOf([yup.ref("password")], "Les mots de passe ne correspondent pas")
@@ -68,6 +75,17 @@ export default function Account() {
     }
   }
 
+  const handleSubmit = async (values) => {
+    try {
+      const response = await updateAccount(values);
+      if (response.ok) {
+        setFeedback("Compte mis à jour avec succès");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const onSubmit = async (data, field) => {
     try {
       const updatedValues = {
@@ -75,13 +93,16 @@ export default function Account() {
         [field]: data[field],
       };
 
-      const response = await fetch(`https://fest-connect.onrender.com/api/users/${user.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedValues),
-      });
+      const response = await fetch(
+        `https://fest-connect.onrender.com/api/users/${user.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedValues),
+        }
+      );
 
       if (response.ok) {
         const updatedUser = await response.json();
@@ -91,12 +112,12 @@ export default function Account() {
         setCurrentValues(updatedUser);
         setEditField(null);
 
-        console.log('User updated successfully', updatedUser);
+        console.log("User updated successfully", updatedUser);
       } else {
-        console.error('Failed to update user');
+        console.error("Failed to update user");
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
@@ -178,26 +199,18 @@ export default function Account() {
     return (
       <form
         className="d-flex align-items-center jc-between mb-20"
-        onSubmit={handleSubmit((data) => onSubmit(data, 'role'))}
+        onSubmit={handleSubmit((data) => onSubmit(data, "role"))}
       >
-        <label >Rôle :</label>
-        {editField === 'role' ? (
+        <label>Rôle :</label>
+        {editField === "role" ? (
           <>
-            <div >
+            <div>
               <label className={styles.labelRadio}>
-                <input
-                  type="radio"
-                  value="Client"
-                  {...register("role")}
-                />
+                <input type="radio" value="Client" {...register("role")} />
                 Client
               </label>
               <label className={styles.labelRadio}>
-                <input
-                  type="radio"
-                  value="Prestataire"
-                  {...register("role")}
-                />
+                <input type="radio" value="Prestataire" {...register("role")} />
                 Prestataire
               </label>
             </div>
@@ -216,7 +229,9 @@ export default function Account() {
                 Annuler
               </button>
             </div>
-            {errors.role && <p className="text-error">{errors.role?.message}</p>}
+            {errors.role && (
+              <p className="text-error">{errors.role?.message}</p>
+            )}
           </>
         ) : (
           <>
@@ -224,7 +239,7 @@ export default function Account() {
             <button
               type="button"
               className="mj-btn-primary m-10"
-              onClick={() => handleEdit('role')}
+              onClick={() => handleEdit("role")}
             >
               Modifier
             </button>
@@ -248,12 +263,12 @@ export default function Account() {
     return (
       <form
         className="d-flex align-items-center jc-between mb-20"
-        onSubmit={handleSubmit((data) => onSubmit(data, 'password'))}
+        onSubmit={handleSubmit((data) => onSubmit(data, "password"))}
       >
         <label htmlFor="password" className="mr-10">
           Mot de passe :
         </label>
-        {editField === 'password' ? (
+        {editField === "password" ? (
           <>
             <input
               type="password"
@@ -297,7 +312,7 @@ export default function Account() {
             <button
               type="button"
               className="mj-btn-primary m-10"
-              onClick={() => handleEdit('password')}
+              onClick={() => handleEdit("password")}
             >
               Modifier
             </button>
@@ -315,14 +330,13 @@ export default function Account() {
     <div className={`mh-100 ${styles.Account}`}>
       <h3>Informations personnelles</h3>
       <div className={`container ${styles.AccountContainer}`}>
-        <div className={styles.avatar}>
-        </div>
+        <div className={styles.avatar}></div>
         <div className={styles.formUpdate}>
           {renderPersonalForm("firstname", "Prénom")}
           {renderPersonalForm("surname", "Nom")}
           {renderPersonalForm("username", "Pseudo")}
           {renderPersonalForm("email", "Adresse-mail")}
-          {renderRoleForm()} 
+          {renderRoleForm()}
           {renderPasswordForm()}
         </div>
       </div>

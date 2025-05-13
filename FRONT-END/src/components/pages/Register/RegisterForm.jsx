@@ -7,9 +7,12 @@ import { signup } from "../../../apis/users";
 import { useNavigate, Link } from "react-router-dom";
 import RegisterRedirection from "./RegisterRedirection";
 
-
-export default function RegisterForm({handleClickOne, handleClickTwo, handleClickThree, handleClickFour}) {
-
+export default function RegisterForm({
+  handleClickOne,
+  handleClickTwo,
+  handleClickThree,
+  handleClickFour,
+}) {
   const [feedback, setFeedback] = useState(null);
   const [showRedirection, setShowRedirection] = useState(false);
 
@@ -57,16 +60,17 @@ export default function RegisterForm({handleClickOne, handleClickTwo, handleClic
     resolver: yupResolver(schema),
   });
 
-  async function submit(values) {
+  const handleSubmit = async (values) => {
     try {
       const response = await signup(values);
-      console.log(response);
-      setFeedback(response.message);
-      setShowRedirection(true);
+      if (response.ok) {
+        setFeedback("Inscription réussie");
+        setShowRedirection(true);
+      }
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   return (
     <div className={`${styles.register}`}>
@@ -79,126 +83,137 @@ export default function RegisterForm({handleClickOne, handleClickTwo, handleClic
         <div className={`${styles.RegisterForm} container`}>
           <h3>Créez votre profil et trouvez votre bonheur </h3>
           <div className="d-flex flex-row jc-between">
-          <form className="d-flex flex-column" onSubmit={handleSubmit(submit)}>
-            <div className="d-flex">
-              <div className="d-flex flex-column mr-30">
-                <label htmlFor="firstname">Prénom : </label>
-                <input
-                  type="text"
-                  {...register("firstname")}
-                  id="firstname"
-                />
-                {errors.firstname && (
-                  <p className="text-error">{errors.firstname.message}</p>
-                )}
-                <label htmlFor="surname">Nom : </label>
-                <input type="text" {...register("surname")} id="surname" />
-                {errors.surname && (
-                  <p className="text-error">{errors.surname.message}</p>
-                )}
+            <form
+              className="d-flex flex-column"
+              onSubmit={handleSubmit(submit)}
+            >
+              <div className="d-flex">
+                <div className="d-flex flex-column mr-30">
+                  <label htmlFor="firstname">Prénom : </label>
+                  <input
+                    type="text"
+                    {...register("firstname")}
+                    id="firstname"
+                  />
+                  {errors.firstname && (
+                    <p className="text-error">{errors.firstname.message}</p>
+                  )}
+                  <label htmlFor="surname">Nom : </label>
+                  <input type="text" {...register("surname")} id="surname" />
+                  {errors.surname && (
+                    <p className="text-error">{errors.surname.message}</p>
+                  )}
+                </div>
+                <div className="d-flex flex-column mr-30">
+                  <label htmlFor="email">Adresse-mail : </label>
+                  <input type="email" {...register("email")} id="email" />
+                  {errors.email && (
+                    <p className="text-error">{errors.email.message}</p>
+                  )}
+                  <label htmlFor="username">Pseudo :</label>
+                  <input type="text" {...register("username")} id="username" />
+                  {errors.username && (
+                    <p className="text-error">{errors.username.message}</p>
+                  )}
+                </div>
+                <div className="d-flex flex-column mr-30">
+                  <label htmlFor="password">Mot de passe :</label>
+                  <input
+                    type="password"
+                    {...register("password")}
+                    id="password"
+                  />
+                  {errors.password && (
+                    <p className="text-error">{errors.password.message}</p>
+                  )}
+                  <label htmlFor="confirmPassword">
+                    Confirmation de mot de passe :
+                  </label>
+                  <input
+                    type="password"
+                    {...register("confirmPassword")}
+                    id="confirmPassword"
+                  />
+                  {errors.confirmPassword && (
+                    <p className="text-error">
+                      {errors.confirmPassword.message}
+                    </p>
+                  )}
+                </div>
               </div>
-              <div className="d-flex flex-column mr-30">
-                <label htmlFor="email">Adresse-mail : </label>
-                <input type="email" {...register("email")} id="email" />
-                {errors.email && (
-                  <p className="text-error">{errors.email.message}</p>
-                )}
-                <label htmlFor="username">Pseudo :</label>
-                <input type="text" {...register("username")} id="username" />
-                {errors.username && (
-                  <p className="text-error">{errors.username.message}</p>
-                )}
-              </div>
-              <div className="d-flex flex-column mr-30">
-                <label htmlFor="password">Mot de passe :</label>
-                <input
-                  type="password"
-                  {...register("password")}
-                  id="password"
-                />
-                {errors.password && (
-                  <p className="text-error">{errors.password.message}</p>
-                )}
-                <label htmlFor="confirmPassword">
-                  Confirmation de mot de passe :
-                </label>
-                <input
-                  type="password"
-                  {...register("confirmPassword")}
-                  id="confirmPassword"
-                />
-                {errors.confirmPassword && (
-                  <p className="text-error">{errors.confirmPassword.message}</p>
-                )}
-              </div>
-            </div>
-            <div className={`${styles.radioTitle}`}>
-              <label htmlFor="role">
-                Choisissez le rôle que vous souhaitez avoir sur Fest Connect :
-              </label>
-            </div>
-            <div className={`${styles.radioButtonContainer}`}>
-              <div className={`${styles.radioButton}`}>
-                <input
-                  type="radio"
-                  className={`${styles.radioButtonInput}`}
-                  id="radio1"
-                  name="role"
-                  value="client"
-                  {...register("role")}
-                />
-                <label
-                  className={`${styles.radioButtonLabel}`}
-                  htmlFor="radio1"
-                >
-                  <span className={`${styles.radioButtonCustom}`}></span>
-                  Je souhaite proposer mes services pour un évènement. 
+              <div className={`${styles.radioTitle}`}>
+                <label htmlFor="role">
+                  Choisissez le rôle que vous souhaitez avoir sur Fest Connect :
                 </label>
               </div>
-              <div className={`${styles.radioButton}`}>
-                <input
-                  type="radio"
-                  className={`${styles.radioButtonInput}`}
-                  id="radio2"
-                  name="role"
-                  value="prestataire"
-                  {...register("role")}
-                />
-                <label
-                  className={`${styles.radioButtonLabel}`}
-                  htmlFor="radio2"
-                >
-                  <span className={`${styles.radioButtonCustom}`}></span>
-                  Je recherche un prestataire pour mon évènement
-                </label>
-              </div>
-              {errors.role && (
+              <div className={`${styles.radioButtonContainer}`}>
+                <div className={`${styles.radioButton}`}>
+                  <input
+                    type="radio"
+                    className={`${styles.radioButtonInput}`}
+                    id="radio1"
+                    name="role"
+                    value="client"
+                    {...register("role")}
+                  />
+                  <label
+                    className={`${styles.radioButtonLabel}`}
+                    htmlFor="radio1"
+                  >
+                    <span className={`${styles.radioButtonCustom}`}></span>
+                    Je souhaite proposer mes services pour un évènement.
+                  </label>
+                </div>
+                <div className={`${styles.radioButton}`}>
+                  <input
+                    type="radio"
+                    className={`${styles.radioButtonInput}`}
+                    id="radio2"
+                    name="role"
+                    value="prestataire"
+                    {...register("role")}
+                  />
+                  <label
+                    className={`${styles.radioButtonLabel}`}
+                    htmlFor="radio2"
+                  >
+                    <span className={`${styles.radioButtonCustom}`}></span>
+                    Je recherche un prestataire pour mon évènement
+                  </label>
+                </div>
+                {errors.role && (
                   <p className="text-error">{errors.role.message}</p>
                 )}
-            </div>
-            <div className={`d-flex justify-content align-items-center ${styles.rgpdInput}`}>
-              
-                <input type="checkbox" id="rgpd" {
-                  ...register("rgpd")} className={`${styles.uiCheckbox}`} />
+              </div>
+              <div
+                className={`d-flex justify-content align-items-center ${styles.rgpdInput}`}
+              >
+                <input
+                  type="checkbox"
+                  id="rgpd"
+                  {...register("rgpd")}
+                  className={`${styles.uiCheckbox}`}
+                />
                 <label htmlFor="rgpd" className="mb-10">
-              
-                <p>
-                En soumettant ce formulaire, vous acceptez que vos données
-                personnelles soient traitées conformément à{" "}
-                <Link to="/politiques-de-confidentialité">
-                  notre politique de confidentialité
-                </Link>{" "}
-                et aux dispositions du RGPD.
-                </p>
+                  <p>
+                    En soumettant ce formulaire, vous acceptez que vos données
+                    personnelles soient traitées conformément à{" "}
+                    <Link to="/politiques-de-confidentialité">
+                      notre politique de confidentialité
+                    </Link>{" "}
+                    et aux dispositions du RGPD.
+                  </p>
                 </label>
-            </div>
-            {errors.rgpd && (
-                  <p className="text-error">{errors.rgpd.message}</p>
-                )}
-            <div className="d-flex justify-content-center mb-20">
-              <button type="submit" className="mj-btn-primary">Créer un compte</button>
-            </div>
-          </form>
+              </div>
+              {errors.rgpd && (
+                <p className="text-error">{errors.rgpd.message}</p>
+              )}
+              <div className="d-flex justify-content-center mb-20">
+                <button type="submit" className="mj-btn-primary">
+                  Créer un compte
+                </button>
+              </div>
+            </form>
             <div className={`d-flex flex-column ${styles.menu}`}>
               <p onClick={handleClickOne}>Pourquoi nous choisir ?</p>
 
@@ -207,7 +222,6 @@ export default function RegisterForm({handleClickOne, handleClickTwo, handleClic
               <p onClick={handleClickFour}>F.A.Q</p>
             </div>
           </div>
-
         </div>
       ) : (
         <RegisterRedirection feedback={feedback} />

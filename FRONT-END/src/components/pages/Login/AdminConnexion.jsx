@@ -1,15 +1,14 @@
-import styles from "./AdminConnexion.module.scss"
-import {Link} from "react-router-dom"
+import styles from "./AdminConnexion.module.scss";
+import { Link } from "react-router-dom";
 import React, { useState, useContext } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signin } from "../../../apis/admin";
 // import ConnexionRedirection from "./UserConnexionRedirection";
-import { AdminContext } from "../../context/AdminContext"
+import { AdminContext } from "../../context/AdminContext";
 
 function AdminConnexion() {
-
   const [feedback, setFeedback] = useState(null);
   // const [showLoginRedirection, setShowLoginRedirection] = useState(false);
   const { setConnectedAdmin } = useContext(AdminContext);
@@ -50,9 +49,7 @@ function AdminConnexion() {
   });
 
   // fonction de validation de formulaire
-  async function submit(values) {
-    handleResetFeedback();
-    console.log(values);
+  const handleSubmit = async (values) => {
     try {
       const response = await signin(values);
       if (!response.message) {
@@ -67,7 +64,7 @@ function AdminConnexion() {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   function handleResetFeedback() {
     setFeedback(null);
@@ -75,38 +72,44 @@ function AdminConnexion() {
 
   return (
     <>
-      <div className={`mh-100 d-flex center ${styles.body}`}> 
+      <div className={`mh-100 d-flex center ${styles.body}`}>
         <div className={`d-flex center flex-column ${styles.modal}`}>
           <h3>Fest Connect</h3>
           <form onSubmit={handleSubmit(submit)}>
-            <div className='d-flex flex-column align-items-center'>
+            <div className="d-flex flex-column align-items-center">
               <label htmlFor="identifier">Email ou Nom d'utilisateur :</label>
-              <input 
+              <input
                 {...register("identifier")}
                 type="text"
-                id="identifier" 
-                placeholder="Adresse e-mail ou Nom d'utilisateur" 
+                id="identifier"
+                placeholder="Adresse e-mail ou Nom d'utilisateur"
               />
-              {errors.identifier && <p className={`${styles.textError}`}>{errors.identifier.message}</p>}
+              {errors.identifier && (
+                <p className={`${styles.textError}`}>
+                  {errors.identifier.message}
+                </p>
+              )}
             </div>
-            <div className='d-flex flex-column align-items-center'>
+            <div className="d-flex flex-column align-items-center">
               <label htmlFor="password">Mot de passe :</label>
-              <input 
+              <input
                 {...register("password")}
                 type="password"
-                id="password" 
-                placeholder='Mot de passe' 
+                id="password"
+                placeholder="Mot de passe"
               />
-              {errors.password && ( <p className={`${styles.textError}`}>{errors.password.message}</p>)}
+              {errors.password && (
+                <p className={`${styles.textError}`}>
+                  {errors.password.message}
+                </p>
+              )}
             </div>
             <div className="d-flex justify-content-center w-100 my-10">
-              <button className='mj-btn-primary'>
-                Se connecter
-              </button>
+              <button className="mj-btn-primary">Se connecter</button>
             </div>
           </form>
         </div>
-        {feedback && <p>{feedback}</p>}    
+        {feedback && <p>{feedback}</p>}
       </div>
     </>
   );

@@ -6,15 +6,15 @@ import { sendEmailPassword, signin } from "../../../apis/users";
 import { UserContext } from "../../context/UserContext";
 import styles from "./UserConnexion.module.scss";
 import ConnexionRedirection from "./UserConnexionRedirection";
-import {Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Connexion({ onClose }) {
   const [feedback, setFeedback] = useState(null);
   const [showLoginRedirection, setShowLoginRedirection] = useState(false);
   const { setConnectedUser } = useContext(UserContext);
   const [forgottenPassword, setForgottenPassword] = useState(false);
-  const navigate = useNavigate()
-  const [feedbackEmail, setFeedbackEmail] = useState(null)
+  const navigate = useNavigate();
+  const [feedbackEmail, setFeedbackEmail] = useState(null);
 
   const [redirectionTimeout, setRedirectionTimeout] = useState(null);
 
@@ -39,7 +39,7 @@ function Connexion({ onClose }) {
     password: yup.string().required("Le mot de passe est obligatoire"),
   });
 
-  // Schéma pour l'email 
+  // Schéma pour l'email
   const schemaEmail = yup.object({
     email: yup
       .string()
@@ -72,11 +72,10 @@ function Connexion({ onClose }) {
   });
 
   // Fonction de soumission pour la connexion
-  async function submitLogin(values) {
-    handleResetFeedback();
+  const handleSubmit = async (values) => {
     try {
       const response = await signin(values);
-      if (!response.message) {
+      if (response.ok) {
         localStorage.setItem("user", JSON.stringify(response));
         setConnectedUser(response.user);
         setShowLoginRedirection(true);
@@ -89,25 +88,23 @@ function Connexion({ onClose }) {
     } catch (error) {
       console.error(error);
     }
-  }
-
+  };
 
   async function submitEmail(value) {
     try {
-        const response = await sendEmailPassword(value);
-        console.log(response);
-        if (response.status === 200) {
-            setFeedbackEmail(response.message);
-        } else {
-            setFeedbackEmail(response.message);
-        }
-        setForgottenPassword(true); // Reste sur la page de mot de passe oublié
+      const response = await sendEmailPassword(value);
+      console.log(response);
+      if (response.status === 200) {
+        setFeedbackEmail(response.message);
+      } else {
+        setFeedbackEmail(response.message);
+      }
+      setForgottenPassword(true); // Reste sur la page de mot de passe oublié
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
     resetEmail();
-}
-
+  }
 
   function handleForgottenPassword() {
     setForgottenPassword(true);
@@ -119,7 +116,10 @@ function Connexion({ onClose }) {
 
   return (
     <div className={`${styles.modalBg}`} onClick={onClose}>
-      <div className={`${styles.modalContent}`} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`${styles.modalContent}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div>
           <i onClick={onClose} className="fa-solid fa-xmark"></i>
         </div>
@@ -127,25 +127,28 @@ function Connexion({ onClose }) {
         {forgottenPassword ? (
           <div>
             <h3>Mot de passe oublié ?</h3>
-            <form className={styles.ResetPassword} onSubmit={handleSubmitEmail(submitEmail)}>
+            <form
+              className={styles.ResetPassword}
+              onSubmit={handleSubmitEmail(submitEmail)}
+            >
               <div className="d-flex flex-column align-items-center">
                 <label htmlFor="email">E-mail :</label>
                 <input
-                autoComplete="on"
+                  autoComplete="on"
                   {...registerEmail("email")}
                   type="email"
                   id="email"
                   placeholder="Adresse e-mail"
                 />
                 {errorsEmail.email && (
-                  <p className={`${styles.textError}`}>{errorsEmail.email.message}</p>
+                  <p className={`${styles.textError}`}>
+                    {errorsEmail.email.message}
+                  </p>
                 )}
                 {feedbackEmail && <p>{feedbackEmail}</p>}
               </div>
 
-              <button className="mj-btn-primary">
-                Envoyer
-              </button>
+              <button className="mj-btn-primary">Envoyer</button>
             </form>
           </div>
         ) : showLoginRedirection ? (
@@ -153,7 +156,7 @@ function Connexion({ onClose }) {
         ) : (
           <div>
             <h3>Bienvenue !</h3>
-            <form onSubmit={handleSubmitLogin(submitLogin)}>
+            <form onSubmit={handleSubmitLogin(handleSubmit)}>
               <div className="d-flex flex-column align-items-center">
                 <label htmlFor="email">E-mail :</label>
                 <input
@@ -163,7 +166,9 @@ function Connexion({ onClose }) {
                   placeholder="Adresse e-mail"
                 />
                 {errorsLogin.email && (
-                  <p className={`${styles.textError}`}>{errorsLogin.email.message}</p>
+                  <p className={`${styles.textError}`}>
+                    {errorsLogin.email.message}
+                  </p>
                 )}
               </div>
               <div className="d-flex flex-column align-items-center">
@@ -175,7 +180,9 @@ function Connexion({ onClose }) {
                   placeholder="Mot de passe"
                 />
                 {errorsLogin.password && (
-                  <p className={`${styles.textError}`}>{errorsLogin.password.message}</p>
+                  <p className={`${styles.textError}`}>
+                    {errorsLogin.password.message}
+                  </p>
                 )}
               </div>
               <button type="submit" className="mj-btn-primary">
@@ -191,7 +198,9 @@ function Connexion({ onClose }) {
               </div>
               <div>
                 <p className={`${styles.ForgottenPassword}`}>
-                  <span onClick={handleForgottenPassword}>Mot de passe oublié ?</span>
+                  <span onClick={handleForgottenPassword}>
+                    Mot de passe oublié ?
+                  </span>
                 </p>
               </div>
             </form>
