@@ -1,4 +1,3 @@
-
 import Root from "./Root";
 import App from "./App";
 import { createBrowserRouter } from "react-router-dom";
@@ -16,7 +15,7 @@ import AdminConnexion from "./components/pages/Login/AdminConnexion";
 import AdminNotConnected from "./components/ProtectedRoutes/AdminNotConnected";
 import AdminApp from "./components/pages/admin/AdminApp";
 import PrivacyPolicy from "./components/pages/PrivacyPolicy/PrivacyPolicy";
-import Profile from "./components/pages/Profile/Profile"
+import Profile from "./components/pages/Profile/Profile";
 import Contact from "./components/pages/Contact/Contact";
 import Logout from "./components/Logout";
 import Dashboard from "./components/pages/admin/Dashboard";
@@ -29,19 +28,16 @@ import UserEdit from "./components/pages/admin/users/UserEdit";
 import CategoryList from "./components/pages/admin/categories/CategoryList";
 import CategoryCreate from "./components/pages/admin/categories/CategoryCreate";
 import CategoryUpdate from "./components/pages/admin/categories/CategoryUpdate";
-import { userLoader } from "./components/loaders/UserLoader";
 import ResetPassword from "./components/pages/Login/ResetPassword";
 import LegalNotice from "./components/pages/MentionsLégales/MentionsLégales";
-import ProfileTest from "./components/pages/Profile/ProfileTest"
 import PrestataireProfile from "./components/pages/Services/PrestataireProfile";
 import Review from "./components/review/Review";
 
-
 const mainRoutes = {
   path: "/",
-  
+
   element: <App />,
- 
+
   children: [
     {
       path: "/",
@@ -58,13 +54,12 @@ const mainRoutes = {
           <Register />
         </UserNotConnected>
       ),
-      children:[
+      children: [
         {
-          path:"/register/sucess",
-          element: 
-              <RegisterRedirection/>
-        }
-      ]
+          path: "/register/sucess",
+          element: <RegisterRedirection />,
+        },
+      ],
     },
     {
       path: "/services/",
@@ -72,7 +67,7 @@ const mainRoutes = {
     },
     {
       path: "/services/:id",
-      element: <PrestataireProfile/>,
+      element: <PrestataireProfile />,
     },
     {
       path: "/contact",
@@ -84,12 +79,11 @@ const mainRoutes = {
     },
     {
       path: "/mentions-légales",
-      element: <LegalNotice/>
-
+      element: <LegalNotice />,
     },
     {
-      path:"/review",
-      element: <Review/>
+      path: "/review",
+      element: <Review />,
     },
 
     {
@@ -107,20 +101,16 @@ const mainRoutes = {
         <UserConnected>
           <Account />
         </UserConnected>
-        
       ),
-      
     },
     {
       path: "/myProfile/",
       element: (
         <UserConnected>
-          <Profile/>
+          <Profile />
         </UserConnected>
       ),
-
     },
-
 
     {
       path: "/logout",
@@ -143,7 +133,7 @@ const mainRoutes = {
       path: "/reset-password/:id",
       element: (
         <UserNotConnected>
-          <ResetPassword/>
+          <ResetPassword />
         </UserNotConnected>
       ),
     },
@@ -163,68 +153,53 @@ const adminDashboardRoutes = {
   path: "/admin-dashboard/",
   element: (
     <AdminConnected>
-      <AdminApp/>
+      <AdminApp />
     </AdminConnected>
   ),
-  children : [
+  children: [
     {
-      path:"/admin-dashboard/categories",
-      element: (
-      <CategoryList/>),
-      children :[
+      path: "/admin-dashboard/categories",
+      element: <CategoryList />,
+      children: [
         {
           path: "/admin-dashboard/categories/create",
-          element: (
-            <CategoryCreate/>
-          ),
+          element: <CategoryCreate />,
         },
         {
           path: "/admin-dashboard/categories/edit",
-          element: (
-            <CategoryUpdate/>
-          ),
+          element: <CategoryUpdate />,
         },
-      ] 
+      ],
     },
     {
-      path:"/admin-dashboard/prestataires",
-      element: (
-      <PostList/>),
-      children :[
+      path: "/admin-dashboard/prestataires",
+      element: <PostList />,
+      children: [
         {
           path: "/admin-dashboard/prestataires/create",
-          element: (
-            <PostCreate/>
-          ),
+          element: <PostCreate />,
         },
         {
           path: "/admin-dashboard/prestataires/edit",
-          element: (
-            <PostEdit/>
-          ),
+          element: <PostEdit />,
         },
-      ] 
+      ],
     },
     {
-      path:"/admin-dashboard/users",
-      element: (
-      <UserList/>),
-      children :[
+      path: "/admin-dashboard/users",
+      element: <UserList />,
+      children: [
         {
           path: "/admin-dashboard/users/create",
-          element: (
-            <UserCreate/>
-          ),
+          element: <UserCreate />,
         },
         {
           path: "/admin-dashboard/users/:id",
-          element: (
-            <UserEdit/>
-          ),
+          element: <UserEdit />,
         },
-      ] 
-    }
-  ]
+      ],
+    },
+  ],
 };
 
 export const router = createBrowserRouter([
