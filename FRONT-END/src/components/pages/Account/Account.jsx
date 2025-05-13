@@ -94,7 +94,7 @@ export default function Account() {
       };
 
       const response = await fetch(
-        `https://fest-connect.onrender.com/api/users/${user.id}`,
+        `https://festconnectapi.vercel.app/api/users/${user.id}`,
         {
           method: "PUT",
           headers: {

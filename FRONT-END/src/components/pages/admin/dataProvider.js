@@ -1,7 +1,7 @@
 import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 
-const apiUrl = 'https://fest-connect.onrender.com/api';
+const apiUrl = "https://festconnectapi.vercel.app/api";
 const httpClient = fetchUtils.fetchJson;
 
 export default {

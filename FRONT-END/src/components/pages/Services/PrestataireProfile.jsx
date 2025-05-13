@@ -82,7 +82,7 @@ export default function PrestataireProfile() {
   async function getReviews() {
     try {
       const response = await fetch(
-        `https://fest-connect.onrender.com/api/reviews`,
+        `https://festconnectapi.vercel.app/api/reviews`,
         {
           method: "GET",
           headers: {

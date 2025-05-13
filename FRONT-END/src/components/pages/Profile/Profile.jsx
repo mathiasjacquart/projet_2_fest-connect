@@ -39,7 +39,7 @@ export default function Profile() {
   async function getPrestataireById(prestataireId) {
     try {
       const response = await fetch(
-        `https://fest-connect.onrender.com/api/providers/${prestataireId}`,
+        `https://festconnectapi.vercel.app/api/providers/${prestataireId}`,
         {
           method: "GET",
           headers: {
@@ -86,7 +86,7 @@ export default function Profile() {
   async function updateProfile(submissionData) {
     try {
       const response = await fetch(
-        `https://fest-connect.onrender.com/api/providers/${user.prestataireId}`,
+        `https://festconnectapi.vercel.app/api/providers/${user.prestataireId}`,
         {
           method: "PUT",
           headers: {

@@ -26,7 +26,7 @@ export async function getAllLocations(query) {
 export async function createProfile(values) {
   try {
     const response = await fetch(
-      "https://fest-connect.onrender.com/api/providers",
+      "https://festconnectapi.vercel.app/api/providers",
       {
         method: "POST",
         headers: {
