@@ -49,17 +49,15 @@ function AdminConnexion() {
   });
 
   // fonction de validation de formulaire
-  const handleSubmit = async (values) => {
+  const onSubmit = async (values) => {
     try {
       const response = await signin(values);
       if (!response.message) {
         localStorage.setItem("admin", JSON.stringify(response));
         setConnectedAdmin(response.admin);
-        // setShowLoginRedirection(true);
         reset(defaultValues);
       } else {
         setFeedback(response.message);
-        // setShowLoginRedirection(true);
       }
     } catch (error) {
       console.error(error);
@@ -75,7 +73,7 @@ function AdminConnexion() {
       <div className={`mh-100 d-flex center ${styles.body}`}>
         <div className={`d-flex center flex-column ${styles.modal}`}>
           <h3>Fest Connect</h3>
-          <form onSubmit={handleSubmit(submit)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="d-flex flex-column align-items-center">
               <label htmlFor="identifier">Email ou Nom d'utilisateur :</label>
               <input
