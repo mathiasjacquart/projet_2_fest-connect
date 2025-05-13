@@ -26,9 +26,7 @@ import ClientImg from "../../../assets/image/organisateurHome.jpg";
 import { Rating } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-export default function Homepage({
-  showConnexion = false,
-}) {
+export default function Homepage({ showConnexion = false }) {
   const [reviews, setReviews] = useState(null);
   async function getReviews() {
     try {
@@ -46,10 +44,7 @@ export default function Homepage({
 
       return reviewData;
     } catch (error) {
-      console.error(
-        "Failed to fetch prestataire data",
-        error
-      );
+      console.error("Failed to fetch prestataire data", error);
     }
   }
 
@@ -65,22 +60,20 @@ export default function Homepage({
     }
     fetchReviews();
   }, []);
-  console.log(reviews);
 
-  const [isConnexionOpen, setIsConnexionOpen] =
-    useState(showConnexion);
+  const [isConnexionOpen, setIsConnexionOpen] = useState(showConnexion);
 
   const handleCloseConnexion = () => {
     setIsConnexionOpen(false);
   };
   if (!reviews) {
     return (
-      <section class="dots-container">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+      <section className="mh-100 dots-container">
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
       </section>
     );
   }
@@ -120,13 +113,11 @@ export default function Homepage({
           <div className={`d-flex flex-column`}>
             <h1>Animez vos événements avec Fest Connect</h1>
             <h2>
-              Rencontrez et trouvez le talent qu'il vous
-              faut pour rendre votre fête inoubliable{" "}
+              Rencontrez et trouvez le talent qu'il vous faut pour rendre votre
+              fête inoubliable{" "}
             </h2>
 
-            <div
-              className={`d-flex ${styles.btnContainer}`}
-            >
+            <div className={`d-flex ${styles.btnContainer}`}>
               <Link
                 to="/about"
                 className={`mj-btn-primary ${styles.btnPrimary}`}
@@ -142,10 +133,7 @@ export default function Homepage({
             </div>
           </div>
           <div className={`${styles.photoIntro}`}>
-            <img
-              src={backgroundImage}
-              alt="homepage-photo"
-            />
+            <img src={backgroundImage} alt="homepage-photo" />
           </div>
         </div>
 
@@ -155,10 +143,7 @@ export default function Homepage({
       <div className={`${styles.reassurance}`}>
         <div className={`${styles.reassuranceItems}`}>
           <img src={logoGuarantee} alt="icone garantie" />
-          <p>
-            Tous nos prestataires sont soigneusement
-            vérifiés.{" "}
-          </p>
+          <p>Tous nos prestataires sont soigneusement vérifiés. </p>
         </div>
         <div className={`${styles.reassuranceItems}`}>
           <img
@@ -167,43 +152,29 @@ export default function Homepage({
             alt="icone paiement sécurisé"
           />
           <p>
-            Les dernières technologies de cryptage pour
-            sécuriser vos informations personnelles.
+            Les dernières technologies de cryptage pour sécuriser vos
+            informations personnelles.
           </p>
         </div>
         <div className={`${styles.reassuranceItems}`}>
-          <img
-            src={logoBooking}
-            alt="icone réservation gratuite"
-          />
-          <p>
-            Trouvez le prestataire idéal pour votre
-            événement.{" "}
-          </p>
+          <img src={logoBooking} alt="icone réservation gratuite" />
+          <p>Trouvez le prestataire idéal pour votre événement. </p>
         </div>
         <div className={`${styles.reassuranceItems}`}>
-          <img
-            src={logoCustomerSupport}
-            alt="icone service client"
-          />
+          <img src={logoCustomerSupport} alt="icone service client" />
           <p>
-            Notre équipe de support client est disponible à
-            tout moment pour répondre à vos questions.{" "}
+            Notre équipe de support client est disponible à tout moment pour
+            répondre à vos questions.{" "}
           </p>
         </div>
       </div>
       <Avis />
-      <div
-        className={`container d-flex flex-row ${styles.SliderReview}`}
-      >
+      <div className={`container d-flex flex-row ${styles.SliderReview}`}>
         <Slider {...settings}>
           {reviews.map((review) => (
             <div key={review._id} className={styles.review}>
               <div className={styles.userReview}>
-                <img
-                  src={review.userId.avatar}
-                  alt="avatar"
-                />
+                <img src={review.userId.avatar} alt="avatar" />
                 <p>{review.userId.username}</p>
               </div>
               <div className={styles.contentReview}>
@@ -220,10 +191,7 @@ export default function Homepage({
       <div className={styles.CtaEnd}>
         <div className="container">
           <h3>Prestataire ou client ?</h3>
-          <h4>
-            Nous vous donnons toutes les clés pour un
-            événement réussi
-          </h4>
+          <h4>Nous vous donnons toutes les clés pour un événement réussi</h4>
           <div className={styles.contentContainer}>
             <div className={styles.contentCta}>
               <div className={styles.contentCtaImg}>
@@ -231,12 +199,8 @@ export default function Homepage({
                 <img src={PrestataireImg} alt="" />
               </div>
               <div className={styles.contentCtaText}>
-                <p>
-                  Trouvez le bon prestataire pour votre fête{" "}
-                </p>
-                <ArrowForwardIosIcon
-                  className={styles.contentCtaBtn}
-                />
+                <p>Trouvez le bon prestataire pour votre fête </p>
+                <ArrowForwardIosIcon className={styles.contentCtaBtn} />
               </div>
             </div>
             <div className={styles.contentCta}>
@@ -245,23 +209,15 @@ export default function Homepage({
                 <img src={ClientImg} alt="" />
               </div>
               <div className={styles.contentCtaText}>
-                <p>
-                  {" "}
-                  Trouvez l'idée qui rendra votre fête plus
-                  originale{" "}
-                </p>
-                <ArrowForwardIosIcon
-                  className={styles.contentCtaBtn}
-                />
+                <p> Trouvez l'idée qui rendra votre fête plus originale </p>
+                <ArrowForwardIosIcon className={styles.contentCtaBtn} />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {isConnexionOpen && (
-        <Connexion onClose={handleCloseConnexion} />
-      )}
+      {isConnexionOpen && <Connexion onClose={handleCloseConnexion} />}
     </main>
   );
 }
