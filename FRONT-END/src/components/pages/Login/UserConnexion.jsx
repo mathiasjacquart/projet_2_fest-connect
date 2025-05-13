@@ -72,7 +72,7 @@ function Connexion({ onClose }) {
   });
 
   // Fonction de soumission pour la connexion
-  const handleSubmit = async (values) => {
+  const onSubmit = async (values) => {
     try {
       const response = await signin(values);
       if (response.ok) {
@@ -156,7 +156,7 @@ function Connexion({ onClose }) {
         ) : (
           <div>
             <h3>Bienvenue !</h3>
-            <form onSubmit={handleSubmitLogin(handleSubmit)}>
+            <form onSubmit={handleSubmitLogin(onSubmit)}>
               <div className="d-flex flex-column align-items-center">
                 <label htmlFor="email">E-mail :</label>
                 <input

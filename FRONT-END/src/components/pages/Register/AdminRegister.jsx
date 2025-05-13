@@ -50,7 +50,7 @@ export default function RegisterForm() {
   });
 
   //   fonction de validation de formulaire
-  const handleSubmit = async (values) => {
+  const onSubmit = async (values) => {
     try {
       const response = await signup(values);
       if (response.ok) {
@@ -74,7 +74,10 @@ export default function RegisterForm() {
       {!showRedirection ? (
         <div className={`${styles.RegisterForm} container`}>
           <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
-          <form className="d-flex flex-column" onSubmit={handleSubmit(submit)}>
+          <form
+            className="d-flex flex-column"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="d-flex">
               {/* EMAIL  */}
               <div className="d-flex flex-column mr-30">

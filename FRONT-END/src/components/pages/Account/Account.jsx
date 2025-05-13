@@ -75,7 +75,7 @@ export default function Account() {
     }
   }
 
-  const handleSubmit = async (values) => {
+  const handleAccountUpdate = async (values) => {
     try {
       const response = await updateAccount(values);
       if (response.ok) {
@@ -86,7 +86,7 @@ export default function Account() {
     }
   };
 
-  const onSubmit = async (data, field) => {
+  const handleFieldUpdate = async (data, field) => {
     try {
       const updatedValues = {
         ...currentValues,
@@ -106,13 +106,10 @@ export default function Account() {
 
       if (response.ok) {
         const updatedUser = await response.json();
-        console.log(updatedUser);
         setConnectedUser(updatedUser);
         updateUserInLocalStorage(updatedUser);
         setCurrentValues(updatedUser);
         setEditField(null);
-
-        console.log("User updated successfully", updatedUser);
       } else {
         console.error("Failed to update user");
       }
@@ -136,7 +133,7 @@ export default function Account() {
     return (
       <form
         className="d-flex align-items-center jc-between mb-20"
-        onSubmit={handleSubmit((data) => onSubmit(data, field))}
+        onSubmit={handleSubmit((data) => handleFieldUpdate(data, field))}
       >
         <label htmlFor={field} className="mr-10">
           {label} :
@@ -199,7 +196,7 @@ export default function Account() {
     return (
       <form
         className="d-flex align-items-center jc-between mb-20"
-        onSubmit={handleSubmit((data) => onSubmit(data, "role"))}
+        onSubmit={handleSubmit((data) => handleFieldUpdate(data, "role"))}
       >
         <label>Rôle :</label>
         {editField === "role" ? (
@@ -263,7 +260,7 @@ export default function Account() {
     return (
       <form
         className="d-flex align-items-center jc-between mb-20"
-        onSubmit={handleSubmit((data) => onSubmit(data, "password"))}
+        onSubmit={handleSubmit((data) => handleFieldUpdate(data, "password"))}
       >
         <label htmlFor="password" className="mr-10">
           Mot de passe :

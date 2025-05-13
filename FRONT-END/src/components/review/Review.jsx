@@ -19,7 +19,7 @@ export default function Review({ p }) {
   //     return <div>Loading...</div>; // Placeholder while data is being fetched
   //   }
 
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const p = {
       note: note,
@@ -44,7 +44,7 @@ export default function Review({ p }) {
     <div className={styles.Review}>
       <div className={styles.ContentReview}>
         <h4>Donnez votre avis</h4>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <div className={styles.ReviewNote}>
             <label className={styles.label} htmlFor="businessname">
               {" "}

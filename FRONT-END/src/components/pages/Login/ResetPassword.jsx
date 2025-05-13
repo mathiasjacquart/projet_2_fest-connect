@@ -37,7 +37,7 @@ export default function ResetPassword() {
     }
   }, []);
 
-  const handleSubmit = async (values) => {
+  const onSubmit = async (values) => {
     try {
       const response = await resetPassword(values);
       if (response.ok) {
@@ -50,7 +50,7 @@ export default function ResetPassword() {
 
   return (
     <div className={`${styles.ResetPassword} mh-100 d-flex center`}>
-      <form onSubmit={handleSubmitPassword(handleSubmit)}>
+      <form onSubmit={handleSubmitPassword(onSubmit)}>
         <div className="d-flex flex-column align-items-center">
           <h3>Changement de mot de passe</h3>
           <div className="d-flex flex-column">

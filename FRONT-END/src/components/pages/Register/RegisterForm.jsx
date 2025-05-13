@@ -60,7 +60,7 @@ export default function RegisterForm({
     resolver: yupResolver(schema),
   });
 
-  const handleSubmit = async (values) => {
+  const onSubmit = async (values) => {
     try {
       const response = await signup(values);
       if (response.ok) {
@@ -85,7 +85,7 @@ export default function RegisterForm({
           <div className="d-flex flex-row jc-between">
             <form
               className="d-flex flex-column"
-              onSubmit={handleSubmit(submit)}
+              onSubmit={handleSubmit(onSubmit)}
             >
               <div className="d-flex">
                 <div className="d-flex flex-column mr-30">

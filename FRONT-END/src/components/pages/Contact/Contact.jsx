@@ -40,7 +40,7 @@ export default function Contact() {
     resolver: yupResolver(schema),
   });
 
-  const handleSubmit = async (values) => {
+  const onSubmit = async (values) => {
     try {
       const response = await sendMessage(values);
       if (response.ok) {
@@ -63,7 +63,7 @@ export default function Contact() {
                 <h3>Contactez-nous </h3>
                 <form
                   className="d-flex flex-column"
-                  onSubmit={handleSubmit(submit)}
+                  onSubmit={handleSubmit(onSubmit)}
                 >
                   <div className="d-flex  flex-column">
                     <label htmlFor="firstname">Prénom : </label>

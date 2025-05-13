@@ -66,7 +66,7 @@ const CategoryCreate = (props) => {
     );
   };
 
-  const handleSubmit = async (values) => {
+  const onSubmit = async (values) => {
     try {
       const response = await createCategory(values);
       if (response.ok) {
@@ -79,7 +79,7 @@ const CategoryCreate = (props) => {
 
   return (
     <Create {...props} redirect="list">
-      <SimpleForm onSubmit={handleSubmit}>
+      <SimpleForm onSubmit={onSubmit}>
         <TextInput source="nameCategory" label="Catégories" />
         <input
           className={`${styles.categoriesAdmin}`}
